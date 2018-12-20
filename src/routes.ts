@@ -1,14 +1,5 @@
-import Auth from 'pages/Auth'
-import Budget from 'pages/Budget'
-import Costs from 'pages/Costs'
-import CostsRecords from 'pages/CostsRecords'
-import CostsRecordsDetail from 'pages/CostsRecordsDetail'
-import Income from 'pages/Income'
-import Me from 'pages/Me'
-import Registration from 'pages/Registration'
-import Statistics from 'pages/Statistics'
-import Targets from 'pages/Targets'
-import NotFound from 'pages/NotFound'
+import Loadable from 'react-loadable'
+import Loading from 'components/Loading'
 
 type Routes = {
   path: string
@@ -20,67 +11,100 @@ type Routes = {
 const routes: Routes = [
   {
     path: '/',
-    component: Auth,
+    component: Loadable({
+      loader: () => import('pages/Auth'),
+      loading: Loading,
+    }),
     isPrivate: false,
     isExact: true,
   },
   {
     path: '/registration',
-    component: Registration,
+    component: Loadable({
+      loader: () => import('pages/Registration'),
+      loading: Loading,
+    }),
     isPrivate: false,
     isExact: true,
   },
   {
     path: '/me',
-    component: Me,
+    component: Loadable({
+      loader: () => import('pages/Me'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: '/budget',
-    component: Budget,
+    component: Loadable({
+      loader: () => import('pages/Budget'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: '/budget/income',
-    component: Income,
+    component: Loadable({
+      loader: () => import('pages/Income'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: 'budget/costs',
-    component: Costs,
+    component: Loadable({
+      loader: () => import('pages/Costs'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: '/costs-records',
-    component: CostsRecords,
+    component: Loadable({
+      loader: () => import('pages/CostsRecords'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: '/costs-records/:id',
-    component: CostsRecordsDetail,
+    component: Loadable({
+      loader: () => import('pages/CostsRecordsDetail'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: '/targets',
-    component: Targets,
+    component: Loadable({
+      loader: () => import('pages/Targets'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: '/statistics',
-    component: Statistics,
+    component: Loadable({
+      loader: () => import('pages/Statistics'),
+      loading: Loading,
+    }),
     isPrivate: true,
     isExact: true,
   },
   {
     path: '',
-    component: NotFound,
+    component: Loadable({
+      loader: () => import('pages/NotFound'),
+      loading: Loading,
+    }),
     isPrivate: false,
     isExact: true,
   },
