@@ -1,6 +1,8 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const merge = require('webpack-merge')
 
+const baseConfig = require('./base.config')
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -8,7 +10,7 @@ const plugins = [
   }),
 ]
 
-module.exports = {
+module.exports = merge(baseConfig, {
   mode: 'development',
 
   entry: resolve('src'),
@@ -20,10 +22,6 @@ module.exports = {
   },
 
   devtool: 'eval-source-map',
-
-  resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
-  },
 
   devServer: {
     port: 9000,
@@ -41,4 +39,4 @@ module.exports = {
   },
 
   plugins,
-}
+})
