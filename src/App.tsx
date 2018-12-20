@@ -1,5 +1,19 @@
 import * as React from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-const App = () => <div>React app</div>
+import routes from './routes'
+
+const App = () => (
+  <Switch>
+    {routes.map(route => (
+      <Route
+        path={route.path}
+        component={route.component}
+        exact={route.isExact}
+        key={route.path}
+      />
+    ))}
+  </Switch>
+)
 
 export default App
