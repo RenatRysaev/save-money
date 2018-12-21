@@ -1,5 +1,7 @@
 import * as React from 'react'
 
-const Loading = () => <div>Loading</div>
+const styles = require('./styles.css')
+
+const Loading = () => <div className={styles.loading}>Loading</div>
 
 export default Loading

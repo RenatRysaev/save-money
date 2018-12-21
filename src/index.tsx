@@ -7,6 +7,8 @@ import configureStore, { history } from './configureStore'
 
 import App from './App'
 
+import './index.css'
+
 const store = configureStore()
 
 ReactDOM.render(
