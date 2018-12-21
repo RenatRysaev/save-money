@@ -5,7 +5,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      root: src,
+      'react-dom': '@hot-loader/react-dom',
       store: resolve(src, 'store'),
       pages: resolve(src, 'pages'),
       components: resolve(src, 'components'),
