@@ -7,7 +7,7 @@ import configureStore, { history } from './configureStore'
 
 import App from './App'
 
-import './index.css'
+import './index.scss'
 
 const store = configureStore()
 

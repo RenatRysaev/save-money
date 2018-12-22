@@ -1,11 +1,19 @@
 const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const merge = require('webpack-merge')
 
 const baseConfig = require('./base.config')
 
-const plugins = [new MiniCssExtractPlugin(), new CleanWebpackPlugin('build')]
+const plugins = [
+  new CleanWebpackPlugin('build'),
+  new HtmlWebpackPlugin({ template: 'src/index.html' }),
+  new MiniCssExtractPlugin({
+    filename: '[name].[hash].css',
+    chunkFilename: '[id].[hash].css',
+  }),
+]
 
 module.exports = merge(baseConfig, {
   mode: 'production',
@@ -22,8 +30,8 @@ module.exports = merge(baseConfig, {
         use: ['babel-loader'],
       },
       {
-        test: /\.css/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.(sass|scss|css)$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },

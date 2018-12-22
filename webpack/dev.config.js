@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./base.config')
 
 const plugins = [
-  new HtmlWebpackPlugin({ template: 'public/index.html' }),
+  new HtmlWebpackPlugin({ template: 'src/index.html' }),
   new webpack.HotModuleReplacementPlugin(),
 ]
 
@@ -17,7 +17,7 @@ module.exports = merge(baseConfig, {
 
   output: {
     filename: 'bundle.js',
-    path: resolve('public'),
+    path: resolve('/build'),
     publicPath: '/',
   },
 
@@ -37,7 +37,7 @@ module.exports = merge(baseConfig, {
         use: ['babel-loader'],
       },
       {
-        test: /\.css/,
+        test: /\.(sass|scss|css)$/,
         use: [
           {
             loader: 'style-loader',
@@ -50,6 +50,7 @@ module.exports = merge(baseConfig, {
               localIdentName: '[name]__[local]___[hash:base64:5]',
             },
           },
+          { loader: 'sass-loader' },
         ],
       },
     ],
