@@ -2,14 +2,12 @@ const { resolve } = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const baseConfig = require('./base.config')
 
 const plugins = [
   new HtmlWebpackPlugin({ template: 'public/index.html' }),
   new webpack.HotModuleReplacementPlugin(),
-  new MiniCssExtractPlugin(),
 ]
 
 module.exports = merge(baseConfig, {
@@ -41,8 +39,10 @@ module.exports = merge(baseConfig, {
       {
         test: /\.css/,
         use: [
-          { loader: 'css-hot-loader' },
-          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: 'style-loader',
+            options: { hmr: true },
+          },
           {
             loader: 'css-loader',
             query: {
