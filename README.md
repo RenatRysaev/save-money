@@ -74,3 +74,11 @@
 13. [Axios](https://github.com/axios/axios) - http.
 14. [Formik](https://github.com/jaredpalmer/formik) - работа с формами.
 15. [Yup](https://github.com/jquense/yup) - валидация данных.
+
+### Работа с проектом:
+
+**Установить зависимости**: `yarn install`
+
+**Запустить**: `yarn start`
+
+**Сделать build**: `yarn build`
