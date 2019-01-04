@@ -26,7 +26,6 @@ module.exports = merge(baseConfig, {
   devServer: {
     port: 9000,
     hot: true,
-    compress: true,
     historyApiFallback: true,
   },
 
@@ -34,7 +33,12 @@ module.exports = merge(baseConfig, {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        },
       },
       {
         test: /\.(sass|scss|css)$/,
