@@ -1,18 +1,34 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { Formik } from 'formik'
+
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
+import { thunkLogin } from 'store/auth/thunks'
+
 const styles = require('./styles.scss')
+
+const mapDispatchToProps = {
+  login: thunkLogin,
+}
 
 const formInitialValues = {
   name: '',
   password: '',
 }
 
-class LoginForm extends React.Component {
+interface LoginFormProps {
+  login: (name: string, password: string) => void
+}
+
+class LoginForm extends React.Component<LoginFormProps, {}> {
   handleSubmit = (values: any) => {
-    console.log(values)
+    const { login } = this.props
+    const { name, password } = values
+
+    login(name, password)
   }
 
   render() {
@@ -56,4 +72,9 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm
+export default compose(
+  connect(
+    null,
+    mapDispatchToProps,
+  ),
+)(LoginForm)

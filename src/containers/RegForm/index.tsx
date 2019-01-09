@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { hot } from 'react-hot-loader/root'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Formik } from 'formik'
@@ -18,7 +19,11 @@ const formInitialValues = {
   password: '',
 }
 
-class RegForm extends React.Component {
+interface RegFormProps {
+  registration: (name: string, password: string) => void
+}
+
+class RegForm extends React.Component<RegFormProps, {}> {
   handleSubmit = (values: any) => {
     const { registration } = this.props
     const { name, password } = values
@@ -68,6 +73,7 @@ class RegForm extends React.Component {
 }
 
 export default compose(
+  hot,
   connect(
     null,
     mapDispatchToProps,
