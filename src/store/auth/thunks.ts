@@ -23,7 +23,7 @@ export const thunkRegistration = (name: string, password: string) => async (
     const { data: user } = await API.registration(name, password)
 
     dispatch(actionRegistrationSuccess(user))
-    dispatch(push('/login'))
+    dispatch(push('/'))
   } catch (err) {
     dispatch(actionRegistrationFail())
   }

@@ -1,0 +1,7 @@
+{
+  "name": "Save money app",
+  "short_name": "Save money app",
+  "lang": "en",
+  "start_url": "/",
+  "display": "standalone"
+}

@@ -12,16 +12,16 @@ const routes: Routes = [
   {
     path: '/',
     component: Loadable({
-      loader: () => import('pages/Reg'),
+      loader: () => import('pages/Login'),
       loading: Loading,
     }),
     isPrivate: false,
     isExact: true,
   },
   {
-    path: '/login',
+    path: '/reg',
     component: Loadable({
-      loader: () => import('pages/Login'),
+      loader: () => import('pages/Reg'),
       loading: Loading,
     }),
     isPrivate: false,

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 
 import TextField from '@material-ui/core/TextField'
@@ -62,9 +63,13 @@ class LoginForm extends React.Component<LoginFormProps, {}> {
               />
             </div>
 
-            <Button color="primary" variant="contained" type="submit">
-              Login
-            </Button>
+            <div className={styles.buttonContainer}>
+              <Button color="primary" variant="contained" type="submit">
+                Login
+              </Button>
+            </div>
+
+            <Link to="/reg">Go to the registration page</Link>
           </form>
         )}
       </Formik>

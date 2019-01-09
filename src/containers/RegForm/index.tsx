@@ -2,6 +2,7 @@ import * as React from 'react'
 import { hot } from 'react-hot-loader/root'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
@@ -62,9 +63,13 @@ class RegForm extends React.Component<RegFormProps, {}> {
               />
             </div>
 
-            <Button color="primary" variant="contained" type="submit">
-              Registration
-            </Button>
+            <div className={styles.buttonContainer}>
+              <Button color="primary" variant="contained" type="submit">
+                Registration
+              </Button>
+            </div>
+
+            <Link to="/">Go to the login page</Link>
           </form>
         )}
       </Formik>
