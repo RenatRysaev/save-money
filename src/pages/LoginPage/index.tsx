@@ -13,7 +13,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = {}
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <div className={styles.pageContainer}>
       <LoginForm />
@@ -26,4 +26,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-)(Login)
+)(LoginPage)

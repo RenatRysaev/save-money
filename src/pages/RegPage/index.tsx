@@ -13,7 +13,7 @@ const mapStateToProps = () => ({
 
 const mapDispatchToProps = {}
 
-const Reg = () => {
+const RegPage = () => {
   return (
     <div className={styles.pageContainer}>
       <RegForm />
@@ -26,4 +26,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-)(Reg)
+)(RegPage)

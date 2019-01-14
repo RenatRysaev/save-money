@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '/',
     component: Loadable({
-      loader: () => import('pages/Login'),
+      loader: () => import('pages/LoginPage'),
       loading: Loading,
     }),
     isPrivate: false,
@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: '/reg',
     component: Loadable({
-      loader: () => import('pages/Reg'),
+      loader: () => import('pages/RegPage'),
       loading: Loading,
     }),
     isPrivate: false,
@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: '/budget',
     component: Loadable({
-      loader: () => import('pages/Budget'),
+      loader: () => import('pages/BudgetPage'),
       loading: Loading,
     }),
     isPrivate: true,
@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path: '/budget/income',
     component: Loadable({
-      loader: () => import('pages/Income'),
+      loader: () => import('pages/IncomePage'),
       loading: Loading,
     }),
     isPrivate: true,
@@ -48,7 +48,7 @@ const routes: Routes = [
   {
     path: 'budget/costs',
     component: Loadable({
-      loader: () => import('pages/Costs'),
+      loader: () => import('pages/CostsPage'),
       loading: Loading,
     }),
     isPrivate: true,
@@ -57,7 +57,7 @@ const routes: Routes = [
   {
     path: '',
     component: Loadable({
-      loader: () => import('pages/NotFound'),
+      loader: () => import('pages/NotFoundPage'),
       loading: Loading,
     }),
     isPrivate: false,
