@@ -1,7 +1,7 @@
-import axios, { AxiosPromise } from 'axios'
+import axios from 'axios'
 import { API_URL } from 'constants'
 
-export const registration = (name: string, password: string): AxiosPromise =>
+export const registration = (name, password) =>
   axios({
     method: 'post',
     url: `${API_URL.V1}/reg`,
@@ -11,7 +11,7 @@ export const registration = (name: string, password: string): AxiosPromise =>
     },
   })
 
-export const login = (name: string, password: string): AxiosPromise =>
+export const login = (name, password) =>
   axios({
     method: 'post',
     url: `${API_URL.V1}/login`,
@@ -19,4 +19,11 @@ export const login = (name: string, password: string): AxiosPromise =>
       name,
       password,
     },
+  })
+
+export const checkLogin = token =>
+  axios({
+    method: 'post',
+    url: `${API_URL.V1}/check-login`,
+    headers: { Authorization: token },
   })

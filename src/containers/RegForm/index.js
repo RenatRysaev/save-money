@@ -1,18 +1,17 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
-
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-import { thunkLogin } from 'store/auth/thunks'
+import { thunkRegistration } from 'store/auth/thunks'
 
-const styles = require('./styles.scss')
+import styles from './styles.scss'
 
 const mapDispatchToProps = {
-  login: thunkLogin,
+  registration: thunkRegistration,
 }
 
 const formInitialValues = {
@@ -20,16 +19,12 @@ const formInitialValues = {
   password: '',
 }
 
-interface LoginFormProps {
-  login: (name: string, password: string) => void
-}
-
-class LoginForm extends React.Component<LoginFormProps, {}> {
-  handleSubmit = (values: any) => {
-    const { login } = this.props
+class RegForm extends Component {
+  handleSubmit = values => {
+    const { registration } = this.props
     const { name, password } = values
 
-    login(name, password)
+    registration(name, password)
   }
 
   render() {
@@ -65,11 +60,11 @@ class LoginForm extends React.Component<LoginFormProps, {}> {
 
             <div className={styles.buttonContainer}>
               <Button color="primary" variant="contained" type="submit">
-                Login
+                Registration
               </Button>
             </div>
 
-            <Link to="/reg">Go to the registration page</Link>
+            <Link to="/">Go to the login page</Link>
           </form>
         )}
       </Formik>
@@ -82,4 +77,4 @@ export default compose(
     null,
     mapDispatchToProps,
   ),
-)(LoginForm)
+)(RegForm)

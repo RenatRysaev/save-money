@@ -8,9 +8,9 @@ import createRootReducer from './createRootReducer'
 
 export const history = createBrowserHistory()
 
-const middleware: any[] = [thunkMiddleware, routerMiddleware(history)]
+const middleware = [thunkMiddleware, routerMiddleware(history)]
 
-export const configureStore = (initialState?: any) =>
+export const configureStore = initialState =>
   createStore(
     createRootReducer(history),
     initialState,

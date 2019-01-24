@@ -14,7 +14,7 @@ const initialState = {
   isLogin: false,
 }
 
-const authReducer = createReducer<typeof initialState>({}, initialState)
+const authReducer = createReducer({}, initialState)
 
 authReducer.on(actionRegistrationRequest, state => ({
   ...state,

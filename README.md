@@ -27,21 +27,20 @@
 
 ### Основные зависимости:
 
-1. [TypeScript](https://www.typescriptlang.org/docs/home.html) - статическая типизация данных.
-2. [Immutable](https://facebook.github.io/immutable-js/docs/#/) - иммутабельность данных.
-3. [React](https://reactjs.org/docs/getting-started.html) - ui.
-4. [React-router](https://reacttraining.com/react-router/web/guides/quick-start) - роутинг.
-5. [Connected React Router](https://github.com/supasate/connected-react-router) - синхронизация роутинга с редаксом.
-6. [React-loadable](https://github.com/jamiebuilds/react-loadable) - динамические импорты.
-7. [Redux](https://redux.js.org/api/api-reference) - управление состоянием.
-8. [Redux-act](https://github.com/pauldijou/redux-act) - уменьшение бойлерплейта.
-9. [Redux-thunk](https://github.com/reduxjs/redux-thunk) - работа с сайдэффектами.
-10. [Reselect](https://github.com/reduxjs/reselect) - мемоизация селекторов.
-11. [Material-ui](https://material-ui.com/) - библиотека компонентов.
-12. [Lodash](https://lodash.com/) - полезные утилиты.
-13. [Axios](https://github.com/axios/axios) - http.
-14. [Formik](https://github.com/jaredpalmer/formik) - работа с формами.
-15. [Yup](https://github.com/jquense/yup) - валидация данных.
+1. [Immutable](https://facebook.github.io/immutable-js/docs/#/) - иммутабельность данных.
+2. [React](https://reactjs.org/docs/getting-started.html) - ui.
+3. [React-router](https://reacttraining.com/react-router/web/guides/quick-start) - роутинг.
+4. [Connected React Router](https://github.com/supasate/connected-react-router) - синхронизация роутинга с редаксом.
+5. [React-loadable](https://github.com/jamiebuilds/react-loadable) - динамические импорты.
+6. [Redux](https://redux.js.org/api/api-reference) - управление состоянием.
+7. [Redux-act](https://github.com/pauldijou/redux-act) - уменьшение бойлерплейта.
+8. [Redux-thunk](https://github.com/reduxjs/redux-thunk) - работа с сайдэффектами.
+9. [Reselect](https://github.com/reduxjs/reselect) - мемоизация селекторов.
+10. [Material-ui](https://material-ui.com/) - библиотека компонентов.
+11. [Lodash](https://lodash.com/) - полезные утилиты.
+12. [Axios](https://github.com/axios/axios) - http.
+13. [Formik](https://github.com/jaredpalmer/formik) - работа с формами.
+14. [Yup](https://github.com/jquense/yup) - валидация данных.
 
 ### Работа с проектом:
 

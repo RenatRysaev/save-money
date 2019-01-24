@@ -1,11 +1,11 @@
-import * as React from 'react'
+import React from 'react'
 import { hot } from 'react-hot-loader/root'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import LoginForm from 'containers/LoginForm'
+import LoginForm from 'containers/LoginForm/index'
 
-const styles = require('./styles.scss')
+import styles from './styles.scss'
 
 const mapStateToProps = () => ({
   isLogin: false,

@@ -3,7 +3,7 @@ const src = resolve('src')
 
 module.exports = {
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
       store: resolve(src, 'store'),

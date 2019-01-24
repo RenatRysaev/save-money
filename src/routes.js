@@ -1,18 +1,11 @@
 import Loadable from 'react-loadable'
 import Loading from 'components/Loading'
 
-type Routes = {
-  path: string
-  component: any
-  isPrivate: boolean
-  isExact: boolean
-}[]
-
-const routes: Routes = [
+const routes = [
   {
     path: '/',
     component: Loadable({
-      loader: () => import('pages/LoginPage'),
+      loader: () => import('pages/LoginPage/index'),
       loading: Loading,
     }),
     isPrivate: false,
@@ -21,7 +14,7 @@ const routes: Routes = [
   {
     path: '/reg',
     component: Loadable({
-      loader: () => import('pages/RegPage'),
+      loader: () => import('pages/RegPage/index'),
       loading: Loading,
     }),
     isPrivate: false,
@@ -30,7 +23,7 @@ const routes: Routes = [
   {
     path: '/budget',
     component: Loadable({
-      loader: () => import('pages/BudgetPage'),
+      loader: () => import('pages/BudgetPage/index'),
       loading: Loading,
     }),
     isPrivate: true,
@@ -39,7 +32,7 @@ const routes: Routes = [
   {
     path: '/budget/income',
     component: Loadable({
-      loader: () => import('pages/IncomePage'),
+      loader: () => import('pages/IncomePage/index'),
       loading: Loading,
     }),
     isPrivate: true,
@@ -48,7 +41,7 @@ const routes: Routes = [
   {
     path: 'budget/costs',
     component: Loadable({
-      loader: () => import('pages/CostsPage'),
+      loader: () => import('pages/CostsPage/index'),
       loading: Loading,
     }),
     isPrivate: true,
@@ -57,7 +50,7 @@ const routes: Routes = [
   {
     path: '',
     component: Loadable({
-      loader: () => import('pages/NotFoundPage'),
+      loader: () => import('pages/NotFoundPage/index'),
       loading: Loading,
     }),
     isPrivate: false,

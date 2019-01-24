@@ -1,9 +1,7 @@
-import { push } from 'connected-react-router'
-import { ThunkDispatch } from 'redux-thunk'
-import { AnyAction } from 'redux'
+import { push, replace } from 'connected-react-router'
 
-import API from 'api'
-import { setToken } from 'utils'
+import API from 'api/index'
+import { setToken, getToken } from 'utils/index'
 
 import {
   actionRegistrationRequest,
@@ -14,9 +12,7 @@ import {
   actionLoginFail,
 } from './actions'
 
-export const thunkRegistration = (name: string, password: string) => async (
-  dispatch: ThunkDispatch<{}, {}, AnyAction>,
-) => {
+export const thunkRegistration = (name, password) => async dispatch => {
   try {
     dispatch(actionRegistrationRequest())
 
@@ -29,9 +25,7 @@ export const thunkRegistration = (name: string, password: string) => async (
   }
 }
 
-export const thunkLogin = (name: string, password: string) => async (
-  dispatch: ThunkDispatch<{}, {}, AnyAction>,
-) => {
+export const thunkLogin = (name, password) => async dispatch => {
   try {
     dispatch(actionLoginRequest())
 
@@ -43,5 +37,23 @@ export const thunkLogin = (name: string, password: string) => async (
     dispatch(push('/budget'))
   } catch (err) {
     dispatch(actionLoginFail())
+  }
+}
+
+export const thunkCheckLogin = () => async dispatch => {
+  try {
+    const token = getToken()
+
+    if (!token) {
+      dispatch(replace('/login'))
+      return
+    }
+
+    const response = await API.checkLogin(token)
+
+    dispatch(actionLoginSuccess(response.user))
+  } catch (err) {
+    dispatch(actionLoginFail())
+    dispatch(replace('/login'))
   }
 }
