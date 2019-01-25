@@ -12,40 +12,45 @@ import {
 const initialState = {
   isLoading: false,
   isLogin: false,
+  user: null,
 }
 
-const authReducer = createReducer({}, initialState)
+const authReducer = createReducer(
+  {
+    [actionRegistrationRequest]: state => ({
+      ...state,
+      isLoading: true,
+    }),
 
-authReducer.on(actionRegistrationRequest, state => ({
-  ...state,
-  isLoading: true,
-}))
+    [actionRegistrationSuccess]: state => ({
+      ...state,
+      isLoading: false,
+    }),
 
-authReducer.on(actionRegistrationSuccess, state => ({
-  ...state,
-  isLoading: false,
-}))
+    [actionRegistrationFail]: state => ({
+      ...state,
+      isLoading: false,
+    }),
 
-authReducer.on(actionRegistrationFail, state => ({
-  ...state,
-  isLoading: false,
-}))
+    [actionLoginRequest]: state => ({
+      ...state,
+      isLoading: true,
+    }),
 
-authReducer.on(actionLoginRequest, state => ({
-  ...state,
-  isLoading: true,
-}))
+    [actionLoginSuccess]: (state, user) => ({
+      ...state,
+      user,
+      isLoading: false,
+      isLogin: true,
+    }),
 
-authReducer.on(actionLoginSuccess, state => ({
-  ...state,
-  isLoading: false,
-  isLogin: true,
-}))
-
-authReducer.on(actionLoginFail, state => ({
-  ...state,
-  isLoading: false,
-  isLogin: false,
-}))
+    [actionLoginFail]: state => ({
+      ...state,
+      isLoading: false,
+      isLogin: false,
+    }),
+  },
+  initialState,
+)
 
 export default authReducer

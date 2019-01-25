@@ -14,6 +14,7 @@ module.exports = {
       hoc: resolve(src, 'hoc'),
       utils: resolve(src, 'utils'),
       api: resolve(src, 'api'),
+      routes: resolve(src, 'routes'),
     },
   },
 }

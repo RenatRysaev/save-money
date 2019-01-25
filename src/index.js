@@ -5,12 +5,15 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 
 import configureStore, { history } from './configureStore'
+import { thunkCheckLogin } from 'store/auth/thunks'
 
 import App from './App'
 
 import './index.scss'
 
 const store = configureStore()
+
+store.dispatch(thunkCheckLogin())
 
 ReactDOM.render(
   <Provider store={store}>
