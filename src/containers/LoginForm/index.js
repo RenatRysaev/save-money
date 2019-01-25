@@ -1,27 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { Link } from 'react-router-dom'
-import { Formik } from 'formik'
-
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import PropTypes from 'prop-types'
 
 import { thunkLogin } from 'store/auth/thunks'
 
-import styles from './styles.scss'
+import AuthForm from 'components/AuthForm'
+
+import { fields, fieldsInitialValues, linkData } from './constants'
 
 const mapDispatchToProps = {
   login: thunkLogin,
 }
 
-const formInitialValues = {
-  name: '',
-  password: '',
-}
-
 class LoginForm extends Component {
-  handleSubmit = values => {
+  handleSubmit = (values) => {
     const { login } = this.props
     const { name, password } = values
 
@@ -30,47 +23,19 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Formik initialValues={formInitialValues} onSubmit={this.handleSubmit}>
-        {({
-          values,
-          touched,
-          errors,
-          dirty,
-          isSubmitting,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-        }) => (
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.fieldContainer}>
-              <TextField
-                className={styles.field}
-                name="name"
-                type="text"
-                onChange={handleChange}
-                label="Enter name"
-              />
-              <TextField
-                className={styles.field}
-                name="password"
-                type="password"
-                onChange={handleChange}
-                label="Enter password"
-              />
-            </div>
-
-            <div className={styles.buttonContainer}>
-              <Button color="primary" variant="contained" type="submit">
-                Login
-              </Button>
-            </div>
-
-            <Link to="/reg">Go to the registration page</Link>
-          </form>
-        )}
-      </Formik>
+      <AuthForm
+        fields={fields}
+        fieldsInitialValues={fieldsInitialValues}
+        link={linkData}
+        onSubmit={this.handleSubmit}
+        submitButtonText="Login"
+      />
     )
   }
+}
+
+LoginForm.propTypes = {
+  login: PropTypes.func,
 }
 
 export default compose(
