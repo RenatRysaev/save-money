@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const baseConfig = require('./base.config')
+const { STYLE_LOADERS } = require('./utils')
 
 const plugins = [
   new HtmlWebpackPlugin({ template: 'src/index.html' }),
@@ -43,19 +44,15 @@ module.exports = merge(baseConfig, {
       },
       {
         test: /\.(sass|scss|css)$/,
+        exclude: /\.module\.(sass|scss|css)$/,
+        use: [STYLE_LOADERS.STYLE, STYLE_LOADERS.CSS, STYLE_LOADERS.SASS],
+      },
+      {
+        test: /\.module\.(sass|scss|css)$/,
         use: [
-          {
-            loader: 'style-loader',
-            options: { hmr: true },
-          },
-          {
-            loader: 'css-loader',
-            query: {
-              modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]',
-            },
-          },
-          { loader: 'sass-loader' },
+          STYLE_LOADERS.STYLE,
+          STYLE_LOADERS.CSS_MODULE,
+          STYLE_LOADERS.SASS,
         ],
       },
     ],

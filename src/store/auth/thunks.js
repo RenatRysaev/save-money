@@ -1,4 +1,5 @@
 import { push, replace } from 'connected-react-router'
+import { toast } from 'react-toastify'
 
 import API from 'api'
 import { ROUTES } from 'constants'
@@ -13,7 +14,7 @@ import {
   actionLoginFail,
 } from './actions'
 
-export const thunkRegistration = (name, password) => async dispatch => {
+export const thunkRegistration = (name, password) => async (dispatch) => {
   try {
     dispatch(actionRegistrationRequest())
 
@@ -21,12 +22,14 @@ export const thunkRegistration = (name, password) => async dispatch => {
 
     dispatch(actionRegistrationSuccess(user))
     dispatch(push(ROUTES.LOGIN.path))
+    toast.success('Success registration')
   } catch (err) {
     dispatch(actionRegistrationFail())
+    toast.error('Failed registration')
   }
 }
 
-export const thunkLogin = (name, password) => async dispatch => {
+export const thunkLogin = (name, password) => async (dispatch) => {
   try {
     dispatch(actionLoginRequest())
 
@@ -36,25 +39,30 @@ export const thunkLogin = (name, password) => async dispatch => {
 
     dispatch(actionLoginSuccess(user))
     dispatch(push(ROUTES.BUDGET.path))
+    toast.success('Success login')
   } catch (err) {
     dispatch(actionLoginFail())
+    toast.error('Failed login')
   }
 }
 
-export const thunkCheckLogin = () => async dispatch => {
+export const thunkCheckLogin = () => async (dispatch) => {
   try {
     const token = getToken()
 
     if (!token) {
       dispatch(replace(ROUTES.LOGIN.path))
+      toast.error('Failed login')
       return
     }
 
     const { data: user } = await API.checkLogin(token)
 
     dispatch(actionLoginSuccess(user))
+    toast.success('Success login')
   } catch (err) {
     dispatch(actionLoginFail())
     dispatch(replace(ROUTES.LOGIN.path))
+    toast.error('Failed login')
   }
 }

@@ -7,7 +7,7 @@ import get from 'lodash/get'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 
-import styles from './styles.scss'
+import styles from './styles.module.scss'
 import { Link } from 'react-router-dom'
 
 const AuthForm = ({

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import RegForm from 'containers/RegForm/index'
 
-import styles from './styles.scss'
+import styles from './styles.module.scss'
 
 const mapStateToProps = () => ({
   isLogin: false,
