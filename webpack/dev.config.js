@@ -27,6 +27,7 @@ module.exports = merge(baseConfig, {
     port: 9000,
     hot: true,
     historyApiFallback: true,
+    compress: true,
   },
 
   module: {
