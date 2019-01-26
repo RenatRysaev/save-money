@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { thunkRegistration } from 'store/auth/thunks'
 
+import { selectIsLoadingAuth } from 'store/auth/selectors'
+
 import AuthForm from 'components/AuthForm'
 
 import {
@@ -13,6 +15,10 @@ import {
   RegFormSchema,
 } from './constants'
 import PropTypes from 'prop-types'
+
+const mapStateToProps = (state) => ({
+  isLoadingAuth: selectIsLoadingAuth(state),
+})
 
 const mapDispatchToProps = {
   registration: thunkRegistration,
@@ -27,6 +33,7 @@ class RegForm extends Component {
   }
 
   render() {
+    const { isLoadingAuth } = this.props
     return (
       <AuthForm
         fields={fields}
@@ -35,12 +42,14 @@ class RegForm extends Component {
         onSubmit={this.handleSubmit}
         submitButtonText="Registration"
         validationSchema={RegFormSchema}
+        isLoading={isLoadingAuth}
       />
     )
   }
 }
 
 RegForm.propTypes = {
+  isLoadingAuth: PropTypes.bool,
   registration: PropTypes.func,
 }
 

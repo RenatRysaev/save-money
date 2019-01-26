@@ -6,6 +6,7 @@ import get from 'lodash/get'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import Loader from 'components/Loader'
 
 import styles from './styles.module.scss'
 import { Link } from 'react-router-dom'
@@ -16,6 +17,7 @@ const AuthForm = ({
   submitButtonText,
   link,
   validationSchema,
+  isLoading,
   onSubmit,
 }) => (
   <Formik
@@ -45,18 +47,29 @@ const AuthForm = ({
         </div>
 
         <div className={styles.buttonContainer}>
-          <Button color="primary" variant="contained" type="submit">
+          <Button
+            disabled={isLoading}
+            color="primary"
+            variant="contained"
+            type="submit"
+          >
             {submitButtonText}
           </Button>
         </div>
 
         {link && <Link to={link.path}>{link.text}</Link>}
+
+        {isLoading && (
+          <div className={styles.loaderWrapper}>
+            <Loader />
+          </div>
+        )}
       </form>
     )}
   </Formik>
 )
 
-const { string, shape, arrayOf, func, object, any } = PropTypes
+const { string, shape, arrayOf, func, object, any, bool } = PropTypes
 
 AuthForm.defaultProps = {
   onSubmit: noop,
@@ -80,6 +93,7 @@ AuthForm.propTypes = {
     text: string,
   }),
   validationSchema: any,
+  isLoading: bool,
 }
 
 export default AuthForm
