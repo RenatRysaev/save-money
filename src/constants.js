@@ -30,3 +30,8 @@ export const ROUTES = {
 }
 
 export const TOP_MENU = [ROUTES.BUDGET, ROUTES.COSTS, ROUTES.INCOME]
+
+export const ROUTES_WITHOUT_HEADER = [
+  ROUTES.LOGIN.path,
+  ROUTES.REGISTRATION.path,
+]

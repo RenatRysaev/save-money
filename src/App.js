@@ -9,12 +9,14 @@ import Header from 'containers/Header'
 // import Sidebar from 'components/Sidebar'
 import Footer from 'components/Footer'
 
+import { isRenderHeader } from 'utils'
+
 import routes from './routes'
 
 const App = () => (
   <Fragment>
     <Layout
-      header={Header}
+      header={isRenderHeader() ? Header : null}
       // sidebar={Sidebar}
       footer={Footer}
     >
