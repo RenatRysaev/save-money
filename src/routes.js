@@ -1,5 +1,5 @@
 import Loadable from 'react-loadable'
-import Loading from 'components/Loading'
+import PagePreloader from 'components/PagePreloader'
 
 import { ROUTES } from 'constants'
 
@@ -8,7 +8,7 @@ const routes = [
     path: ROUTES.LOGIN.path,
     component: Loadable({
       loader: () => import('pages/LoginPage'),
-      loading: Loading,
+      loading: PagePreloader,
     }),
     isPrivate: false,
     isExact: true,
@@ -17,7 +17,7 @@ const routes = [
     path: ROUTES.REGISTRATION.path,
     component: Loadable({
       loader: () => import('pages/RegPage'),
-      loading: Loading,
+      loading: PagePreloader,
     }),
     isPrivate: false,
     isExact: true,
@@ -26,7 +26,7 @@ const routes = [
     path: ROUTES.BUDGET.path,
     component: Loadable({
       loader: () => import('pages/BudgetPage'),
-      loading: Loading,
+      loading: PagePreloader,
     }),
     isPrivate: true,
     isExact: true,
@@ -35,7 +35,7 @@ const routes = [
     path: ROUTES.INCOME.path,
     component: Loadable({
       loader: () => import('pages/IncomePage'),
-      loading: Loading,
+      loading: PagePreloader,
     }),
     isPrivate: true,
     isExact: true,
@@ -44,7 +44,7 @@ const routes = [
     path: ROUTES.COSTS.path,
     component: Loadable({
       loader: () => import('pages/CostsPage'),
-      loading: Loading,
+      loading: PagePreloader,
     }),
     isPrivate: true,
     isExact: true,
@@ -53,7 +53,7 @@ const routes = [
     path: ROUTES.NOTFOUND.path,
     component: Loadable({
       loader: () => import('pages/NotFoundPage'),
-      loading: Loading,
+      loading: PagePreloader,
     }),
     isPrivate: false,
     isExact: true,
