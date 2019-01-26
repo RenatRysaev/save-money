@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import noop from 'lodash/noop'
 
 import { Link } from 'react-router-dom'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -17,11 +16,10 @@ const TopMenu = ({ list }) => (
   </nav>
 )
 
-const { arrayOf, shape, string, func } = PropTypes
+const { arrayOf, shape, string } = PropTypes
 
 TopMenu.defaultProps = {
   list: [],
-  onItemClick: noop,
 }
 
 TopMenu.propTypes = {
@@ -31,7 +29,6 @@ TopMenu.propTypes = {
       path: string,
     }),
   ),
-  onItemClick: func,
 }
 
 export default TopMenu
