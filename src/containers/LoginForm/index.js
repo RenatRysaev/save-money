@@ -7,7 +7,12 @@ import { thunkLogin } from 'store/auth/thunks'
 
 import AuthForm from 'components/AuthForm'
 
-import { fields, fieldsInitialValues, linkData } from './constants'
+import {
+  fields,
+  fieldsInitialValues,
+  linkData,
+  LoginFormSchema,
+} from './constants'
 
 const mapDispatchToProps = {
   login: thunkLogin,
@@ -29,6 +34,7 @@ class LoginForm extends Component {
         link={linkData}
         onSubmit={this.handleSubmit}
         submitButtonText="Login"
+        validationSchema={LoginFormSchema}
       />
     )
   }

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Formik } from 'formik'
 import noop from 'lodash/noop'
+import get from 'lodash/get'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
@@ -14,21 +15,32 @@ const AuthForm = ({
   fieldsInitialValues,
   submitButtonText,
   link,
+  validationSchema,
   onSubmit,
 }) => (
-  <Formik initialValues={fieldsInitialValues} onSubmit={onSubmit}>
-    {({ handleSubmit, handleChange }) => (
+  <Formik
+    initialValues={fieldsInitialValues}
+    validationSchema={validationSchema}
+    onSubmit={onSubmit}
+  >
+    {({ touched, errors, handleSubmit, handleChange }) => (
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.fieldContainer}>
           {fields.map(({ name, type, label }) => (
-            <TextField
-              key={name}
-              className={styles.field}
-              name={name}
-              type={type}
-              onChange={handleChange}
-              label={label}
-            />
+            <Fragment key={name}>
+              <TextField
+                className={styles.field}
+                name={name}
+                type={type}
+                onChange={handleChange}
+                label={label}
+                error={!!get(errors, name) && !!get(touched, name)}
+              />
+
+              {get(errors, name) && get(touched, name) && (
+                <div className={styles.errorMessage}>{get(errors, name)}</div>
+              )}
+            </Fragment>
           ))}
         </div>
 
@@ -44,7 +56,7 @@ const AuthForm = ({
   </Formik>
 )
 
-const { string, shape, arrayOf, func, object } = PropTypes
+const { string, shape, arrayOf, func, object, any } = PropTypes
 
 AuthForm.defaultProps = {
   onSubmit: noop,
@@ -67,6 +79,7 @@ AuthForm.propTypes = {
     path: string,
     text: string,
   }),
+  validationSchema: any,
 }
 
 export default AuthForm

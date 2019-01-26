@@ -6,7 +6,12 @@ import { thunkRegistration } from 'store/auth/thunks'
 
 import AuthForm from 'components/AuthForm'
 
-import { fields, fieldsInitialValues, linkData } from './constants'
+import {
+  fields,
+  fieldsInitialValues,
+  linkData,
+  RegFormSchema,
+} from './constants'
 import PropTypes from 'prop-types'
 
 const mapDispatchToProps = {
@@ -29,6 +34,7 @@ class RegForm extends Component {
         link={linkData}
         onSubmit={this.handleSubmit}
         submitButtonText="Registration"
+        validationSchema={RegFormSchema}
       />
     )
   }
