@@ -5,26 +5,28 @@ export const API_URL = {
 export const ROUTES = {
   LOGIN: {
     path: '/',
-    name: 'Login page',
+    name: 'Login',
   },
   REGISTRATION: {
     path: '/reg',
-    name: 'Registration page',
+    name: 'Registration',
   },
   BUDGET: {
     path: '/budget',
-    name: 'Budget page',
+    name: 'Budget',
   },
   INCOME: {
     path: '/budget/income',
-    name: 'Income page',
+    name: 'Income',
   },
   COSTS: {
-    path: 'budget/costs',
-    name: 'Costs page',
+    path: '/budget/costs',
+    name: 'Costs',
   },
   NOTFOUND: {
     path: '',
-    name: 'Not found page',
+    name: '404 not found',
   },
 }
+
+export const TOP_MENU = [ROUTES.BUDGET, ROUTES.COSTS, ROUTES.INCOME]
