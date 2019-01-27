@@ -8,8 +8,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Loader from 'components/Loader'
 
-import styles from './styles.module.scss'
 import { Link } from 'react-router-dom'
+import styles from './styles.module.scss'
 
 const AuthForm = ({
   fields,

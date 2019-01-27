@@ -45,6 +45,7 @@ Layout.propTypes = {
   header: PropTypes.func,
   sidebar: PropTypes.func,
   footer: PropTypes.func,
+  children: PropTypes.any,
 }
 
 export default Layout

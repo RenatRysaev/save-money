@@ -10,7 +10,7 @@ export const history = createBrowserHistory()
 
 const middleware = [thunkMiddleware, routerMiddleware(history)]
 
-export const configureStore = initialState =>
+const configureStore = (initialState) =>
   createStore(
     createRootReducer(history),
     initialState,

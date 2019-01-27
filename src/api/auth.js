@@ -21,7 +21,7 @@ export const login = (name, password) =>
     },
   })
 
-export const checkLogin = token =>
+export const checkLogin = (token) =>
   axios({
     method: 'post',
     url: `${API_URL.V1}/check-login`,

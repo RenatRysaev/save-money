@@ -8,13 +8,13 @@ import { selectIsLoadingAuth } from 'store/auth/selectors'
 
 import AuthForm from 'components/AuthForm'
 
+import PropTypes from 'prop-types'
 import {
   fields,
   fieldsInitialValues,
   linkData,
   RegFormSchema,
 } from './constants'
-import PropTypes from 'prop-types'
 
 const mapStateToProps = (state) => ({
   isLoadingAuth: selectIsLoadingAuth(state),
@@ -55,7 +55,7 @@ RegForm.propTypes = {
 
 export default compose(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
   ),
 )(RegForm)
