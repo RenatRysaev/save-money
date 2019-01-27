@@ -7,6 +7,7 @@ import {
   actionLoginRequest,
   actionLoginSuccess,
   actionLoginFail,
+  actionLogout,
 } from './actions'
 
 const initialState = {
@@ -17,22 +18,22 @@ const initialState = {
 
 const authReducer = createReducer(
   {
-    [actionRegistrationRequest]: state => ({
+    [actionRegistrationRequest]: (state) => ({
       ...state,
       isLoading: true,
     }),
 
-    [actionRegistrationSuccess]: state => ({
+    [actionRegistrationSuccess]: (state) => ({
       ...state,
       isLoading: false,
     }),
 
-    [actionRegistrationFail]: state => ({
+    [actionRegistrationFail]: (state) => ({
       ...state,
       isLoading: false,
     }),
 
-    [actionLoginRequest]: state => ({
+    [actionLoginRequest]: (state) => ({
       ...state,
       isLoading: true,
     }),
@@ -44,10 +45,16 @@ const authReducer = createReducer(
       isLogin: true,
     }),
 
-    [actionLoginFail]: state => ({
+    [actionLoginFail]: (state) => ({
       ...state,
       isLoading: false,
       isLogin: false,
+    }),
+
+    [actionLogout]: (state) => ({
+      ...state,
+      isLogin: false,
+      user: null,
     }),
   },
   initialState,

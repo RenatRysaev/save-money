@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import API from 'api'
 import { ROUTES } from 'constants'
-import { setToken, getToken } from 'utils'
+import { setToken, getToken, clearToken } from 'utils'
 import { isAuthPage } from './helpers'
 
 import {
@@ -13,6 +13,7 @@ import {
   actionLoginRequest,
   actionLoginSuccess,
   actionLoginFail,
+  actionLogout,
 } from './actions'
 
 export const thunkRegistration = (name, password) => async (dispatch) => {
@@ -23,10 +24,10 @@ export const thunkRegistration = (name, password) => async (dispatch) => {
 
     dispatch(actionRegistrationSuccess(user))
     dispatch(push(ROUTES.LOGIN.path))
-    toast.success('Success registration')
+    toast.success('Registration completed successfully')
   } catch (err) {
     dispatch(actionRegistrationFail())
-    toast.error('Failed registration')
+    toast.error('Registration failed')
   }
 }
 
@@ -40,10 +41,10 @@ export const thunkLogin = (name, password) => async (dispatch) => {
 
     dispatch(actionLoginSuccess(user))
     dispatch(push(ROUTES.BUDGET.path))
-    toast.success('Success login')
+    toast.success('Login successful')
   } catch (err) {
     dispatch(actionLoginFail())
-    toast.error('Failed login')
+    toast.error('Login failed')
   }
 }
 
@@ -55,7 +56,7 @@ export const thunkCheckLogin = () => async (dispatch) => {
 
     if (!token) {
       dispatch(replace(ROUTES.LOGIN.path))
-      toast.error('Failed login')
+      toast.error('Login failed')
       return
     }
 
@@ -67,10 +68,17 @@ export const thunkCheckLogin = () => async (dispatch) => {
       dispatch(replace(ROUTES.BUDGET.path))
     }
 
-    toast.success('Success login')
+    toast.success('Login successful')
   } catch (err) {
     dispatch(actionLoginFail())
     dispatch(replace(ROUTES.LOGIN.path))
-    toast.error('Failed login')
+    toast.error('Login failed')
   }
+}
+
+export const thunkLogout = () => (dispatch) => {
+  clearToken()
+
+  dispatch(actionLogout())
+  dispatch(push(ROUTES.LOGIN.path))
 }
