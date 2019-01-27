@@ -51,6 +51,8 @@ export const thunkCheckLogin = () => async (dispatch) => {
   try {
     const token = getToken()
 
+    if (isAuthPage()) return
+
     if (!token) {
       dispatch(replace(ROUTES.LOGIN.path))
       toast.error('Failed login')
