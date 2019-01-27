@@ -81,4 +81,5 @@ export const thunkLogout = () => (dispatch) => {
 
   dispatch(actionLogout())
   dispatch(push(ROUTES.LOGIN.path))
+  toast.success('Logout successful')
 }
