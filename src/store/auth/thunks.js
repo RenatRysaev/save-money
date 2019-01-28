@@ -63,8 +63,9 @@ export const thunkCheckLogin = () => async (dispatch) => {
       dispatch(replace(ROUTES.BUDGET.path))
     }
   } catch (err) {
+    dispatch(actionLoginFail())
+
     if (!isAuthPage) {
-      dispatch(actionLoginFail())
       dispatch(replace(ROUTES.LOGIN.path))
       toast.error('Login failed')
     }
