@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 
 import API from 'api'
 import { ROUTES } from 'constants'
-import { setToken, getToken, clearToken } from 'utils'
+import { setToken, clearToken } from 'utils'
 import { checkIsAuthPage } from './helpers'
 
 import {
@@ -50,16 +50,14 @@ export const thunkLogin = (name, password) => async (dispatch) => {
 
 export const thunkCheckLogin = () => async (dispatch) => {
   const isAuthPage = checkIsAuthPage()
-  const isBudgetPage = window.location.pathname === ROUTES.BUDGET.path
 
   try {
-    const token = getToken()
-    const { data: user } = await API.checkLogin(token)
+    const { data: user } = await API.checkLogin()
 
     dispatch(actionLoginSuccess(user))
     toast.success('Login successful')
 
-    if (!isBudgetPage) {
+    if (isAuthPage) {
       dispatch(replace(ROUTES.BUDGET.path))
     }
   } catch (err) {

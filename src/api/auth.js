@@ -1,8 +1,8 @@
-import axios from 'axios'
 import { API_URL } from 'constants'
+import { request } from './utils'
 
 export const registration = (name, password) =>
-  axios({
+  request({
     method: 'post',
     url: `${API_URL.V1}/reg`,
     data: {
@@ -12,7 +12,7 @@ export const registration = (name, password) =>
   })
 
 export const login = (name, password) =>
-  axios({
+  request({
     method: 'post',
     url: `${API_URL.V1}/login`,
     data: {
@@ -21,9 +21,9 @@ export const login = (name, password) =>
     },
   })
 
-export const checkLogin = (token) =>
-  axios({
+export const checkLogin = () =>
+  request({
     method: 'post',
     url: `${API_URL.V1}/check-login`,
-    headers: { Authorization: token },
+    withToken: true,
   })
