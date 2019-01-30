@@ -4,13 +4,15 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import size from 'lodash/size'
+import map from 'lodash/map'
+import noop from 'lodash/noop'
 
 import {
   selectCostsEntitiesJS,
   selectIsLoadingCosts,
 } from 'store/costs/selectors'
 
-import { thunkGetCosts } from 'store/costs/thunks'
+import { thunkGetCosts, thunkEditCost } from 'store/costs/thunks'
 
 import Loader from 'components/Loader'
 import CheckOnEmpty from 'components/CheckOnEmpty'
@@ -25,6 +27,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getCosts: thunkGetCosts,
+  editCost: thunkEditCost,
 }
 
 class CostsPage extends Component {
@@ -34,7 +37,7 @@ class CostsPage extends Component {
   }
 
   render() {
-    const { costs, isLoadingCosts } = this.props
+    const { costs, isLoadingCosts, editCost } = this.props
 
     return (
       <div className={styles.costsList}>
@@ -43,13 +46,16 @@ class CostsPage extends Component {
             listLength={size(costs)}
             fallbackContent={<p>Costs list is empty</p>}
           >
-            {costs.map((cost) => (
+            {map(costs, (cost, key) => (
               <CostPreviewCart
-                key={cost.id}
+                key={key}
+                id={key}
                 name={cost.name}
                 description={cost.description}
                 sum={cost.sum}
                 date={cost.date}
+                onEdit={editCost}
+                onDelete={noop}
               />
             ))}
           </CheckOnEmpty>
@@ -59,10 +65,10 @@ class CostsPage extends Component {
   }
 }
 
-const { string, bool, func, arrayOf, shape } = PropTypes
+const { string, bool, func, shape, objectOf } = PropTypes
 
 CostsPage.propTypes = {
-  costs: arrayOf(
+  costs: objectOf(
     shape({
       id: string,
       name: string,
@@ -72,6 +78,7 @@ CostsPage.propTypes = {
   ),
   isLoadingCosts: bool,
   getCosts: func,
+  editCost: func,
 }
 
 export default compose(

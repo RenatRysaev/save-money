@@ -7,3 +7,11 @@ export const getCosts = (token) =>
     url: `${API_URL.V1}/costs`,
     token,
   })
+
+export const editCosts = (token, id, data) =>
+  request({
+    method: 'post',
+    url: `${API_URL.V1}/costs/update/${id}`,
+    token,
+    data,
+  })
