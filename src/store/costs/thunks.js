@@ -2,6 +2,8 @@ import { toast } from 'react-toastify'
 
 import API from 'api'
 
+import { getToken } from 'utils'
+
 import {
   actionCostsRequest,
   actionCostsRequestSucceed,
@@ -10,9 +12,10 @@ import {
 
 export const thunkGetCosts = () => async (dispatch) => {
   try {
+    const token = getToken()
     dispatch(actionCostsRequest())
 
-    const { data: costs } = await API.getCosts()
+    const { data: costs } = await API.getCosts(token)
 
     dispatch(actionCostsRequestSucceed(costs))
   } catch (err) {

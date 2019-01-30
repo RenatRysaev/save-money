@@ -11,6 +11,7 @@ import {
 
 import { thunkGetCosts } from 'store/costs/thunks'
 
+import Loader from 'components/Loader'
 import CostPreviewCart from 'components/CostPreviewCart'
 
 import styles from './styles.module.scss'
@@ -31,19 +32,21 @@ class CostsPage extends Component {
   }
 
   render() {
-    const { costs } = this.props
+    const { costs, isLoadingCosts } = this.props
 
     return (
       <div className={styles.costsList}>
-        {costs.map((cost) => (
-          <CostPreviewCart
-            key={cost.id}
-            name={cost.name}
-            description={cost.description}
-            sum={cost.sum}
-            date={cost.date}
-          />
-        ))}
+        <Loader isLoading={isLoadingCosts}>
+          {costs.map((cost) => (
+            <CostPreviewCart
+              key={cost.id}
+              name={cost.name}
+              description={cost.description}
+              sum={cost.sum}
+              date={cost.date}
+            />
+          ))}
+        </Loader>
       </div>
     )
   }

@@ -21,9 +21,9 @@ export const login = (name, password) =>
     },
   })
 
-export const checkLogin = () =>
+export const checkLogin = (token) =>
   request({
     method: 'post',
     url: `${API_URL.V1}/check-login`,
-    withToken: true,
+    token,
   })

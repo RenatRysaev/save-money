@@ -6,8 +6,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import Layout from 'components/Layout'
 import Header from 'containers/Header'
-// import Sidebar from 'components/Sidebar'
-import Footer from 'components/Footer'
 
 import { isRenderHeader } from 'utils'
 
@@ -17,8 +15,8 @@ const App = () => (
   <Fragment>
     <Layout
       header={isRenderHeader() ? Header : null}
-      // sidebar={Sidebar}
-      footer={Footer}
+      sidebar={null}
+      footer={null}
     >
       <Switch>
         {routes.map((route) => (

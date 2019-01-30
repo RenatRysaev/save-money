@@ -1,17 +1,16 @@
 import axios from 'axios'
-import { getToken } from 'utils'
 
 /**
  * Creates request
  * @param {string} url
  * @param {string} method
  * @param {object} data
- * @param {boolean} withToken
+ * @param {string} token
  */
-export const request = ({ url, method, data = {}, withToken }) => {
+export const request = ({ url, method, data = {}, token }) => {
   const params = Object.assign(
     { url, method, data },
-    withToken && { headers: { Authorization: getToken() } },
+    token && { headers: { Authorization: token } },
   )
 
   return axios(params)
