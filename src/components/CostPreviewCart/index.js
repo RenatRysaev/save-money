@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { string, func } from 'prop-types'
 import size from 'lodash/size'
 
 import { Formik } from 'formik'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
 import Error from 'components/Error'
+import TextOrField from 'components/TextOrField'
 
 import { CartSchema } from './constants'
 
@@ -37,7 +37,6 @@ class CostPreviewCart extends Component {
 
   render() {
     const { name, description, sum, date } = this.props
-
     const { isEditMode } = this.state
 
     return (
@@ -49,62 +48,58 @@ class CostPreviewCart extends Component {
         {({ values, errors, touched, handleChange, handleSubmit }) => (
           <form className="costCartForm" onSubmit={handleSubmit}>
             <Paper className={styles.cart} elevation={1}>
-              {isEditMode ? (
-                <TextField
-                  name="name"
-                  onChange={handleChange}
-                  value={values.name}
-                />
-              ) : (
-                <h2 className={styles.title}>{name}</h2>
-              )}
-
+              <TextOrField
+                isEditMode={isEditMode}
+                name="name"
+                onChange={handleChange}
+                value={values.name}
+                text={name}
+                textClassName={styles.title}
+              />
               {errors.name && touched.name && <Error message={errors.name} />}
 
-              {description &&
-                (isEditMode ? (
-                  <TextField
+              {description && (
+                <Fragment>
+                  <TextOrField
+                    isEditMode={isEditMode}
                     name="description"
                     onChange={handleChange}
                     value={values.description}
+                    text={description}
+                    textClassName={styles.description}
                   />
-                ) : (
-                  <p className={styles.description}>{description}</p>
-                ))}
 
-              {errors.description && touched.description && (
-                <Error message={errors.description} />
+                  {errors.description && touched.description && (
+                    <Error message={errors.description} />
+                  )}
+                </Fragment>
               )}
 
               <div className={styles.pair}>
                 <h3 className={styles.key}>Sum</h3>
-                {isEditMode ? (
-                  <TextField
-                    name="sum"
-                    onChange={handleChange}
-                    value={values.sum}
-                  />
-                ) : (
-                  <p className={styles.value}>{sum}</p>
-                )}
+                <TextOrField
+                  isEditMode={isEditMode}
+                  name="sum"
+                  onChange={handleChange}
+                  value={values.sum}
+                  text={sum}
+                  textClassName={styles.value}
+                />
+                {errors.sum && touched.sum && <Error message={errors.sum} />}
               </div>
-
-              {errors.sum && touched.sum && <Error message={errors.sum} />}
 
               <div className={styles.pair}>
                 <h3 className={styles.key}>Date</h3>
-                {isEditMode ? (
-                  <TextField
-                    name="date"
-                    onChange={handleChange}
-                    value={values.date}
-                  />
-                ) : (
-                  <p className={styles.value}>{date}</p>
-                )}
+                <TextOrField
+                  isEditMode={isEditMode}
+                  name="date"
+                  onChange={handleChange}
+                  value={values.date}
+                  text={date}
+                  textClassName={styles.value}
+                />
+                {errors.date && touched.date && <Error message={errors.date} />}
               </div>
-
-              {errors.date && touched.date && <Error message={errors.date} />}
 
               <div>
                 <Button
