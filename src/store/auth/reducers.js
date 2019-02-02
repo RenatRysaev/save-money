@@ -1,3 +1,4 @@
+import { fromJS, Map } from 'immutable'
 import { createReducer } from 'redux-act'
 
 import {
@@ -10,52 +11,32 @@ import {
   actionLogout,
 } from './actions'
 
-const initialState = {
+const initialState = Map({
   isLoading: false,
   isLogin: false,
   user: null,
-}
+})
 
 const authReducer = createReducer(
   {
-    [actionRegistrationRequest]: (state) => ({
-      ...state,
-      isLoading: true,
-    }),
+    [actionRegistrationRequest]: (state) => state.set('isLoading', true),
 
-    [actionRegistrationSuccess]: (state) => ({
-      ...state,
-      isLoading: false,
-    }),
+    [actionRegistrationSuccess]: (state) => state.set('isLoading', false),
 
-    [actionRegistrationFail]: (state) => ({
-      ...state,
-      isLoading: false,
-    }),
+    [actionRegistrationFail]: (state) => state.set('isLoading', false),
 
-    [actionLoginRequest]: (state) => ({
-      ...state,
-      isLoading: true,
-    }),
+    [actionLoginRequest]: (state) => state.set('isLoading', true),
 
-    [actionLoginSuccess]: (state, user) => ({
-      ...state,
-      user,
-      isLoading: false,
-      isLogin: true,
-    }),
+    [actionLoginSuccess]: (state, user) =>
+      state
+        .set('isLoading', false)
+        .set('isLogin', true)
+        .set('user', fromJS(user)),
 
-    [actionLoginFail]: (state) => ({
-      ...state,
-      isLoading: false,
-      isLogin: false,
-    }),
+    [actionLoginFail]: (state) =>
+      state.set('isLoading', false).set('isLogin', false),
 
-    [actionLogout]: (state) => ({
-      ...state,
-      isLogin: false,
-      user: null,
-    }),
+    [actionLogout]: (state) => state.set('isLogin', false).set('user', Map({})),
   },
   initialState,
 )
