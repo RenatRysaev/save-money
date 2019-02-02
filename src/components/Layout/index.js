@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { func, any } from 'prop-types'
 import classNames from 'classnames'
 
 import { isFixedFooterToBottom } from './helpers'
@@ -42,10 +42,10 @@ const Layout = ({
 )
 
 Layout.propTypes = {
-  header: PropTypes.func,
-  sidebar: PropTypes.func,
-  footer: PropTypes.func,
-  children: PropTypes.any,
+  header: func,
+  sidebar: func,
+  footer: func,
+  children: any,
 }
 
 export default Layout

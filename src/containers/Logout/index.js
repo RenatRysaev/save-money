@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { func } from 'prop-types'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
@@ -22,7 +22,7 @@ const Logout = ({ logout }) => (
 )
 
 Logout.propTypes = {
-  logout: PropTypes.func,
+  logout: func,
 }
 
 export default connect(

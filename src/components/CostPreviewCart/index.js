@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import { string, func } from 'prop-types'
 import size from 'lodash/size'
 
 import { Formik } from 'formik'
@@ -130,8 +130,6 @@ class CostPreviewCart extends Component {
     )
   }
 }
-
-const { string, func } = PropTypes
 
 CostPreviewCart.propTypes = {
   name: string.isRequired,

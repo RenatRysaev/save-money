@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import { string, shape, arrayOf, func, object, any, bool } from 'prop-types'
 import { Formik } from 'formik'
 import noop from 'lodash/noop'
 import get from 'lodash/get'
@@ -68,8 +68,6 @@ const AuthForm = ({
     )}
   </Formik>
 )
-
-const { string, shape, arrayOf, func, object, any, bool } = PropTypes
 
 AuthForm.defaultProps = {
   onSubmit: noop,

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { bool, func } from 'prop-types'
+
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
@@ -8,7 +10,6 @@ import { selectIsLoadingAuth } from 'store/auth/selectors'
 
 import AuthForm from 'components/AuthForm'
 
-import PropTypes from 'prop-types'
 import {
   fields,
   fieldsInitialValues,
@@ -49,8 +50,8 @@ class RegForm extends Component {
 }
 
 RegForm.propTypes = {
-  isLoadingAuth: PropTypes.bool,
-  registration: PropTypes.func,
+  isLoadingAuth: bool,
+  registration: func,
 }
 
 export default compose(

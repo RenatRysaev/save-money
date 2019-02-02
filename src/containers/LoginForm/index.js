@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import PropTypes from 'prop-types'
+import { bool, func } from 'prop-types'
 
 import { thunkLogin } from 'store/auth/thunks'
 
@@ -49,8 +49,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  isLoadingAuth: PropTypes.bool,
-  login: PropTypes.func,
+  isLoadingAuth: bool,
+  login: func,
 }
 
 export default compose(

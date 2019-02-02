@@ -9,15 +9,11 @@ import Header from 'containers/Header'
 
 import { isRenderHeader } from 'utils'
 
-import routes from './routes'
+import routes from 'routes'
 
 const App = () => (
   <Fragment>
-    <Layout
-      header={isRenderHeader() ? Header : null}
-      sidebar={null}
-      footer={null}
-    >
+    <Layout header={isRenderHeader() ? Header : null}>
       <Switch>
         {routes.map((route) => (
           <Route

@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { string, number } from 'prop-types'
 
 import styles from './styles.module.scss'
 
@@ -14,9 +14,9 @@ Error.defaultProps = {
 }
 
 Error.propTypes = {
-  message: PropTypes.string,
-  margin: PropTypes.string,
-  fontSize: PropTypes.number,
+  message: string,
+  margin: string,
+  fontSize: number,
 }
 
 export default Error

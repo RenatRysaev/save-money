@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { number, string, bool, any } from 'prop-types'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const Loader = ({ size, className, isLoading, children }) =>
@@ -10,10 +10,10 @@ const Loader = ({ size, className, isLoading, children }) =>
   )
 
 Loader.propTypes = {
-  size: PropTypes.number,
-  className: PropTypes.string,
-  isLoading: PropTypes.bool,
-  children: PropTypes.any,
+  size: number,
+  className: string,
+  isLoading: bool,
+  children: any,
 }
 
 export default Loader

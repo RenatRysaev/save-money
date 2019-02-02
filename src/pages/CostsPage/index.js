@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { hot } from 'react-hot-loader/root'
-import PropTypes from 'prop-types'
+import { string, bool, func, shape, objectOf } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import size from 'lodash/size'
@@ -64,8 +64,6 @@ class CostsPage extends Component {
     )
   }
 }
-
-const { string, bool, func, shape, objectOf } = PropTypes
 
 CostsPage.propTypes = {
   costs: objectOf(
