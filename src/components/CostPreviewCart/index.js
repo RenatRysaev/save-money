@@ -46,9 +46,10 @@ class CostPreviewCart extends Component {
         validationSchema={CartSchema}
       >
         {({ values, errors, touched, handleChange, handleSubmit }) => (
-          <form className="costCartForm" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <Paper className={styles.cart} elevation={1}>
               <TextOrField
+                autoFocus
                 isEditMode={isEditMode}
                 name="name"
                 onChange={handleChange}

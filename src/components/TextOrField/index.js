@@ -14,6 +14,7 @@ const TextOrField = ({
   text,
   textClassName,
   fieldClassName,
+  autoFocus,
 }) => (
   <Fragment>
     {isEditMode ? (
@@ -23,6 +24,7 @@ const TextOrField = ({
         onChange={onChange}
         value={value}
         type={type}
+        autoFocus={autoFocus}
       />
     ) : (
       <p className={classNames(styles.text, textClassName)}>{text}</p>
@@ -32,6 +34,7 @@ const TextOrField = ({
 
 TextOrField.defaultProps = {
   type: 'text',
+  autoFocus: false,
 }
 
 TextOrField.propTypes = {
@@ -43,6 +46,7 @@ TextOrField.propTypes = {
   text: string.isRequired,
   textClassName: string,
   fieldClassName: string,
+  autoFocus: bool,
 }
 
 export default TextOrField
