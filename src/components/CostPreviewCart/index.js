@@ -57,6 +57,8 @@ class CostPreviewCart extends Component {
                 value={values.name}
                 text={name}
                 textClassName={styles.title}
+                fieldClassName={styles.titleField}
+                error={errors.name && touched.name}
               />
               {errors.name && touched.name && <Error message={errors.name} />}
 
@@ -70,8 +72,8 @@ class CostPreviewCart extends Component {
                     value={values.description}
                     text={description}
                     textClassName={styles.description}
+                    error={errors.description && touched.description}
                   />
-
                   {errors.description && touched.description && (
                     <Error message={errors.description} />
                   )}
@@ -81,13 +83,13 @@ class CostPreviewCart extends Component {
               <div className={styles.pair}>
                 <p className={styles.key}>Sum: </p>
                 <TextOrField
-                  label="Sum"
                   isEditMode={isEditMode}
                   name="sum"
                   onChange={handleChange}
                   value={values.sum}
                   text={sum}
                   textClassName={styles.value}
+                  type="number"
                 />
                 {errors.sum && touched.sum && <Error message={errors.sum} />}
               </div>

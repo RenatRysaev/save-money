@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { bool, string, func } from 'prop-types'
+import { bool, string, number, func, oneOfType } from 'prop-types'
 import classNames from 'classnames'
 import TextField from '@material-ui/core/TextField'
 
@@ -16,17 +16,19 @@ const TextOrField = ({
   fieldClassName,
   autoFocus,
   label,
+  error,
 }) => (
   <Fragment>
     {isEditMode ? (
       <TextField
-        className={fieldClassName}
         name={name}
         onChange={onChange}
         value={value}
         type={type}
         autoFocus={autoFocus}
         label={label}
+        classes={{ root: fieldClassName }}
+        error={error}
       />
     ) : (
       <p className={classNames(styles.text, textClassName)}>{text}</p>
@@ -45,12 +47,13 @@ TextOrField.propTypes = {
   name: string.isRequired,
   type: string,
   onChange: func.isRequired,
-  value: string.isRequired,
+  value: oneOfType([string, number]).isRequired,
   text: string.isRequired,
   textClassName: string,
   fieldClassName: string,
   autoFocus: bool,
   label: string,
+  error: bool,
 }
 
 export default TextOrField

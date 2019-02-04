@@ -1,9 +1,9 @@
 import * as Yup from 'yup'
 
 export const CartSchema = Yup.object().shape({
-  name: Yup.string().required(),
-  description: Yup.string(),
+  name: Yup.string('Enter a string').required('Name is required'),
+  description: Yup.string('Enter a string'),
   sum: Yup.number('Enter a number')
-    .positive('Enter a number greater an zero')
-    .required(),
+    .moreThan(0, 'Enter a number greater an zero')
+    .required('Sum is required'),
 })
