@@ -6,5 +6,4 @@ export const CartSchema = Yup.object().shape({
   sum: Yup.number('Enter a number')
     .positive('Enter a number greater an zero')
     .required(),
-  date: Yup.string().required(),
 })

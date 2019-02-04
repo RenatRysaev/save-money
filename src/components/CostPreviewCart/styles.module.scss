@@ -1,7 +1,7 @@
 .title {
-  margin: 0 0 5px 0;
-  font-size: 30px;
-  font-weight: 500;
+  margin: 0 0 15px 0;
+  font-size: 23px;
+  font-weight: 400;
 }
 
 .description {
@@ -9,15 +9,19 @@
 }
 
 .cart {
-  padding: 20px;
+  padding: 15px;
 }
 
 .pair {
-  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  margin: 0 0 17px 0;
 }
 
 .key {
-  margin: 0 0 5px 0;
+  margin: 0 5px 2px 0;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .value {

@@ -36,12 +36,12 @@ class CostPreviewCart extends Component {
   }
 
   render() {
-    const { name, description, sum, date } = this.props
+    const { name, description, sum } = this.props
     const { isEditMode } = this.state
 
     return (
       <Formik
-        initialValues={{ name, description, sum, date }}
+        initialValues={{ name, description, sum }}
         onSubmit={isEditMode ? this.handleSave : this.handleEdit}
         validationSchema={CartSchema}
       >
@@ -50,6 +50,7 @@ class CostPreviewCart extends Component {
             <Paper className={styles.cart} elevation={1}>
               <TextOrField
                 autoFocus
+                label="Name"
                 isEditMode={isEditMode}
                 name="name"
                 onChange={handleChange}
@@ -62,6 +63,7 @@ class CostPreviewCart extends Component {
               {description && (
                 <Fragment>
                   <TextOrField
+                    label="Description"
                     isEditMode={isEditMode}
                     name="description"
                     onChange={handleChange}
@@ -77,8 +79,9 @@ class CostPreviewCart extends Component {
               )}
 
               <div className={styles.pair}>
-                <h3 className={styles.key}>Sum</h3>
+                <p className={styles.key}>Sum: </p>
                 <TextOrField
+                  label="Sum"
                   isEditMode={isEditMode}
                   name="sum"
                   onChange={handleChange}
@@ -87,19 +90,6 @@ class CostPreviewCart extends Component {
                   textClassName={styles.value}
                 />
                 {errors.sum && touched.sum && <Error message={errors.sum} />}
-              </div>
-
-              <div className={styles.pair}>
-                <h3 className={styles.key}>Date</h3>
-                <TextOrField
-                  isEditMode={isEditMode}
-                  name="date"
-                  onChange={handleChange}
-                  value={values.date}
-                  text={date}
-                  textClassName={styles.value}
-                />
-                {errors.date && touched.date && <Error message={errors.date} />}
               </div>
 
               <div>
