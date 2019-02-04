@@ -94,7 +94,7 @@ class CostPreviewCart extends Component {
                 {errors.sum && touched.sum && <Error message={errors.sum} />}
               </div>
 
-              <div>
+              <Fragment>
                 <Button
                   disabled={!!size(errors)}
                   type="submit"
@@ -103,14 +103,17 @@ class CostPreviewCart extends Component {
                 >
                   {isEditMode ? 'Save' : 'Edit'}
                 </Button>
-                <Button
-                  type="button"
-                  onClick={this.handleDelete}
-                  variant="outlined"
-                >
-                  Delete
-                </Button>
-              </div>
+
+                {!isEditMode && (
+                  <Button
+                    type="button"
+                    onClick={this.handleDelete}
+                    variant="outlined"
+                  >
+                    Delete
+                  </Button>
+                )}
+              </Fragment>
             </Paper>
           </form>
         )}
