@@ -15,6 +15,7 @@ import {
 import { thunkGetCosts, thunkEditCost } from 'store/costs/thunks'
 
 import Loader from 'components/Loader'
+import PageTitle from 'components/PageTitle'
 import CheckOnEmpty from 'components/CheckOnEmpty'
 import CostPreviewCart from 'components/CostPreviewCart'
 
@@ -41,6 +42,7 @@ class CostsPage extends Component {
 
     return (
       <div className={styles.costsList}>
+        <PageTitle>Planned cost</PageTitle>
         <Loader isLoading={isLoadingCosts}>
           <CheckOnEmpty
             listLength={size(costs)}

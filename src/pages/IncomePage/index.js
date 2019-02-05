@@ -1,5 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { hot } from 'react-hot-loader/root'
+import { compose } from 'redux'
 
-const IncomePage = () => <div>Income page</div>
+import PageTitle from 'components/PageTitle'
 
-export default IncomePage
+const IncomePage = () => (
+  <Fragment>
+    <PageTitle>Income</PageTitle>
+    <div>Income page</div>
+  </Fragment>
+)
+
+export default compose(hot)(IncomePage)
