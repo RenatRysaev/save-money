@@ -1,51 +1,40 @@
-# Приложение для планирования бюджета, мониторинга своих расходов и создания финансовых целей.
+# App for budget planning.
 
 ## [API](https://github.com/RenatRysaev/save-money-api)
 
-### Минимальный функционал для работы приложения.
+### Minimum functional for app work.
 
-### Страницы:
+### Routes:
 
-1. **(/, /reg)** - Страница авторизации/регистрации, с формой для логина и пароля.
+1. **(/, /reg)** - Login/registration
 
-2. **(/budget)** - Страница планирования, на ней отрисовываются ссылки на страницы доходов и расходов.
-   Так же на этой странице есть информация о том какой расход запланирован на текущий месяц и по каким категориям.
+2. **(/budget)** - Planning page with links to costs/incomes pages. There is info about costs/incomes plan.
 
-3. **(/budget/income)** - Страница с доходами, доходы выводятся списком.
-   Каждый доход это запись с типом дохода и суммой.
-   Если нету ни одного дохода выводится надпись "Доходы отсутствуют" и кнопка для того чтобы добавить доход.
-   При нажатии на кнопку открывается модальное окно с формой,
-   у которой есть поля: вид дохода(выпадающий список: З/П, бизнес, инвестиции) и сумма дохода.
-   У каждой категории дохода есть уникальный id.
+3. **(/budget/income)** Incomes. Incomes - it list. Every income - record with income's name and sum. (Ordinary CRUD)
 
-4. **(/budget/costs)** - Страница планирования расходов. Расходы выводятся списком.
-   Каждый расход представляет из себя запись с типом расхода, его суммой и месяц/год запланированного расхода.
-   Если нету ни одного расхода выводится надпись "Расходы отсутствуют" и кнопка для того чтобы добавить расход.
-   На этой странице можно добавлять/изменять/удалять планируемые расходы.
-   При добавлении расхода необходимо указать сумму по этой категории расходов.
-   Для совершения CRUD используется модальное окно.
+4. **(/budget/costs)** Costs. Costs - it list. Every cost - record with cost's name, sum and description. (Ordinary CRUD)
 
-### Основные зависимости:
+### Main dependencies:
 
-1. [Immutable](https://facebook.github.io/immutable-js/docs/#/) - иммутабельность данных.
+1. [Immutable](https://facebook.github.io/immutable-js/docs/#/) - immutable collections.
 2. [React](https://reactjs.org/docs/getting-started.html) - ui.
-3. [React-router](https://reacttraining.com/react-router/web/guides/quick-start) - роутинг.
-4. [Connected React Router](https://github.com/supasate/connected-react-router) - синхронизация роутинга с редаксом.
-5. [React-loadable](https://github.com/jamiebuilds/react-loadable) - динамические импорты.
-6. [Redux](https://redux.js.org/api/api-reference) - управление состоянием.
-7. [Redux-act](https://github.com/pauldijou/redux-act) - уменьшение бойлерплейта.
-8. [Redux-thunk](https://github.com/reduxjs/redux-thunk) - работа с сайдэффектами.
-9. [Reselect](https://github.com/reduxjs/reselect) - мемоизация селекторов.
-10. [Material-ui](https://material-ui.com/) - библиотека компонентов.
-11. [Lodash](https://lodash.com/) - полезные утилиты.
-12. [Axios](https://github.com/axios/axios) - http.
-13. [Formik](https://github.com/jaredpalmer/formik) - работа с формами.
-14. [Yup](https://github.com/jquense/yup) - валидация данных.
+3. [React-router](https://reacttraining.com/react-router/web/guides/quick-start) - router.
+4. [Connected React Router](https://github.com/supasate/connected-react-router) - sync router with redux.
+5. [React-loadable](https://github.com/jamiebuilds/react-loadable) - dynamic imports.
+6. [Redux](https://redux.js.org/api/api-reference) - state management.
+7. [Redux-act](https://github.com/pauldijou/redux-act) - boilerplate reduction.
+8. [Redux-thunk](https://github.com/reduxjs/redux-thunk) - side effects.
+9. [Reselect](https://github.com/reduxjs/reselect) - "memoize" for selectors.
+10. [Material-ui](https://material-ui.com/) - ui framework.
+11. [Lodash](https://lodash.com/) - utility library.
+12. [Axios](https://github.com/axios/axios) - http client.
+13. [Formik](https://github.com/jaredpalmer/formik) - work with forms.
+14. [Yup](https://github.com/jquense/yup) - validation.
 
-### Работа с проектом:
+### Work with project in terminal:
 
-**Установить зависимости**: `yarn install`
+**Install dependencies**: `yarn install`
 
-**Запустить**: `yarn start`
+**Run**: `yarn start`
 
-**Сделать build**: `yarn build`
+**Build**: `yarn build`
