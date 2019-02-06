@@ -98,12 +98,11 @@ class CostPreviewCart extends Component {
                   value={values.sum}
                   text={sum}
                   textClassName={styles.value}
-                  type="number"
                 />
                 {errors.sum && touched.sum && <Error message={errors.sum} />}
               </div>
 
-              <Fragment>
+              <div className={styles.buttons}>
                 <Button
                   disabled={!!size(errors)}
                   type="submit"
@@ -122,7 +121,17 @@ class CostPreviewCart extends Component {
                     Delete
                   </Button>
                 )}
-              </Fragment>
+
+                {isEditMode && (
+                  <Button
+                    type="button"
+                    onClick={this.toggleMode}
+                    variant="outlined"
+                  >
+                    Cancel
+                  </Button>
+                )}
+              </div>
             </Paper>
           </form>
         )}
