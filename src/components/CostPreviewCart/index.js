@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { string, func } from 'prop-types'
+import onClickOutside from 'react-onclickoutside'
 import size from 'lodash/size'
 
 import { Formik } from 'formik'
@@ -33,6 +34,14 @@ class CostPreviewCart extends Component {
   handleDelete = () => {
     const { id, onDelete } = this.props
     onDelete(id)
+  }
+
+  handleClickOutside = () => {
+    const { isEditMode } = this.state
+
+    if (isEditMode) {
+      this.toggleMode()
+    }
   }
 
   render() {
@@ -131,4 +140,4 @@ CostPreviewCart.propTypes = {
   onDelete: func.isRequired,
 }
 
-export default CostPreviewCart
+export default onClickOutside(CostPreviewCart)
