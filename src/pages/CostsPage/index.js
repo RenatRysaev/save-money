@@ -5,7 +5,6 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import size from 'lodash/size'
 import map from 'lodash/map'
-import noop from 'lodash/noop'
 
 import { MODALS } from 'constants'
 
@@ -14,7 +13,11 @@ import {
   selectIsLoadingCosts,
 } from 'store/costs/selectors'
 
-import { thunkGetCosts, thunkEditCost } from 'store/costs/thunks'
+import {
+  thunkGetCosts,
+  thunkEditCost,
+  thunkDeleteCost,
+} from 'store/costs/thunks'
 import { actionOpenModal } from 'store/ui/actions'
 
 import Loader from 'components/Loader'
@@ -33,6 +36,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getCosts: thunkGetCosts,
   editCost: thunkEditCost,
+  deleteCost: thunkDeleteCost,
   openModal: actionOpenModal,
 }
 
@@ -48,7 +52,7 @@ class CostsPage extends Component {
   }
 
   render() {
-    const { costs, isLoadingCosts, editCost } = this.props
+    const { costs, isLoadingCosts, editCost, deleteCost } = this.props
 
     return (
       <div className={styles.costsList}>
@@ -78,7 +82,7 @@ class CostsPage extends Component {
                 sum={cost.sum}
                 date={cost.date}
                 onEdit={editCost}
-                onDelete={noop}
+                onDelete={deleteCost}
               />
             ))}
           </CheckOnEmpty>
@@ -100,6 +104,7 @@ CostsPage.propTypes = {
   isLoadingCosts: bool,
   getCosts: func,
   editCost: func,
+  deleteCost: func,
   openModal: func,
 }
 

@@ -23,3 +23,10 @@ export const createCost = (token, data) =>
     token,
     data,
   })
+
+export const deleteCost = (token, id) =>
+  request({
+    method: 'post',
+    url: `${API_URL.V1}/costs/remove/${id}`,
+    token,
+  })

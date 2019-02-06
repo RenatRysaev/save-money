@@ -17,6 +17,9 @@ import {
   actionCreateCostSucceed,
   actionCreateCostFailed,
   actionCreateCostRequest,
+  actionDeleteCostSucceed,
+  actionDeleteCostRequest,
+  actionDeleteCostFailed,
 } from './actions'
 
 export const thunkGetCosts = () => async (dispatch) => {
@@ -70,5 +73,21 @@ export const thunkCreateCost = ({ name, description, sum }) => async (
     dispatch(actionCreateCostFailed())
     dispatch(actionCloseModal(MODALS.CREATE_COST.name))
     toast.error('An error occurred while create costs. Try later.')
+  }
+}
+
+export const thunkDeleteCost = (id) => async (dispatch) => {
+  try {
+    const token = getToken()
+
+    dispatch(actionDeleteCostRequest())
+
+    const { data: deletedCost } = await API.deleteCost(token, id)
+
+    dispatch(actionDeleteCostSucceed(deletedCost))
+    toast.success('Successful delete')
+  } catch (err) {
+    dispatch(actionDeleteCostFailed())
+    toast.error('An error occurred while delete costs. Try later.')
   }
 }
