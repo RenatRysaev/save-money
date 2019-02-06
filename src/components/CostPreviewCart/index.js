@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { string, func } from 'prop-types'
 import onClickOutside from 'react-onclickoutside'
 import size from 'lodash/size'
+import memoize from 'lodash/memoize'
+import cond from 'lodash/cond'
 
 import { Formik } from 'formik'
 import Paper from '@material-ui/core/Paper'
@@ -36,6 +38,14 @@ class CostPreviewCart extends Component {
     onDelete(id)
   }
 
+  handleSubmit = (values) => {
+    const { isEditMode } = this.state
+    cond([
+      [(isEdit) => isEdit, () => this.handleSave(values)],
+      [(isEdit) => !isEdit, () => this.handleEdit(values)],
+    ])(isEditMode)
+  }
+
   handleClickOutside = () => {
     const { isEditMode } = this.state
 
@@ -44,14 +54,20 @@ class CostPreviewCart extends Component {
     }
   }
 
+  getFormiksInitialValues = memoize((name, description, sum) => ({
+    name,
+    description,
+    sum,
+  }))
+
   render() {
     const { name, description, sum } = this.props
     const { isEditMode } = this.state
 
     return (
       <Formik
-        initialValues={{ name, description, sum }}
-        onSubmit={isEditMode ? this.handleSave : this.handleEdit}
+        initialValues={this.getFormiksInitialValues(name, description, sum)}
+        onSubmit={this.handleSubmit}
         validationSchema={CartSchema}
       >
         {({ values, errors, touched, handleChange, handleSubmit }) => (

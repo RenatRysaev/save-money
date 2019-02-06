@@ -19,20 +19,28 @@ const TextOrField = ({
   error,
 }) => (
   <Fragment>
-    {isEditMode ? (
-      <TextField
-        name={name}
-        onChange={onChange}
-        value={value}
-        type={type}
-        autoFocus={autoFocus}
-        label={label}
-        classes={{ root: fieldClassName }}
-        error={error}
-      />
-    ) : (
-      <p className={classNames(styles.text, textClassName)}>{text}</p>
-    )}
+    <TextField
+      className={classNames({
+        [styles.hidden]: !isEditMode,
+      })}
+      name={name}
+      onChange={onChange}
+      value={value}
+      type={type}
+      autoFocus={autoFocus}
+      label={label}
+      classes={{ root: fieldClassName }}
+      error={error}
+    />
+    <p
+      className={classNames({
+        [styles.text]: true,
+        [textClassName]: textClassName,
+        [styles.hidden]: isEditMode,
+      })}
+    >
+      {text}
+    </p>
   </Fragment>
 )
 
