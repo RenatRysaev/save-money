@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import Layout from 'components/Layout'
 import Header from 'containers/Header'
+import Modals from 'containers/Modals'
 
 import { isRenderHeader } from 'utils'
 
@@ -25,6 +26,7 @@ const App = () => (
         ))}
       </Switch>
     </Layout>
+    <Modals />
     <ToastContainer autoClose={2000} />
   </Fragment>
 )

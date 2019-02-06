@@ -1,3 +1,5 @@
+import { lazy } from 'react'
+
 export const API_URL = {
   V1: 'http://localhost:8080/api/v1',
 }
@@ -34,4 +36,12 @@ export const TOP_MENU = [ROUTES.BUDGET, ROUTES.COSTS, ROUTES.INCOME]
 export const ROUTES_WITHOUT_HEADER = {
   [ROUTES.LOGIN.path]: true,
   [ROUTES.REGISTRATION.path]: true,
+}
+
+export const MODALS = {
+  CREATE_COST: {
+    name: 'CREATE_COST',
+    title: 'Create cost',
+    component: lazy(() => import('containers/Modals/CreateCost')),
+  },
 }

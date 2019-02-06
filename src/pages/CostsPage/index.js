@@ -7,17 +7,21 @@ import size from 'lodash/size'
 import map from 'lodash/map'
 import noop from 'lodash/noop'
 
+import { MODALS } from 'constants'
+
 import {
   selectCostsEntitiesJS,
   selectIsLoadingCosts,
 } from 'store/costs/selectors'
 
 import { thunkGetCosts, thunkEditCost } from 'store/costs/thunks'
+import { actionOpenModal } from 'store/ui/actions'
 
 import Loader from 'components/Loader'
 import PageTitle from 'components/PageTitle'
 import CheckOnEmpty from 'components/CheckOnEmpty'
 import CostPreviewCart from 'components/CostPreviewCart'
+import Button from '@material-ui/core/Button'
 
 import styles from './styles.module.scss'
 
@@ -29,6 +33,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getCosts: thunkGetCosts,
   editCost: thunkEditCost,
+  openModal: actionOpenModal,
 }
 
 class CostsPage extends Component {
@@ -37,12 +42,28 @@ class CostsPage extends Component {
     getCosts()
   }
 
+  handleOpenModal = () => {
+    const { openModal } = this.props
+    openModal(MODALS.CREATE_COST)
+  }
+
   render() {
     const { costs, isLoadingCosts, editCost } = this.props
 
     return (
       <div className={styles.costsList}>
         <PageTitle>Planned cost</PageTitle>
+
+        <div className={styles.createButtonContainer}>
+          <Button
+            onClick={this.handleOpenModal}
+            variant="contained"
+            color="primary"
+          >
+            Create cost
+          </Button>
+        </div>
+
         <Loader isLoading={isLoadingCosts}>
           <CheckOnEmpty
             listLength={size(costs)}
@@ -79,6 +100,7 @@ CostsPage.propTypes = {
   isLoadingCosts: bool,
   getCosts: func,
   editCost: func,
+  openModal: func,
 }
 
 export default compose(

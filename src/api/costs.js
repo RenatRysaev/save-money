@@ -15,3 +15,11 @@ export const editCosts = (token, id, data) =>
     token,
     data,
   })
+
+export const createCost = (token, data) =>
+  request({
+    method: 'post',
+    url: `${API_URL.V1}/costs/create`,
+    token,
+    data,
+  })

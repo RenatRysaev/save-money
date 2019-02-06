@@ -1,5 +1,5 @@
 import { registration, login, checkLogin } from './auth'
-import { getCosts, editCosts } from './costs'
+import { getCosts, editCosts, createCost } from './costs'
 
 const API = {
   registration,
@@ -7,5 +7,6 @@ const API = {
   checkLogin,
   getCosts,
   editCosts,
+  createCost,
 }
 export default API

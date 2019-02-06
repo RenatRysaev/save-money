@@ -13,3 +13,7 @@ export const actionCostsEditSucceed = createAction(
   (cost) => cost,
 )
 export const actionCostEditFailed = createAction('COST_EDIT_FAILED')
+
+export const actionCreateCostRequest = createAction('CREATE_COST')
+export const actionCreateCostSucceed = createAction('CREATE_COST_SUCCEED')
+export const actionCreateCostFailed = createAction('CREATE_COST_FAILED')

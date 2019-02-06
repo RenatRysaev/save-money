@@ -9,6 +9,9 @@ import {
   actionCostsEditSucceed,
   actionCostEditRequest,
   actionCostEditFailed,
+  actionCreateCostRequest,
+  actionCreateCostFailed,
+  actionCreateCostSucceed,
 } from './actions'
 
 const initialState = fromJS({
@@ -32,6 +35,13 @@ const costsReducer = createReducer(
     [actionCostEditFailed]: (state) => state.set('isLoading', false),
 
     [actionCostsEditSucceed]: (state, cost) =>
+      state.set('isLoading', false).setIn(['entities', cost.id], cost),
+
+    [actionCreateCostRequest]: (state) => state.set('isLoading', true),
+
+    [actionCreateCostFailed]: (state) => state.set('isLoading', false),
+
+    [actionCreateCostSucceed]: (state, cost) =>
       state.set('isLoading', false).setIn(['entities', cost.id], cost),
   },
   initialState,

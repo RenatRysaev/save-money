@@ -126,7 +126,6 @@ CostPreviewCart.propTypes = {
   name: string.isRequired,
   description: string,
   sum: string.isRequired,
-  date: string.isRequired,
   id: string.isRequired,
   onEdit: func.isRequired,
   onDelete: func.isRequired,
