@@ -25,3 +25,16 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 )
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = navigator.serviceWorker.register(
+        '/service-worker.js',
+      )
+      console.log('SW registered: ', registration)
+    } catch (registrationError) {
+      console.error('SW registration failed: ', registrationError)
+    }
+  })
+}

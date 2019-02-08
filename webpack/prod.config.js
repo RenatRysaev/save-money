@@ -1,13 +1,12 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const merge = require('webpack-merge')
 
 const baseConfig = require('./base.config')
+const { STYLE_LOADERS } = require('./utils')
 
 const plugins = [
-  new CleanWebpackPlugin('build'),
   new HtmlWebpackPlugin({ template: 'src/index.html' }),
   new MiniCssExtractPlugin({
     filename: '[name].[hash].css',
@@ -31,7 +30,20 @@ module.exports = merge(baseConfig, {
       },
       {
         test: /\.(sass|scss|css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        exclude: /\.module\.(sass|scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          STYLE_LOADERS.CSS,
+          STYLE_LOADERS.SASS,
+        ],
+      },
+      {
+        test: /\.module\.(sass|scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          STYLE_LOADERS.CSS_MODULE,
+          STYLE_LOADERS.SASS,
+        ],
       },
     ],
   },

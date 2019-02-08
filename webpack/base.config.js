@@ -1,4 +1,6 @@
 const { resolve } = require('path')
+const WorkboxPlugin = require('workbox-webpack-plugin')
+
 const src = resolve('src')
 
 module.exports = {
@@ -17,4 +19,10 @@ module.exports = {
       routes: resolve(src, 'routes'),
     },
   },
+  plugins: [
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+    }),
+  ],
 }

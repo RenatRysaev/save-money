@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --config=webpack/dev.config.js",
+    "prebuild": "yarn rimraf ./build",
     "build": "webpack --config=webpack/prod.config.js",
     "lint:js": "eslint src/",
     "lint:css": "stylelint src/",
@@ -54,7 +55,6 @@
     "@hot-loader/react-dom": "^16.7.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
-    "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^2.0.1",
     "eslint": "^5.12.1",
     "eslint-config-airbnb": "^17.1.0",
@@ -72,6 +72,7 @@
     "prop-types": "^15.6.2",
     "react-hot-loader": "^4.6.3",
     "redux-devtools-extension": "^2.13.7",
+    "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
@@ -81,6 +82,7 @@
     "webpack": "^4.29.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14",
-    "webpack-merge": "^4.1.5"
+    "webpack-merge": "^4.1.5",
+    "workbox-webpack-plugin": "^3.6.3"
   }
 }
