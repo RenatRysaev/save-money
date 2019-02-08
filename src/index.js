@@ -29,7 +29,7 @@ ReactDOM.render(
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
-      const registration = navigator.serviceWorker.register(
+      const registration = await navigator.serviceWorker.register(
         '/service-worker.js',
       )
       console.log('SW registered: ', registration)
