@@ -1,15 +1,11 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const baseConfig = require('./base.config')
 const { STYLE_LOADERS } = require('./utils')
 
-const plugins = [
-  new HtmlWebpackPlugin({ template: 'src/index.html' }),
-  new webpack.HotModuleReplacementPlugin(),
-]
+const plugins = [new webpack.HotModuleReplacementPlugin()]
 
 module.exports = merge(baseConfig, {
   mode: 'development',

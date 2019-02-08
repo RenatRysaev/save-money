@@ -1,5 +1,4 @@
 const { resolve } = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('webpack-merge')
 
@@ -7,7 +6,6 @@ const baseConfig = require('./base.config')
 const { STYLE_LOADERS } = require('./utils')
 
 const plugins = [
-  new HtmlWebpackPlugin({ template: 'src/index.html' }),
   new MiniCssExtractPlugin({
     filename: '[name].[hash].css',
     chunkFilename: '[id].[hash].css',

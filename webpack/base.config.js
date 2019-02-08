@@ -1,5 +1,8 @@
 const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
+const { pwaManifest } = require('../src/manifest.js')
 
 const src = resolve('src')
 
@@ -20,9 +23,16 @@ module.exports = {
     },
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      hash: true,
+      minify: true,
+      favicon: resolve('src/assets/favicons/favicon.ico'),
+    }),
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
       skipWaiting: true,
     }),
+    new WebpackPwaManifest(pwaManifest),
   ],
 }
