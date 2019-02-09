@@ -23,7 +23,7 @@ import { actionOpenModal } from 'store/ui/actions'
 import Loader from 'components/Loader'
 import PageTitle from 'components/PageTitle'
 import CheckOnEmpty from 'components/CheckOnEmpty'
-import CostPreviewCart from 'components/CostPreviewCart'
+import PreviewCart from 'components/PreviewCart'
 import Button from '@material-ui/core/Button'
 
 import styles from './styles.module.scss'
@@ -74,7 +74,7 @@ class CostsPage extends Component {
             fallbackContent={<p>Costs list is empty</p>}
           >
             {map(costs, (cost, key) => (
-              <CostPreviewCart
+              <PreviewCart
                 key={key}
                 id={key}
                 name={cost.name}
@@ -98,7 +98,6 @@ CostsPage.propTypes = {
       id: string,
       name: string,
       sum: string,
-      date: string,
     }),
   ),
   isLoadingCosts: bool,

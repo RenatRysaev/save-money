@@ -3,6 +3,7 @@ import { connectRouter } from 'connected-react-router'
 
 import authReducer from 'store/auth/reducers'
 import costsReducer from 'store/costs/reducers'
+import incomeReducer from 'store/income/reducers'
 import uiReducer from 'store/ui/reducers'
 
 const createRootReducer = (history) =>
@@ -10,6 +11,7 @@ const createRootReducer = (history) =>
     router: connectRouter(history),
     auth: authReducer,
     costs: costsReducer,
+    income: incomeReducer,
     ui: uiReducer,
   })
 

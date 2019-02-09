@@ -3,9 +3,9 @@ import { func, bool } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import { selectIsLoadingCosts } from 'store/costs/selectors'
+import { selectIsLoadingIncome } from 'store/income/selectors'
 
-import { thunkCreateCost } from 'store/costs/thunks'
+import { thunkCreateIncome } from 'store/income/thunks'
 
 import { Formik } from 'formik'
 import TextField from '@material-ui/core/TextField'
@@ -17,23 +17,22 @@ import Error from 'components/Error'
 import styles from './styles.module.scss'
 
 const mapStateToProps = (state) => ({
-  isLoading: selectIsLoadingCosts(state),
+  isLoading: selectIsLoadingIncome(state),
 })
 
 const mapDispatchToProps = {
-  createCost: thunkCreateCost,
+  createIncome: thunkCreateIncome,
 }
 
 const initialValues = {
   name: '',
-  description: '',
   sum: '',
 }
 
-const CreateCost = ({ isLoading, createCost }) => (
+const CreateIncome = ({ isLoading, createIncome }) => (
   <Formik
     initialValues={initialValues}
-    onSubmit={createCost}
+    onSubmit={createIncome}
     // validationSchema={CartSchema}
   >
     {({ values, errors, touched, handleChange, handleSubmit }) => (
@@ -48,16 +47,6 @@ const CreateCost = ({ isLoading, createCost }) => (
             label="Enter a name"
           />
           {errors.name && touched.name && <Error message={errors.name} />}
-          <TextField
-            className={styles.field}
-            name="description"
-            value={values.description}
-            onChange={handleChange}
-            label="Enter a description"
-          />
-          {errors.description && touched.description && (
-            <Error message={errors.description} />
-          )}
           <TextField
             className={styles.field}
             name="sum"
@@ -82,9 +71,9 @@ const CreateCost = ({ isLoading, createCost }) => (
   </Formik>
 )
 
-CreateCost.propTypes = {
+CreateIncome.propTypes = {
   isLoading: bool,
-  createCost: func,
+  createIncome: func,
 }
 
 export default compose(
@@ -92,4 +81,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-)(CreateCost)
+)(CreateIncome)

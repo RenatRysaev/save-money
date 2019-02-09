@@ -15,7 +15,7 @@ import { CartSchema } from './constants'
 
 import styles from './styles.module.scss'
 
-class CostPreviewCart extends Component {
+class PreviewCart extends Component {
   state = {
     isEditMode: false,
   }
@@ -156,7 +156,7 @@ class CostPreviewCart extends Component {
   }
 }
 
-CostPreviewCart.propTypes = {
+PreviewCart.propTypes = {
   name: string.isRequired,
   description: string,
   sum: string.isRequired,
@@ -165,4 +165,4 @@ CostPreviewCart.propTypes = {
   onDelete: func.isRequired,
 }
 
-export default onClickOutside(CostPreviewCart)
+export default onClickOutside(PreviewCart)

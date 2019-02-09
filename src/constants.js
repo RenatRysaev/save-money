@@ -1,5 +1,3 @@
-import { lazy } from 'react'
-
 export const API_URL = {
   V1: 'http://localhost:8080/api/v1',
 }
@@ -42,6 +40,9 @@ export const MODALS = {
   CREATE_COST: {
     name: 'CREATE_COST',
     title: 'Create cost',
-    component: lazy(() => import('containers/Modals/CreateCost')),
+  },
+  CREATE_INCOME: {
+    name: 'CREATE_INCOME',
+    title: 'Create income',
   },
 }
