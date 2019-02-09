@@ -15,8 +15,10 @@ const createRootReducer = (history) => {
     ui: uiReducer,
   })
 
-  const rootReducer = (state, action) =>
-    action.type === 'LOGOUT' ? undefined : appReducer(state, action)
+  const rootReducer = (state, action) => {
+    if (action.type === 'LOGOUT') state = undefined // eslint-disable-line
+    return appReducer(state, action)
+  }
 
   return rootReducer
 }
