@@ -6,13 +6,15 @@
 
 ### Routes:
 
-1. **/, /reg** - Login/registration.
+1. **/** - Login page.
 
-2. **/budget** - Planning page with links to costs/incomes pages. There is info about costs/incomes plan.
+2. **/reg** - Registration page.
 
-3. **/budget/income** - Incomes. Incomes - list. Every income - record with income's name and sum. (Ordinary CRUD)
+3. **/budget** - Planning page. There is info about costs/incomes plan.
 
-4. **/budget/costs** - Costs. Costs - list. Every cost - record with cost's name, sum and description. (Ordinary CRUD)
+4. **/budget/income** - Incomes. Every income - record with income's name and sum. (Ordinary CRUD)
+
+5. **/budget/costs** - Costs. Every cost - record with cost's name, sum and description. (Ordinary CRUD)
 
 ### Main dependencies:
 
