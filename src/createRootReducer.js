@@ -6,13 +6,19 @@ import costsReducer from 'store/costs/reducers'
 import incomeReducer from 'store/income/reducers'
 import uiReducer from 'store/ui/reducers'
 
-const createRootReducer = (history) =>
-  combineReducers({
+const createRootReducer = (history) => {
+  const appReducer = combineReducers({
     router: connectRouter(history),
     auth: authReducer,
     costs: costsReducer,
     income: incomeReducer,
     ui: uiReducer,
   })
+
+  const rootReducer = (state, action) =>
+    action.type === 'LOGOUT' ? undefined : appReducer(state, action)
+
+  return rootReducer
+}
 
 export default createRootReducer

@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Error from 'components/Error'
 
-// import { CartSchema } from 'components/PreviewCart/constants'
+import { CartSchema } from 'components/PreviewCart/constants'
 
 import styles from './styles.module.scss'
 
@@ -33,7 +33,7 @@ const CreateIncome = ({ isLoading, createIncome }) => (
   <Formik
     initialValues={initialValues}
     onSubmit={createIncome}
-    // validationSchema={CartSchema}
+    validationSchema={CartSchema}
   >
     {({ values, errors, touched, handleChange, handleSubmit }) => (
       <form className={styles.form} onSubmit={handleSubmit}>
