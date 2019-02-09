@@ -1,5 +1,6 @@
 const { resolve } = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const merge = require('webpack-merge')
 
 const baseConfig = require('./base.config')
@@ -9,6 +10,10 @@ const plugins = [
   new MiniCssExtractPlugin({
     filename: '[name].[hash].css',
     chunkFilename: '[id].[hash].css',
+  }),
+  new WorkboxPlugin.GenerateSW({
+    clientsClaim: true,
+    skipWaiting: true,
   }),
 ]
 

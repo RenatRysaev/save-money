@@ -26,7 +26,7 @@ ReactDOM.render(
   document.getElementById('root'),
 )
 
-if ('serviceWorker' in navigator) {
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
     try {
       const registration = await navigator.serviceWorker.register(
