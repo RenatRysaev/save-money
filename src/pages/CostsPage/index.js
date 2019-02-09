@@ -42,8 +42,11 @@ const mapDispatchToProps = {
 
 class CostsPage extends Component {
   componentDidMount() {
-    const { getCosts } = this.props
-    getCosts()
+    const { costs, getCosts } = this.props
+
+    if (!size(costs)) {
+      getCosts()
+    }
   }
 
   handleOpenModal = () => {

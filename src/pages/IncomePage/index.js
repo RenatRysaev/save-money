@@ -42,8 +42,11 @@ const mapDispatchToProps = {
 
 class IncomePage extends Component {
   componentDidMount() {
-    const { getIncome } = this.props
-    getIncome()
+    const { income, getIncome } = this.props
+
+    if (!size(income)) {
+      getIncome()
+    }
   }
 
   handleOpenModal = () => {
