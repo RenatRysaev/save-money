@@ -1,4 +1,4 @@
-import { ROUTES_WITHOUT_HEADER } from 'src/constants'
+import { ROUTES_WITHOUT_HEADER } from 'constants'
 
 export const setToken = (token) => window.localStorage.setItem('token', token)
 

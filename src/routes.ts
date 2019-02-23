@@ -1,7 +1,7 @@
 import Loadable from 'react-loadable'
 import PagePreloader from 'components/PagePreloader/index'
 
-import { ROUTES } from 'src/constants'
+import { ROUTES } from 'constants'
 
 const routes = [
   {

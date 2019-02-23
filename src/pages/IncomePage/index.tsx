@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import size from 'lodash/size'
 import map from 'lodash/map'
 
-import { MODALS } from 'src/constants'
+import { MODALS } from 'constants'
 
 import {
   selectIncomeEntitiesJS,

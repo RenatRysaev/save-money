@@ -1,4 +1,4 @@
-import { ROUTES } from 'src/constants'
+import { ROUTES } from 'constants'
 
 export const checkIsAuthPage = () =>
   [ROUTES.LOGIN.path, ROUTES.REGISTRATION.path].some(

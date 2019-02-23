@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import map from 'lodash/map'
 
-import { MODALS } from 'src/constants'
+import { MODALS } from 'constants'
 
 import { selectModals } from 'store/ui/selectors'
 

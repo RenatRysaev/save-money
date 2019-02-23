@@ -1,4 +1,4 @@
-import { API_URL } from 'src/constants'
+import { API_URL } from 'constants'
 import { request } from './utils'
 
 export const registration = (name, password) =>

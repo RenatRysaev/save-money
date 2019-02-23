@@ -4,7 +4,7 @@ import uuid from 'uuid'
 import API from 'api/index'
 
 import { getToken } from 'utils/index'
-import { MODALS } from 'src/constants'
+import { MODALS } from 'constants'
 
 import { actionCloseModal } from 'store/ui/actions'
 import {

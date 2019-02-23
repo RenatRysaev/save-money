@@ -11,7 +11,7 @@ const Layout = ({
   sidebar: Sidebar,
   footer: Footer,
   children,
-}) => (
+}: any) => (
   <div className={styles.layout}>
     {Header && (
       <header className={styles.header}>
