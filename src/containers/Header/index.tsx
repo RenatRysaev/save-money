@@ -1,0 +1,20 @@
+import * as React from 'react'
+
+import { TOP_MENU } from 'src/constants'
+
+import Logout from 'containers/Logout/index'
+
+import TopMenu from 'components/TopMenu/index'
+
+import styles from './styles.module.scss'
+
+const Header = () => (
+  <div className={styles.headerWrapper}>
+    <TopMenu list={TOP_MENU} />
+    <div className={styles.logoutWrapper}>
+      <Logout />
+    </div>
+  </div>
+)
+
+export default Header

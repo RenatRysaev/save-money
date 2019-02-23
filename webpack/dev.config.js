@@ -1,16 +1,16 @@
 const { resolve } = require('path')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const merge = require('webpack-merge')
 
 const baseConfig = require('./base.config')
 const { STYLE_LOADERS } = require('./utils')
 
-const plugins = [new webpack.HotModuleReplacementPlugin()]
+const plugins = []
 
 module.exports = merge(baseConfig, {
   mode: 'development',
 
-  entry: resolve('src'),
+  entry: resolve('src/index.tsx'),
 
   output: {
     filename: 'bundle.js',
@@ -22,22 +22,18 @@ module.exports = merge(baseConfig, {
 
   devServer: {
     port: 9000,
-    hot: true,
     historyApiFallback: true,
-    compress: true,
   },
 
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          },
+          loader: 'ts-loader',
         },
       },
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.(sass|scss|css)$/,
         exclude: /\.module\.(sass|scss|css)$/,
