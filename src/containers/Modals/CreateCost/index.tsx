@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { func, bool } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
@@ -10,9 +9,11 @@ import { thunkCreateCost } from 'store/costs/thunks'
 import { Formik } from 'formik'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import Error from 'components/Error/index'
+import Error from 'components/Error'
 
 import { CartSchema } from 'components/PreviewCart/constants'
+
+import { CreateCostProps } from './types'
 
 import styles from './styles.module.scss'
 
@@ -30,7 +31,7 @@ const initialValues = {
   sum: '',
 }
 
-const CreateCost = ({ isLoading, createCost }) => (
+const CreateCost: React.FC<CreateCostProps> = ({ isLoading, createCost }) => (
   <Formik
     initialValues={initialValues}
     onSubmit={createCost}
@@ -81,11 +82,6 @@ const CreateCost = ({ isLoading, createCost }) => (
     )}
   </Formik>
 )
-
-CreateCost.propTypes = {
-  isLoading: bool,
-  createCost: func,
-}
 
 export default compose(
   connect(

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { func, bool } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
@@ -10,9 +9,11 @@ import { thunkCreateIncome } from 'store/income/thunks'
 import { Formik } from 'formik'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import Error from 'components/Error/index'
+import Error from 'components/Error'
 
 import { CartSchema } from 'components/PreviewCart/constants'
+
+import { CreateIncomeProps } from './types'
 
 import styles from './styles.module.scss'
 
@@ -29,7 +30,10 @@ const initialValues = {
   sum: '',
 }
 
-const CreateIncome = ({ isLoading, createIncome }) => (
+const CreateIncome: React.FC<CreateIncomeProps> = ({
+  isLoading,
+  createIncome,
+}) => (
   <Formik
     initialValues={initialValues}
     onSubmit={createIncome}
@@ -70,11 +74,6 @@ const CreateIncome = ({ isLoading, createIncome }) => (
     )}
   </Formik>
 )
-
-CreateIncome.propTypes = {
-  isLoading: bool,
-  createIncome: func,
-}
 
 export default compose(
   connect(

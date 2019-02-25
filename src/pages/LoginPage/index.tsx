@@ -1,16 +1,8 @@
 import * as React from 'react'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
 
-import LoginForm from 'containers/LoginForm/index'
+import LoginForm from 'containers/LoginForm'
 
 import styles from './styles.module.scss'
-
-const mapStateToProps = () => ({
-  isLogin: false,
-})
-
-const mapDispatchToProps = {}
 
 const LoginPage = () => {
   return (
@@ -19,9 +11,4 @@ const LoginPage = () => {
     </div>
   )
 }
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
-)(LoginPage)
+export default LoginPage

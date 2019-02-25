@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import { TOP_MENU } from 'constants'
 
-import Logout from 'containers/Logout/index'
+import Logout from 'containers/Logout'
 
-import TopMenu from 'components/TopMenu/index'
+import TopMenu from 'components/TopMenu'
 
 import styles from './styles.module.scss'
 

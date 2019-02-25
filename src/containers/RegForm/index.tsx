@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { bool, func } from 'prop-types'
-
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
@@ -8,7 +6,7 @@ import { thunkRegistration } from 'store/auth/thunks'
 
 import { selectIsLoadingAuth } from 'store/auth/selectors'
 
-import AuthForm from 'components/AuthForm/index'
+import AuthForm from 'components/AuthForm'
 
 import {
   fields,
@@ -17,17 +15,14 @@ import {
   RegFormSchema,
 } from './constants'
 
+import { RegFormProps } from './types'
+
 const mapStateToProps = (state) => ({
   isLoadingAuth: selectIsLoadingAuth(state),
 })
 
 const mapDispatchToProps = {
   registration: thunkRegistration,
-}
-
-interface RegFormProps {
-  isLoadingAuth: boolean
-  registration: (name: string, password: string) => void
 }
 
 class RegForm extends Component<RegFormProps> {
@@ -53,11 +48,6 @@ class RegForm extends Component<RegFormProps> {
     )
   }
 }
-
-// RegForm.propTypes = {
-//   isLoadingAuth: bool,
-//   registration: func,
-// }
 
 export default compose(
   connect(

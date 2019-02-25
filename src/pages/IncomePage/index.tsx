@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { string, bool, func, shape, objectOf } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import size from 'lodash/size'
@@ -19,11 +18,13 @@ import {
 } from 'store/income/thunks'
 import { actionOpenModal } from 'store/ui/actions'
 
-import Loader from 'components/Loader/index'
-import PageTitle from 'components/PageTitle/index'
-import CheckOnEmpty from 'components/CheckOnEmpty/index'
-import PreviewCart from 'components/PreviewCart/index'
+import Loader from 'components/Loader'
+import PageTitle from 'components/PageTitle'
+import CheckOnEmpty from 'components/CheckOnEmpty'
+import PreviewCart from 'components/PreviewCart'
 import Button from '@material-ui/core/Button'
+
+import { IncomePageProps, incomeType } from './types'
 
 import styles from './styles.module.scss'
 
@@ -37,22 +38,6 @@ const mapDispatchToProps = {
   editIncome: thunkEditIncome,
   deleteIncome: thunkDeleteIncome,
   openModal: actionOpenModal,
-}
-
-interface IncomePageProps {
-  income: object
-  getIncome: () => void
-  openModal: (modalData: object) => void
-  isLoadingIncome: boolean
-  editIncome: (incomeData) => void
-  deleteIncome: (id) => void
-}
-
-type incomeType = {
-  id: string
-  name: string
-  sum: string
-  description?: string
 }
 
 class IncomePage extends Component<IncomePageProps> {
@@ -108,21 +93,6 @@ class IncomePage extends Component<IncomePageProps> {
     )
   }
 }
-//
-// IncomePage.propTypes = {
-//   income: objectOf(
-//     shape({
-//       id: string,
-//       name: string,
-//       sum: string,
-//     }),
-//   ),
-//   isLoadingIncome: bool,
-//   getIncome: func,
-//   editIncome: func,
-//   deleteIncome: func,
-//   openModal: func,
-// }
 
 export default compose(
   connect(

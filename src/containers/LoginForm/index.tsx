@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { bool, func } from 'prop-types'
 
 import { thunkLogin } from 'store/auth/thunks'
 
 import { selectIsLoadingAuth } from 'store/auth/selectors'
 
-import AuthForm from 'components/AuthForm/index'
+import AuthForm from 'components/AuthForm'
 
 import {
   fields,
@@ -16,17 +15,14 @@ import {
   LoginFormSchema,
 } from './constants'
 
+import { LoginFormProps } from './types'
+
 const mapStateToProps = (state) => ({
   isLoadingAuth: selectIsLoadingAuth(state),
 })
 
 const mapDispatchToProps = {
   login: thunkLogin,
-}
-
-interface LoginFormProps {
-  isLoadingAuth: boolean
-  login: (name: string, password: string) => void
 }
 
 class LoginForm extends Component<LoginFormProps> {
@@ -52,11 +48,6 @@ class LoginForm extends Component<LoginFormProps> {
     )
   }
 }
-
-// LoginForm.propTypes = {
-//   isLoadingAuth: bool,
-//   login: func,
-// }
 
 export default compose(
   connect(

@@ -1,12 +1,9 @@
-import { any, number } from 'prop-types'
+import { CheckOnEmptyProps } from './types'
 
-const CheckOnEmpty = ({ children, listLength = 0, fallbackContent }) =>
-  listLength !== 0 ? children : fallbackContent
-
-CheckOnEmpty.propTypes = {
-  children: any,
-  listLength: number.isRequired,
-  fallbackContent: any.isRequired,
-}
+const CheckOnEmpty = ({
+  children,
+  listLength = 0,
+  fallbackContent,
+}: CheckOnEmptyProps) => (listLength !== 0 ? children : fallbackContent)
 
 export default CheckOnEmpty

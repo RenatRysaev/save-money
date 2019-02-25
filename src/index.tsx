@@ -25,17 +25,15 @@ ReactDOM.render(
   document.getElementById('root'),
 )
 
-// ReactDOM.render(<App />, document.getElementById('root'))
-//
-// if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-//   window.addEventListener('load', async () => {
-//     try {
-//       const registration = await navigator.serviceWorker.register(
-//         '/service-worker.js',
-//       )
-//       console.log('SW registered: ', registration)
-//     } catch (registrationError) {
-//       console.error('SW registration failed: ', registrationError)
-//     }
-//   })
-// }
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register(
+        '/service-worker.js',
+      )
+      console.log('SW registered: ', registration)
+    } catch (registrationError) {
+      console.error('SW registration failed: ', registrationError)
+    }
+  })
+}

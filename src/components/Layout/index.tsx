@@ -1,17 +1,18 @@
 import * as React from 'react'
-import { func, any } from 'prop-types'
 import classNames from 'classnames'
 
 import { isFixedFooterToBottom } from './helpers'
 
+import { LayoutProps } from './types'
+
 import styles from './styles.module.scss'
 
-const Layout = ({
+const Layout: React.FC<LayoutProps> = ({
   header: Header,
   sidebar: Sidebar,
   footer: Footer,
   children,
-}: any) => (
+}) => (
   <div className={styles.layout}>
     {Header && (
       <header className={styles.header}>
@@ -40,12 +41,5 @@ const Layout = ({
     )}
   </div>
 )
-
-Layout.propTypes = {
-  header: func,
-  sidebar: func,
-  footer: func,
-  children: any,
-}
 
 export default Layout

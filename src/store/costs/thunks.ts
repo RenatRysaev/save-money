@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify'
 import uuid from 'uuid'
 
-import API from 'api/index'
+import API from 'api'
 
-import { getToken } from 'utils/index'
+import { getToken } from 'utils'
 import { MODALS } from 'constants'
 
 import { actionCloseModal } from 'store/ui/actions'

@@ -1,25 +1,12 @@
 import React, { Fragment } from 'react'
-import { bool, string, number, func, oneOfType } from 'prop-types'
 import classNames from 'classnames'
 import TextField from '@material-ui/core/TextField'
 
+import { TextOrFieldProps } from './types'
+
 import styles from './styles.module.scss'
 
-type TextOrFieldTypes = {
-  isEditMode: boolean
-  name: string
-  value: string | number
-  type: string
-  onChange: (event: any) => void
-  text: string
-  textClassName?: string | any
-  fieldClassName?: string
-  autoFocus?: boolean
-  label: string
-  error?: boolean
-}
-
-const TextOrField = ({
+const TextOrField: React.FC<TextOrFieldProps> = ({
   isEditMode,
   name,
   value,
@@ -31,7 +18,7 @@ const TextOrField = ({
   autoFocus,
   label,
   error,
-}: TextOrFieldTypes) => (
+}) => (
   <Fragment>
     <TextField
       className={classNames({
@@ -63,19 +50,5 @@ TextOrField.defaultProps = {
   autoFocus: false,
   label: '',
 }
-
-// TextOrField.propTypes = {
-//   isEditMode: bool.isRequired,
-//   name: string.isRequired,
-//   type: string,
-//   onChange: func.isRequired,
-//   value: oneOfType([string, number]).isRequired,
-//   text: string.isRequired,
-//   textClassName: string,
-//   fieldClassName: string,
-//   autoFocus: bool,
-//   label: string,
-//   error: bool,
-// }
 
 export default TextOrField

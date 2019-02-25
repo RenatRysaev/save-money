@@ -1,9 +1,9 @@
 import { push, replace } from 'connected-react-router'
 import { toast } from 'react-toastify'
 
-import API from 'api/index'
+import API from 'api'
 import { ROUTES } from 'constants'
-import { getToken, setToken, clearToken } from 'utils/index'
+import { getToken, setToken, clearToken } from 'utils'
 import { checkIsAuthPage } from './helpers'
 
 import {

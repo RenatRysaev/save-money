@@ -3,11 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import Layout from 'components/Layout/index'
-import Header from 'containers/Header/index'
-import Modals from 'containers/Modals/index'
+import Layout from 'components/Layout'
+import Header from 'containers/Header'
+import Modals from 'containers/Modals'
 
-import { isRenderHeader } from 'utils/index'
+import { isRenderHeader } from 'utils'
 
 import routes from 'routes'
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { string, bool, func, shape, objectOf } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import size from 'lodash/size'
@@ -19,11 +18,13 @@ import {
 } from 'store/costs/thunks'
 import { actionOpenModal } from 'store/ui/actions'
 
-import Loader from 'components/Loader/index'
-import PageTitle from 'components/PageTitle/index'
-import CheckOnEmpty from 'components/CheckOnEmpty/index'
-import PreviewCart from 'components/PreviewCart/index'
+import Loader from 'components/Loader'
+import PageTitle from 'components/PageTitle'
+import CheckOnEmpty from 'components/CheckOnEmpty'
+import PreviewCart from 'components/PreviewCart'
 import Button from '@material-ui/core/Button'
+
+import { CostsPageProps, costType } from './types'
 
 import styles from './styles.module.scss'
 
@@ -37,22 +38,6 @@ const mapDispatchToProps = {
   editCost: thunkEditCost,
   deleteCost: thunkDeleteCost,
   openModal: actionOpenModal,
-}
-
-interface CostsPageProps {
-  costs: object
-  getCosts: () => void
-  openModal: (modalData: {}) => void
-  isLoadingCosts: boolean
-  editCost: (todoData) => void
-  deleteCost: (id) => void
-}
-
-type costType = {
-  id: string
-  name: string
-  sum: string
-  description?: string
 }
 
 class CostsPage extends Component<CostsPageProps> {
@@ -108,21 +93,6 @@ class CostsPage extends Component<CostsPageProps> {
     )
   }
 }
-
-// CostsPage.propTypes = {
-//   costs: objectOf(
-//     shape({
-//       id: string,
-//       name: string,
-//       sum: string,
-//     }),
-//   ),
-//   isLoadingCosts: bool,
-//   getCosts: func,
-//   editCost: func,
-//   deleteCost: func,
-//   openModal: func,
-// }
 
 export default compose(
   connect(

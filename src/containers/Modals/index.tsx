@@ -1,5 +1,4 @@
 import React, { Suspense, lazy } from 'react'
-import { objectOf, string, func, shape, object } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import map from 'lodash/map'
@@ -10,8 +9,10 @@ import { selectModals } from 'store/ui/selectors'
 
 import { actionCloseModal } from 'store/ui/actions'
 
-import Modal from 'components/Modal/index'
-import PagePreloader from 'components/PagePreloader/index'
+import Modal from 'components/Modal'
+import PagePreloader from 'components/PagePreloader'
+
+import { ModalsProps } from './types'
 
 const mapStateToProps = (state) => ({
   modals: selectModals(state),
@@ -23,15 +24,14 @@ const mapDispatchToProps = {
 
 const MODAL_COMPONENTS = {
   [MODALS.CREATE_INCOME.name]: lazy(() =>
-    import('containers/Modals/CreateIncome/index'),
+    import('containers/Modals/CreateIncome'),
   ),
-  [MODALS.CREATE_COST.name]: lazy(() =>
-    import('containers/Modals/CreateCost/index'),
-  ),
+  [MODALS.CREATE_COST.name]: lazy(() => import('containers/Modals/CreateCost')),
 }
 
-const Modals = ({ modals, closeModal }) => {
+const Modals: React.FC<ModalsProps> = ({ modals, closeModal }) => {
   const closeModalByName = (name) => () => closeModal(name)
+
   return (
     <Suspense fallback={<PagePreloader />}>
       {map(modals, ({ name, title }) => {
@@ -49,17 +49,6 @@ const Modals = ({ modals, closeModal }) => {
       })}
     </Suspense>
   )
-}
-
-Modals.propTypes = {
-  modals: objectOf(
-    shape({
-      name: string,
-      title: string,
-      component: object,
-    }),
-  ),
-  closeModal: func,
 }
 
 export default compose(

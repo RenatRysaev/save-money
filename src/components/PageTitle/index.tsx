@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { node } from 'prop-types'
 
-const PageTitle = ({ children }) => <h1>{children}</h1>
+import { PageTitleProps } from './types'
 
-PageTitle.propTypes = {
-  children: node.isRequired,
-}
+const PageTitle: React.FC<PageTitleProps> = ({ children }) => (
+  <h1>{children}</h1>
+)
 
 export default PageTitle

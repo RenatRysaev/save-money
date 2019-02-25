@@ -1,5 +1,5 @@
 import Loadable from 'react-loadable'
-import PagePreloader from 'components/PagePreloader/index'
+import PagePreloader from 'components/PagePreloader'
 
 import { ROUTES } from 'constants'
 
@@ -7,7 +7,7 @@ const routes = [
   {
     path: ROUTES.LOGIN.path,
     component: Loadable({
-      loader: () => import('pages/LoginPage/index'),
+      loader: () => import('pages/LoginPage'),
       loading: PagePreloader,
     }),
     isPrivate: false,
@@ -16,7 +16,7 @@ const routes = [
   {
     path: ROUTES.REGISTRATION.path,
     component: Loadable({
-      loader: () => import('pages/RegPage/index'),
+      loader: () => import('pages/RegPage'),
       loading: PagePreloader,
     }),
     isPrivate: false,
@@ -25,7 +25,7 @@ const routes = [
   {
     path: ROUTES.BUDGET.path,
     component: Loadable({
-      loader: () => import('pages/BudgetPage/index'),
+      loader: () => import('pages/BudgetPage'),
       loading: PagePreloader,
     }),
     isPrivate: true,
@@ -34,7 +34,7 @@ const routes = [
   {
     path: ROUTES.INCOME.path,
     component: Loadable({
-      loader: () => import('pages/IncomePage/index'),
+      loader: () => import('pages/IncomePage'),
       loading: PagePreloader,
     }),
     isPrivate: true,
@@ -43,7 +43,7 @@ const routes = [
   {
     path: ROUTES.COSTS.path,
     component: Loadable({
-      loader: () => import('pages/CostsPage/index'),
+      loader: () => import('pages/CostsPage'),
       loading: PagePreloader,
     }),
     isPrivate: true,
@@ -52,7 +52,7 @@ const routes = [
   {
     path: ROUTES.NOTFOUND.path,
     component: Loadable({
-      loader: () => import('pages/NotFoundPage/index'),
+      loader: () => import('pages/NotFoundPage'),
       loading: PagePreloader,
     }),
     isPrivate: false,

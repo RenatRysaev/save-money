@@ -1,16 +1,9 @@
 import * as React from 'react'
-import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import RegForm from 'containers/RegForm/index'
+import RegForm from 'containers/RegForm'
 
 import styles from './styles.module.scss'
-
-const mapStateToProps = () => ({
-  isLogin: false,
-})
-
-const mapDispatchToProps = {}
 
 const RegPage = () => {
   return (
@@ -19,9 +12,5 @@ const RegPage = () => {
     </div>
   )
 }
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
-)(RegPage)
+
+export default RegPage

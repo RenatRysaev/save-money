@@ -1,12 +1,13 @@
 import * as React from 'react'
-import { arrayOf, shape, string } from 'prop-types'
 
 import { NavLink } from 'react-router-dom'
 import MenuItem from '@material-ui/core/MenuItem'
 
+import { TopMenuProps } from './types'
+
 import styles from './styles.module.scss'
 
-const TopMenu = ({ list }) => (
+const TopMenu: React.FC<TopMenuProps> = ({ list }) => (
   <nav className={styles.nav}>
     {list.map(({ name, path }) => (
       <NavLink to={path} key={path}>
@@ -18,15 +19,6 @@ const TopMenu = ({ list }) => (
 
 TopMenu.defaultProps = {
   list: [],
-}
-
-TopMenu.propTypes = {
-  list: arrayOf(
-    shape({
-      name: string,
-      path: string,
-    }),
-  ),
 }
 
 export default TopMenu

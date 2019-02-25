@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react'
-import { bool, number, func } from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
@@ -17,8 +16,10 @@ import {
 import { thunkGetCosts } from 'store/costs/thunks'
 import { thunkGetIncome } from 'store/income/thunks'
 
-import PageTitle from 'components/PageTitle/index'
-import TotalValue from 'components/TotalValue/index'
+import PageTitle from 'components/PageTitle'
+import TotalValue from 'components/TotalValue'
+
+import { BudgetPageProps } from './types'
 
 const mapStateToProps = (state) => ({
   isLoadingCosts: selectIsLoadingCosts(state),
@@ -32,17 +33,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getCosts: thunkGetCosts,
   getIncome: thunkGetIncome,
-}
-
-interface BudgetPageProps {
-  isLoadingCosts: boolean
-  isLoadingIncome: boolean
-  costTotalSum: number
-  incomeTotalSum: number
-  costsEntitiesLength: number
-  incomeEntitiesLength: number
-  getCosts: () => void
-  getIncome: () => void
 }
 
 class BudgetPage extends Component<BudgetPageProps> {
@@ -83,17 +73,6 @@ class BudgetPage extends Component<BudgetPageProps> {
     )
   }
 }
-
-// BudgetPage.propTypes = {
-//   isLoadingCosts: bool,
-//   isLoadingIncome: bool,
-//   costsEntitiesLength: number.isRequired,
-//   incomeEntitiesLength: number.isRequired,
-//   costTotalSum: number.isRequired,
-//   incomeTotalSum: number.isRequired,
-//   getCosts: func.isRequired,
-//   getIncome: func.isRequired,
-// }
 
 export default compose(
   connect(

@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { string, func } from 'prop-types'
 import onClickOutside from 'react-onclickoutside'
 import size from 'lodash/size'
 import memoize from 'lodash/memoize'
@@ -8,25 +7,14 @@ import cond from 'lodash/cond'
 import { Formik } from 'formik'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import Error from 'components/Error/index'
-import TextOrField from 'components/TextOrField/index'
+import Error from 'components/Error'
+import TextOrField from 'components/TextOrField'
 
 import { CartSchema } from './constants'
 
+import { PreviewCartProps, PreviewCartState } from './types'
+
 import styles from './styles.module.scss'
-
-interface PreviewCartProps {
-  name: string
-  description: string
-  sum: string
-  id: string
-  onEdit: (todoData: object) => void
-  onDelete: (id: string | number) => void
-}
-
-interface PreviewCartState {
-  isEditMode: boolean
-}
 
 class PreviewCart extends Component<PreviewCartProps, PreviewCartState> {
   state = {
