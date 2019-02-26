@@ -1,11 +1,11 @@
-import Loadable from 'react-loadable'
+import Loadable, { LoadableComponent } from 'react-loadable'
 import PagePreloader from 'components/PagePreloader'
 
 import { ROUTES } from 'constants'
 
 type routesType = Array<{
   path: string
-  component: Promise<any>
+  component: LoadableComponent
   isPrivate: boolean
   isExact: boolean
 }>

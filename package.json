@@ -21,7 +21,6 @@
   "dependencies": {
     "@material-ui/core": "^3.8.1",
     "@material-ui/icons": "^3.0.2",
-    "@types/lodash": "^4.14.121",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.0.0",
@@ -46,8 +45,10 @@
     "yup": "^0.26.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.121",
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
+    "@types/react-loadable": "^5.5.0",
     "css-loader": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.3.0",

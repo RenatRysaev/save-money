@@ -13,6 +13,7 @@ module.exports = merge(baseConfig, {
 
   output: {
     filename: 'bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: resolve('/build'),
     publicPath: '/',
   },
