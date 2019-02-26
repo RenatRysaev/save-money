@@ -6,7 +6,7 @@ export const getToken = () => window.localStorage.getItem('token')
 
 export const clearToken = () => setToken('')
 
-export const isRenderHeader = () =>
+export const isRenderHeader = (): boolean =>
   !ROUTES_WITHOUT_HEADER[window.location.pathname]
 
 export const arrayToMap = (array: [], key: string): object =>

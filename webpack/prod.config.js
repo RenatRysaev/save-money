@@ -28,8 +28,10 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: ['babel-loader'],
+        test: /\.(ts|tsx)$/,
+        use: {
+          loader: 'ts-loader',
+        },
       },
       {
         test: /\.(sass|scss|css)$/,

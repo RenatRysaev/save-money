@@ -1,14 +1,14 @@
 import { API_URL } from 'constants'
 import { request } from './utils'
 
-export const getIncome = (token) =>
+export const getIncome = (token: string) =>
   request({
     method: 'get',
     url: `${API_URL.V1}/income`,
     token,
   })
 
-export const editIncome = (token, id, data) =>
+export const editIncome = (token: string, id: string, data: object) =>
   request({
     method: 'post',
     url: `${API_URL.V1}/income/update/${id}`,
@@ -16,7 +16,7 @@ export const editIncome = (token, id, data) =>
     data,
   })
 
-export const createIncome = (token, data) =>
+export const createIncome = (token: string, data: object) =>
   request({
     method: 'post',
     url: `${API_URL.V1}/income/create`,
@@ -24,7 +24,7 @@ export const createIncome = (token, data) =>
     data,
   })
 
-export const deleteIncome = (token, id) =>
+export const deleteIncome = (token: string, id: string) =>
   request({
     method: 'post',
     url: `${API_URL.V1}/income/remove/${id}`,

@@ -3,7 +3,14 @@ import PagePreloader from 'components/PagePreloader'
 
 import { ROUTES } from 'constants'
 
-const routes = [
+type routesType = {
+  path: string
+  component: Promise<any>
+  isPrivate: boolean
+  isExact: boolean
+}[]
+
+const routes: routesType = [
   {
     path: ROUTES.LOGIN.path,
     component: Loadable({

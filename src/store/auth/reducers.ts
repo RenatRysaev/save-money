@@ -8,7 +8,6 @@ import {
   actionLoginRequest,
   actionLoginSuccess,
   actionLoginFail,
-  // actionLogout,
 } from './actions'
 
 const initialState = Map({

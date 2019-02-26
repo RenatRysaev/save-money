@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosPromise } from 'axios'
 
 type requestType = {
   url: string
@@ -7,7 +7,12 @@ type requestType = {
   token?: string
 }
 
-export const request = ({ url, method, data = {}, token }: requestType) => {
+export const request = ({
+  url,
+  method,
+  data = {},
+  token,
+}: requestType): AxiosPromise => {
   const params = Object.assign(
     { url, method, data },
     token && { headers: { Authorization: token } },
