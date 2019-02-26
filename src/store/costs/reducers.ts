@@ -36,7 +36,7 @@ costsReducer.on(actionCostsRequestFailed, (state) =>
   state.set('isLoading', false),
 )
 
-costsReducer.on(actionCostEditRequest, (state) => state.set('isLoading', false))
+costsReducer.on(actionCostEditRequest, (state) => state.set('isLoading', true))
 
 costsReducer.on(actionCostEditFailed, (state) => state.set('isLoading', false))
 
