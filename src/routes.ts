@@ -3,14 +3,14 @@ import PagePreloader from 'components/PagePreloader'
 
 import { ROUTES } from 'constants'
 
-type routesType = Array<{
+interface IRouteType {
   path: string
   component: LoadableComponent
   isPrivate: boolean
   isExact: boolean
-}>
+}
 
-const routes: routesType = [
+const routes: IRouteType[] = [
   {
     path: ROUTES.LOGIN.path,
     component: Loadable({

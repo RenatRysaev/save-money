@@ -12,7 +12,7 @@ module.exports = merge(baseConfig, {
   entry: resolve('src/index.tsx'),
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
     path: resolve('/build'),
     publicPath: '/',
