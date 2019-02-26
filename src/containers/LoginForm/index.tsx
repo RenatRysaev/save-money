@@ -15,7 +15,7 @@ import {
   LoginFormSchema,
 } from './constants'
 
-import { LoginFormProps } from './types'
+import { ILoginFormProps } from './types'
 
 const mapStateToProps = (state) => ({
   isLoadingAuth: selectIsLoadingAuth(state),
@@ -25,7 +25,7 @@ const mapDispatchToProps = {
   login: thunkLogin,
 }
 
-class LoginForm extends Component<LoginFormProps> {
+class LoginForm extends Component<ILoginFormProps> {
   handleSubmit = (values) => {
     const { login } = this.props
     const { name, password } = values

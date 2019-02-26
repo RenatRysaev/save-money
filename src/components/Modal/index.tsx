@@ -6,11 +6,11 @@ import DialogContent from '@material-ui/core/DialogContent'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 
-import { ModalTypes } from './types'
+import { IModalTypes } from './types'
 
 import styles from './styles.module.scss'
 
-const Modal: React.FC<ModalTypes> = ({ children, isOpen, title, onClose }) => (
+const Modal: React.FC<IModalTypes> = ({ children, isOpen, title, onClose }) => (
   <Dialog open={isOpen} aria-labelledby={title} onClose={onClose}>
     <IconButton
       aria-label="Close"

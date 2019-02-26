@@ -13,7 +13,7 @@ import Error from 'components/Error'
 
 import { CartSchema } from 'components/PreviewCart/constants'
 
-import { CreateIncomeProps } from './types'
+import { ICreateIncomeProps } from './types'
 
 import styles from './styles.module.scss'
 
@@ -30,7 +30,7 @@ const initialValues = {
   sum: '',
 }
 
-const CreateIncome: React.FC<CreateIncomeProps> = ({
+const CreateIncome: React.FC<ICreateIncomeProps> = ({
   isLoading,
   createIncome,
 }) => (

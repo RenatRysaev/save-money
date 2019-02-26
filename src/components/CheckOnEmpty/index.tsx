@@ -1,9 +1,9 @@
-import { CheckOnEmptyProps } from './types'
+import { ICheckOnEmptyProps } from './types'
 
 const CheckOnEmpty = ({
   children,
   listLength = 0,
   fallbackContent,
-}: CheckOnEmptyProps) => (listLength !== 0 ? children : fallbackContent)
+}: ICheckOnEmptyProps) => (listLength !== 0 ? children : fallbackContent)
 
 export default CheckOnEmpty

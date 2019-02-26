@@ -2,11 +2,11 @@ import React, { Fragment } from 'react'
 import classNames from 'classnames'
 import TextField from '@material-ui/core/TextField'
 
-import { TextOrFieldProps } from './types'
+import { ITextOrFieldProps } from './types'
 
 import styles from './styles.module.scss'
 
-const TextOrField: React.FC<TextOrFieldProps> = ({
+const TextOrField: React.FC<ITextOrFieldProps> = ({
   isEditMode,
   name,
   value,

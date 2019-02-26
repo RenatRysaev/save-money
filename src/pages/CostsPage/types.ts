@@ -1,4 +1,4 @@
-export interface CostsPageProps {
+export interface ICostsPageProps {
   costs: object
   getCosts: () => void
   openModal: (modalData: {}) => void
@@ -7,7 +7,7 @@ export interface CostsPageProps {
   deleteCost: (id) => void
 }
 
-export type costType = {
+export interface ICostType {
   id: string
   name: string
   sum: string

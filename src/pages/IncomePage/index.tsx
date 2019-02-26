@@ -24,7 +24,7 @@ import CheckOnEmpty from 'components/CheckOnEmpty'
 import PreviewCart from 'components/PreviewCart'
 import Button from '@material-ui/core/Button'
 
-import { IncomePageProps, incomeType } from './types'
+import { IIncomePageProps, IIncomeType } from './types'
 
 import styles from './styles.module.scss'
 
@@ -40,7 +40,7 @@ const mapDispatchToProps = {
   openModal: actionOpenModal,
 }
 
-class IncomePage extends Component<IncomePageProps> {
+class IncomePage extends Component<IIncomePageProps> {
   componentDidMount() {
     const { income, getIncome } = this.props
 
@@ -76,7 +76,7 @@ class IncomePage extends Component<IncomePageProps> {
             listLength={size(income)}
             fallbackContent={<p>Income list is empty</p>}
           >
-            {map(income, (incomeItem: incomeType, key) => (
+            {map(income, (incomeItem: IIncomeType, key) => (
               <PreviewCart
                 key={key}
                 id={key}

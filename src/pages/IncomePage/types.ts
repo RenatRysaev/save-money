@@ -1,4 +1,4 @@
-export interface IncomePageProps {
+export interface IIncomePageProps {
   income: object
   getIncome: () => void
   openModal: (modalData: object) => void
@@ -7,7 +7,7 @@ export interface IncomePageProps {
   deleteIncome: (id) => void
 }
 
-export type incomeType = {
+export interface IIncomeType {
   id: string
   name: string
   sum: string

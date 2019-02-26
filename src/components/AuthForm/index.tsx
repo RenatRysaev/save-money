@@ -8,11 +8,11 @@ import Button from '@material-ui/core/Button'
 import Loader from 'components/Loader'
 import { Link } from 'react-router-dom'
 
-import { AuthFormProps } from './types'
+import { IAuthFormProps } from './types'
 
 import styles from './styles.module.scss'
 
-const AuthForm: React.FC<AuthFormProps> = ({
+const AuthForm: React.FC<IAuthFormProps> = ({
   fields,
   fieldsInitialValues,
   submitButtonText,

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-import { LoaderProps } from './types'
+import { ILoaderProps } from './types'
 
-const Loader: React.FC<LoaderProps> = ({
+const Loader: React.FC<ILoaderProps> = ({
   size,
   className,
   isLoading,

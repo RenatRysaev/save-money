@@ -1,4 +1,4 @@
-export type ModalTypes = {
+export interface IModalTypes {
   children: JSX.Element
   isOpen: boolean
   title: string

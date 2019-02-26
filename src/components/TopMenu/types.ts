@@ -1,3 +1,3 @@
-export type TopMenuProps = {
-  list: { name: string; path: string }[]
+export interface ITopMenuProps {
+  list: Array<{ name: string; path: string }>
 }

@@ -3,12 +3,12 @@ import PagePreloader from 'components/PagePreloader'
 
 import { ROUTES } from 'constants'
 
-type routesType = {
+type routesType = Array<{
   path: string
   component: Promise<any>
   isPrivate: boolean
   isExact: boolean
-}[]
+}>
 
 const routes: routesType = [
   {

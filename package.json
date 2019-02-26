@@ -9,9 +9,9 @@
     "start": "webpack-dev-server --config=webpack/dev.config.js",
     "prebuild": "yarn rimraf ./build",
     "build": "webpack --config=webpack/prod.config.js",
-    "lint:js": "eslint src/",
-    "lint:css": "stylelint src/",
-    "lint": "yarn lint:js & yarn lint:css"
+    "lint:scripts": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint:styles": "stylelint 'src/**/*.scss'",
+    "lint": "yarn lint:scripts & yarn lint:styles"
   },
   "husky": {
     "hooks": {
@@ -19,7 +19,6 @@
     }
   },
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
     "@material-ui/core": "^3.8.1",
     "@material-ui/icons": "^3.0.2",
     "@types/lodash": "^4.14.121",
@@ -66,6 +65,9 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-prettier": "^1.0.6",
     "ts-loader": "^5.3.3",
+    "tslint": "^5.13.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0",
     "typescript": "^3.3.3",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.1.2",

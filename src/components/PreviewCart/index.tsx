@@ -12,11 +12,11 @@ import TextOrField from 'components/TextOrField'
 
 import { CartSchema } from './constants'
 
-import { PreviewCartProps, PreviewCartState } from './types'
+import { IPreviewCartProps, IPreviewCartState } from './types'
 
 import styles from './styles.module.scss'
 
-class PreviewCart extends Component<PreviewCartProps, PreviewCartState> {
+class PreviewCart extends Component<IPreviewCartProps, IPreviewCartState> {
   state = {
     isEditMode: false,
   }
@@ -156,14 +156,5 @@ class PreviewCart extends Component<PreviewCartProps, PreviewCartState> {
     )
   }
 }
-//
-// PreviewCart.propTypes = {
-//   name: string.isRequired,
-//   description: string,
-//   sum: string.isRequired,
-//   id: string.isRequired,
-//   onEdit: func.isRequired,
-//   onDelete: func.isRequired,
-// }
 
 export default onClickOutside(PreviewCart)

@@ -1,4 +1,4 @@
-export interface PreviewCartProps {
+export interface IPreviewCartProps {
   name: string
   description: string
   sum: string
@@ -7,6 +7,6 @@ export interface PreviewCartProps {
   onDelete: (id: string | number) => void
 }
 
-export interface PreviewCartState {
+export interface IPreviewCartState {
   isEditMode: boolean
 }

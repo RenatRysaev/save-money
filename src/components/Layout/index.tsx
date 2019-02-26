@@ -3,11 +3,11 @@ import classNames from 'classnames'
 
 import { isFixedFooterToBottom } from './helpers'
 
-import { LayoutProps } from './types'
+import { ILayoutProps } from './types'
 
 import styles from './styles.module.scss'
 
-const Layout: React.FC<LayoutProps> = ({
+const Layout: React.FC<ILayoutProps> = ({
   header: Header,
   sidebar: Sidebar,
   footer: Footer,

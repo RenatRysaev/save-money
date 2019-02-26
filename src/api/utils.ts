@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from 'axios'
 
-type requestType = {
+interface IrequestType {
   url: string
   method: string
   data?: object
@@ -12,7 +12,7 @@ export const request = ({
   method,
   data = {},
   token,
-}: requestType): AxiosPromise => {
+}: IrequestType): AxiosPromise => {
   const params = Object.assign(
     { url, method, data },
     token && { headers: { Authorization: token } },

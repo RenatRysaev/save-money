@@ -15,7 +15,7 @@ import {
   RegFormSchema,
 } from './constants'
 
-import { RegFormProps } from './types'
+import { IRegFormProps } from './types'
 
 const mapStateToProps = (state) => ({
   isLoadingAuth: selectIsLoadingAuth(state),
@@ -25,7 +25,7 @@ const mapDispatchToProps = {
   registration: thunkRegistration,
 }
 
-class RegForm extends Component<RegFormProps> {
+class RegForm extends Component<IRegFormProps> {
   handleSubmit = (values) => {
     const { registration } = this.props
     const { name, password } = values

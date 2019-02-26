@@ -5,7 +5,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
 import { thunkLogout } from 'store/auth/thunks'
 
-import { LogoutProps } from './types'
+import { ILogoutProps } from './types'
 
 import styles from './styles.module.scss'
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = {
   logout: thunkLogout,
 }
 
-const Logout: React.FC<LogoutProps> = ({ logout }) => (
+const Logout: React.FC<ILogoutProps> = ({ logout }) => (
   <div>
     <Button variant="outlined" onClick={logout}>
       <span className={styles.buttonText}>Logout</span>

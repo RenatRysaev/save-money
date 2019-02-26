@@ -1,4 +1,4 @@
-export type LoaderProps = {
+export interface ILoaderProps {
   size?: number
   className?: string
   isLoading: boolean

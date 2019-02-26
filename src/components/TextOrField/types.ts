@@ -1,4 +1,4 @@
-export type TextOrFieldProps = {
+export interface ITextOrFieldProps {
   isEditMode: boolean
   name: string
   value: string | number

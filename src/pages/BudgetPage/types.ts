@@ -1,4 +1,4 @@
-export interface BudgetPageProps {
+export interface IBudgetPageProps {
   isLoadingCosts: boolean
   isLoadingIncome: boolean
   costTotalSum: number

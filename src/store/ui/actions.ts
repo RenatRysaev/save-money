@@ -1,7 +1,7 @@
 import { createAction } from 'redux-act'
-import { modalType } from 'types/modal'
+import { IModalType } from 'types/modal'
 
-export const actionOpenModal = createAction<modalType>(
+export const actionOpenModal = createAction<IModalType>(
   'OPEN_MODAL',
   (modal) => modal,
 )

@@ -1,3 +1,3 @@
-export type LogoutProps = {
+export interface ILogoutProps {
   logout: () => void
 }

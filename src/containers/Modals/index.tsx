@@ -12,7 +12,7 @@ import { actionCloseModal } from 'store/ui/actions'
 import Modal from 'components/Modal'
 import PagePreloader from 'components/PagePreloader'
 
-import { ModalsProps } from './types'
+import { IModalsProps } from './types'
 
 const mapStateToProps = (state) => ({
   modals: selectModals(state),
@@ -29,7 +29,7 @@ const MODAL_COMPONENTS = {
   [MODALS.CREATE_COST.name]: lazy(() => import('containers/Modals/CreateCost')),
 }
 
-const Modals: React.FC<ModalsProps> = ({ modals, closeModal }) => {
+const Modals: React.FC<IModalsProps> = ({ modals, closeModal }) => {
   const closeModalByName = (name) => () => closeModal(name)
 
   return (

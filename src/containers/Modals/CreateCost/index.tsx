@@ -13,7 +13,7 @@ import Error from 'components/Error'
 
 import { CartSchema } from 'components/PreviewCart/constants'
 
-import { CreateCostProps } from './types'
+import { ICreateCostProps } from './types'
 
 import styles from './styles.module.scss'
 
@@ -31,7 +31,7 @@ const initialValues = {
   sum: '',
 }
 
-const CreateCost: React.FC<CreateCostProps> = ({ isLoading, createCost }) => (
+const CreateCost: React.FC<ICreateCostProps> = ({ isLoading, createCost }) => (
   <Formik
     initialValues={initialValues}
     onSubmit={createCost}

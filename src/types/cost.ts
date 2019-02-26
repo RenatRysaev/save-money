@@ -1,7 +1,7 @@
-export type costType = {
-  id: string
+export interface ICostType {
+  id?: string
   name: string
   sum: string | number
-  user_id: string
+  user_id?: string
   description?: string
 }

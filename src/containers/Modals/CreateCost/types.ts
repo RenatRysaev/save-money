@@ -1,6 +1,6 @@
-export type CreateCostProps = {
+import { ICostType } from 'types/cost'
+
+export interface ICreateCostProps {
   isLoading: boolean
-  createCost: (
-    cost: { name: string; description?: string; sum: string | number },
-  ) => void
+  createCost: (cost: ICostType) => void
 }

@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import { PageTitleProps } from './types'
+import { IPageTitleProps } from './types'
 
-const PageTitle: React.FC<PageTitleProps> = ({ children }) => (
+const PageTitle: React.FC<IPageTitleProps> = ({ children }) => (
   <h1>{children}</h1>
 )
 

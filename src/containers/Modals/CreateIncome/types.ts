@@ -1,4 +1,6 @@
-export type CreateIncomeProps = {
+import { IIncomeType } from 'types/income'
+
+export interface ICreateIncomeProps {
   isLoading: boolean
-  createIncome: (cost: { name: string; sum: string | number }) => void
+  createIncome: (income: IIncomeType) => void
 }

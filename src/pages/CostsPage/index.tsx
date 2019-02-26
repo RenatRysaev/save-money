@@ -24,7 +24,7 @@ import CheckOnEmpty from 'components/CheckOnEmpty'
 import PreviewCart from 'components/PreviewCart'
 import Button from '@material-ui/core/Button'
 
-import { CostsPageProps, costType } from './types'
+import { ICostsPageProps, ICostType } from './types'
 
 import styles from './styles.module.scss'
 
@@ -40,7 +40,7 @@ const mapDispatchToProps = {
   openModal: actionOpenModal,
 }
 
-class CostsPage extends Component<CostsPageProps> {
+class CostsPage extends Component<ICostsPageProps> {
   componentDidMount() {
     const { costs, getCosts } = this.props
 
@@ -76,7 +76,7 @@ class CostsPage extends Component<CostsPageProps> {
             listLength={size(costs)}
             fallbackContent={<p>Costs list is empty</p>}
           >
-            {map(costs, (cost: costType, key) => (
+            {map(costs, (cost: ICostType, key) => (
               <PreviewCart
                 key={key}
                 id={key}
