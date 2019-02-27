@@ -4,6 +4,8 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import Layout from 'components/Layout'
+import ErrorBoundary from 'components/ErrorBoundary'
+import Fallback from 'components/Fallback'
 import Header from 'containers/Header'
 import Modals from 'containers/Modals'
 
@@ -13,20 +15,22 @@ import routes from 'routes'
 
 const App = () => (
   <React.Fragment>
-    <Layout header={isRenderHeader() ? Header : null}>
-      <Switch>
-        {routes.map((route) => (
-          <Route
-            path={route.path}
-            component={route.component}
-            exact={route.isExact}
-            key={route.path}
-          />
-        ))}
-      </Switch>
-    </Layout>
-    <Modals />
-    <ToastContainer autoClose={2000} />
+    <ErrorBoundary fallbackComponent={<Fallback />}>
+      <Layout header={isRenderHeader() ? Header : null}>
+        <Switch>
+          {routes.map((route) => (
+            <Route
+              path={route.path}
+              component={route.component}
+              exact={route.isExact}
+              key={route.path}
+            />
+          ))}
+        </Switch>
+      </Layout>
+      <Modals />
+      <ToastContainer autoClose={2000} />
+    </ErrorBoundary>
   </React.Fragment>
 )
 
