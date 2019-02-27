@@ -28,12 +28,23 @@ module.exports = merge(baseConfig, {
   mode: 'production',
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].[contenthash].bundle.js',
     path: resolve('build'),
   },
 
   optimization: {
     minimizer: [new UglifyJsPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
 
   module: {

@@ -1,10 +1,21 @@
 const { resolve } = require('path')
 const merge = require('webpack-merge')
+const AutoDllPlugin = require('autodll-webpack-plugin')
 
 const baseConfig = require('./base.config')
 const { STYLE_LOADERS } = require('./utils')
 
-const plugins = []
+const plugins = [
+  new AutoDllPlugin({
+    inject: true,
+    debug: true,
+    filename: '[name]_[hash].js',
+    path: './dll',
+    entry: {
+      vendor: ['react', 'react-dom', 'lodash'],
+    },
+  }),
+]
 
 module.exports = merge(baseConfig, {
   mode: 'development',
@@ -18,7 +29,7 @@ module.exports = merge(baseConfig, {
     publicPath: '/',
   },
 
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
 
   devServer: {
     port: 9000,
@@ -27,6 +38,12 @@ module.exports = merge(baseConfig, {
 
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx|scss)$/,
+        use: {
+          loader: 'cache-loader',
+        },
+      },
       {
         test: /\.(ts|tsx)$/,
         use: {
