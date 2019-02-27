@@ -1,6 +1,7 @@
 const { resolve } = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const merge = require('webpack-merge')
 
 const baseConfig = require('./base.config')
@@ -14,6 +15,10 @@ const plugins = [
   new WorkboxPlugin.GenerateSW({
     clientsClaim: true,
     skipWaiting: true,
+  }),
+  new BundleAnalyzerPlugin({
+    analyzerMode: 'disabled',
+    generateStatsFile: true,
   }),
 ]
 

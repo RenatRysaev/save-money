@@ -9,7 +9,8 @@
     "start": "webpack-dev-server --config=webpack/dev.config.js",
     "prebuild": "yarn rimraf ./build",
     "build": "webpack --config=webpack/prod.config.js",
-    "lint:scripts": "tslint -c tslint.json 'src/**/*.ts'",
+    "bundle-report": "webpack-bundle-analyzer --port 4200 build/stats.json",
+    "lint:scripts": "tslint -c tslint.json 'src/**/*.(ts|tsx)'",
     "lint:styles": "stylelint 'src/**/*.scss'",
     "lint": "yarn lint:scripts & yarn lint:styles"
   },
@@ -71,6 +72,7 @@
     "tslint-react": "^3.6.0",
     "typescript": "^3.3.3333",
     "webpack": "^4.29.5",
+    "webpack-bundle-analyzer": "^3.0.4",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1",
