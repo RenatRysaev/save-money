@@ -1,5 +1,6 @@
 const { resolve } = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const merge = require('webpack-merge')
@@ -28,6 +29,10 @@ module.exports = merge(baseConfig, {
   output: {
     filename: 'bundle.js',
     path: resolve('build'),
+  },
+
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({})],
   },
 
   module: {
