@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root'
 import * as React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
@@ -34,4 +35,4 @@ const App = () => (
   </React.Fragment>
 )
 
-export default App
+export default hot(App)

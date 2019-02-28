@@ -3,6 +3,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
+const { pwaManifest } = require('../src/manifest.js')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const merge = require('webpack-merge')
 
@@ -18,6 +20,7 @@ const plugins = [
     clientsClaim: true,
     skipWaiting: true,
   }),
+  new WebpackPwaManifest(pwaManifest),
   new BundleAnalyzerPlugin({
     analyzerMode: 'disabled',
     generateStatsFile: true,
@@ -52,7 +55,7 @@ module.exports = merge(baseConfig, {
       {
         test: /\.(ts|tsx)$/,
         use: {
-          loader: 'ts-loader',
+          loader: 'babel-loader',
         },
       },
       {

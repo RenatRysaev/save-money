@@ -1,7 +1,5 @@
 const { resolve } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackPwaManifest = require('webpack-pwa-manifest')
-const { pwaManifest } = require('../src/manifest.js')
 
 const src = resolve('src')
 
@@ -9,6 +7,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.ts', '.tsx'],
     alias: {
+      'react-dom': '@hot-loader/react-dom',
       store: resolve(src, 'store'),
       pages: resolve(src, 'pages'),
       components: resolve(src, 'components'),
@@ -28,6 +27,5 @@ module.exports = {
       minify: true,
       favicon: resolve('src/assets/favicons/favicon.ico'),
     }),
-    new WebpackPwaManifest(pwaManifest),
   ],
 }

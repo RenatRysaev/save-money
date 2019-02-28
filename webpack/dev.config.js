@@ -1,19 +1,16 @@
 const { resolve } = require('path')
 const merge = require('webpack-merge')
-const AutoDllPlugin = require('autodll-webpack-plugin')
+const webpack = require('webpack')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 const baseConfig = require('./base.config')
 const { STYLE_LOADERS } = require('./utils')
 
 const plugins = [
-  new AutoDllPlugin({
-    inject: true,
-    debug: true,
-    filename: '[name]_[hash].js',
-    path: './dll',
-    entry: {
-      vendor: ['react', 'react-dom', 'lodash'],
-    },
+  new webpack.HotModuleReplacementPlugin(),
+  new ForkTsCheckerWebpackPlugin({
+    tsconfig: './tsconfig.json',
+    tslint: './tslint.json',
   }),
 ]
 
@@ -34,23 +31,24 @@ module.exports = merge(baseConfig, {
   devServer: {
     port: 9000,
     historyApiFallback: true,
+    hot: true,
   },
 
   module: {
     rules: [
       {
-        test: /\.(ts|tsx|scss)$/,
-        use: {
-          loader: 'cache-loader',
-        },
-      },
-      {
         test: /\.(ts|tsx)$/,
-        use: {
-          loader: 'ts-loader',
-        },
+        use: [
+          { loader: 'cache-loader' },
+          { loader: 'thread-loader', options: { workerParallelJobs: 2 } },
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+            },
+          },
+        ],
       },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.(sass|scss|css)$/,
         exclude: /\.module\.(sass|scss|css)$/,
