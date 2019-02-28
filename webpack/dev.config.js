@@ -38,9 +38,8 @@ module.exports = merge(baseConfig, {
     rules: [
       {
         test: /\.(ts|tsx)$/,
+        exclude: /(node_modules)/,
         use: [
-          { loader: 'cache-loader' },
-          { loader: 'thread-loader', options: { workerParallelJobs: 2 } },
           {
             loader: 'babel-loader',
             options: {
