@@ -1,16 +1,51 @@
 import * as React from 'react'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import RegForm from 'containers/RegForm'
+import { thunkRegistration } from 'store/auth/thunks'
+
+import { selectIsLoadingAuth } from 'store/auth/selectors'
+
+import AuthForm from 'components/AuthForm'
+
+import {
+  fields,
+  fieldsInitialValues,
+  linkData,
+  RegFormSchema,
+} from 'pages/RegPage/constants'
+
+import { IRegPageProps } from './types'
 
 import styles from './styles.module.scss'
 
-const RegPage = () => {
+const mapStateToProps = (state) => ({
+  isLoadingAuth: selectIsLoadingAuth(state),
+})
+
+const mapDispatchToProps = {
+  registration: thunkRegistration,
+}
+
+const RegPage: React.FC<IRegPageProps> = ({ registration, isLoading }) => {
   return (
     <div className={styles.pageContainer}>
-      <RegForm />
+      <AuthForm
+        fields={fields}
+        fieldsInitialValues={fieldsInitialValues}
+        link={linkData}
+        onSubmit={registration}
+        submitButtonText="Registration"
+        validationSchema={RegFormSchema}
+        isLoading={isLoading}
+      />
     </div>
   )
 }
 
-export default RegPage
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+)(RegPage)

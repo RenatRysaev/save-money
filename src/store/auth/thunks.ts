@@ -2,7 +2,7 @@ import { push, replace } from 'connected-react-router'
 import { toast } from 'react-toastify'
 
 import API from 'api'
-import { ROUTES } from 'constants'
+import { ROUTES } from 'constants/routes'
 import { getToken, setToken, clearToken } from 'utils'
 import { checkIsAuthPage } from './helpers'
 
@@ -16,11 +16,13 @@ import {
   actionLogout,
 } from './actions'
 
-export const thunkRegistration = (name, password) => async (dispatch) => {
+export const thunkRegistration = ({ name, login, password }) => async (
+  dispatch,
+) => {
   try {
     dispatch(actionRegistrationRequest())
 
-    const { data: user } = await API.registration(name, password)
+    const { data: user } = await API.registration(name, login, password)
 
     dispatch(actionRegistrationSuccess(user))
     dispatch(push(ROUTES.LOGIN.path))
@@ -31,11 +33,11 @@ export const thunkRegistration = (name, password) => async (dispatch) => {
   }
 }
 
-export const thunkLogin = (name, password) => async (dispatch) => {
+export const thunkLogin = ({ login, password }) => async (dispatch) => {
   try {
     dispatch(actionLoginRequest())
 
-    const { data: user } = await API.login(name, password)
+    const { data: user } = await API.login(login, password)
 
     setToken(user.token)
 

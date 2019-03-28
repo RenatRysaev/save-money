@@ -1,5 +1,5 @@
 export interface IModalTypes {
-  children: JSX.Element
+  children: any
   isOpen: boolean
   title: string
   onClose: () => void

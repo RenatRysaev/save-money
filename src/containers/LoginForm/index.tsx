@@ -50,7 +50,7 @@ class LoginForm extends Component<ILoginFormProps> {
 }
 
 export default compose(
-  connect(
+  connect<any>(
     mapStateToProps,
     mapDispatchToProps,
   ),

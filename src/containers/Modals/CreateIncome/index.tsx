@@ -76,7 +76,7 @@ const CreateIncome: React.FC<ICreateIncomeProps> = ({
 )
 
 export default compose(
-  connect(
+  connect<any>(
     mapStateToProps,
     mapDispatchToProps,
   ),

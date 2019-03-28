@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import size from 'lodash/size'
 import map from 'lodash/map'
 
-import { MODALS } from 'constants'
+import { MODALS } from 'constants/modals'
 
 import {
   selectIncomeEntitiesJS,
@@ -19,7 +19,6 @@ import {
 import { actionOpenModal } from 'store/ui/actions'
 
 import Loader from 'components/Loader'
-import PageTitle from 'components/PageTitle'
 import CheckOnEmpty from 'components/CheckOnEmpty'
 import PreviewCart from 'components/PreviewCart'
 import Button from '@material-ui/core/Button'
@@ -59,8 +58,6 @@ class IncomePage extends Component<IIncomePageProps> {
 
     return (
       <div className={styles.incomeList}>
-        <PageTitle>Income</PageTitle>
-
         <div className={styles.createButtonContainer}>
           <Button
             onClick={this.handleOpenModal}

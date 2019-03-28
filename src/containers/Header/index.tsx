@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { TOP_MENU } from 'constants'
+import { TOP_MENU } from 'constants/menu'
 
 import Logout from 'containers/Logout'
 

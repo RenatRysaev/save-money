@@ -1,6 +1,8 @@
 import * as React from 'react'
 import classNames from 'classnames'
 
+import PageTitle from 'components/PageTitle'
+
 import { isFixedFooterToBottom } from './helpers'
 
 import { ILayoutProps } from './types'
@@ -8,35 +10,32 @@ import { ILayoutProps } from './types'
 import styles from './styles.module.scss'
 
 const Layout: React.FC<ILayoutProps> = ({
-  header: Header,
-  sidebar: Sidebar,
-  footer: Footer,
+  header,
+  sidebar,
+  footer,
+  title,
   children,
 }) => (
   <div className={styles.layout}>
-    {Header && (
-      <header className={styles.header}>
-        <Header />
-      </header>
-    )}
+    {header && <header className={styles.header}>{header}</header>}
 
     <div className={styles.contentWrapper}>
-      {Sidebar && (
-        <aside className={styles.sidebar}>
-          <Sidebar />
-        </aside>
-      )}
-      <div className={styles.body}>{children}</div>
+      {sidebar && <aside className={styles.sidebar}>{sidebar}</aside>}
+      <div className={styles.body}>
+        {title && <PageTitle>{title}</PageTitle>}
+
+        {children}
+      </div>
     </div>
 
-    {Footer && (
+    {footer && (
       <footer
         className={classNames({
           [styles.footer]: true,
           [styles.bottomFixedFooter]: isFixedFooterToBottom(),
         })}
       >
-        <Footer />
+        {footer}
       </footer>
     )}
   </div>

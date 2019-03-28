@@ -9,6 +9,7 @@ const { STYLE_LOADERS } = require('./utils')
 const plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new ForkTsCheckerWebpackPlugin({
+    watch: '../src/**/*',
     tsconfig: './tsconfig.json',
     tslint: './tslint.json',
   }),

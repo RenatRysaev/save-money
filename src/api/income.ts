@@ -1,4 +1,4 @@
-import { API_URL } from 'constants'
+import { API_URL } from 'constants/api'
 import { request } from './utils'
 
 export const getIncome = (token: string) =>

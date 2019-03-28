@@ -47,7 +47,7 @@
       "pages/*": ["src/pages/*"],
       "components/*": ["src/components/*"],
       "containers/*": ["src/containers/*"],
-      "constants": ["src/constants"],
+      "constants/*": ["src/constants/*"],
       "hoc/*": ["src/hoc/*"],
       "utils/*": ["src/utils/*"],
       "api/*": ["src/api/*"],

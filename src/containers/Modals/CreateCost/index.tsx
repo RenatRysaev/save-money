@@ -84,7 +84,7 @@ const CreateCost: React.FC<ICreateCostProps> = ({ isLoading, createCost }) => (
 )
 
 export default compose(
-  connect(
+  connect<any>(
     mapStateToProps,
     mapDispatchToProps,
   ),

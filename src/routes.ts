@@ -1,23 +1,21 @@
 import loadable from '@loadable/component'
 import PagePreloader from 'components/PagePreloader'
 
-import { ROUTES } from 'constants'
+import { ROUTES } from 'constants/routes'
 
-interface IRouteType {
-  path: string
-  component: any
-  isPrivate: boolean
-  isExact: boolean
-}
+import { IRoute } from 'types/route'
 
-const routes: IRouteType[] = [
+const routes: IRoute[] = [
   {
     path: ROUTES.LOGIN.path,
     component: loadable(() => import('pages/LoginPage'), {
       fallback: PagePreloader,
     }),
     isPrivate: false,
-    isExact: true,
+    exact: true,
+    withHeader: false,
+    includesInTheMenu: false,
+    title: '',
   },
   {
     path: ROUTES.REGISTRATION.path,
@@ -25,7 +23,10 @@ const routes: IRouteType[] = [
       fallback: PagePreloader,
     }),
     isPrivate: false,
-    isExact: true,
+    exact: true,
+    withHeader: false,
+    includesInTheMenu: false,
+    title: '',
   },
   {
     path: ROUTES.BUDGET.path,
@@ -33,7 +34,10 @@ const routes: IRouteType[] = [
       fallback: PagePreloader,
     }),
     isPrivate: true,
-    isExact: true,
+    exact: true,
+    withHeader: true,
+    includesInTheMenu: true,
+    title: ROUTES.BUDGET.name,
   },
   {
     path: ROUTES.INCOME.path,
@@ -41,7 +45,10 @@ const routes: IRouteType[] = [
       fallback: PagePreloader,
     }),
     isPrivate: true,
-    isExact: true,
+    exact: true,
+    withHeader: true,
+    includesInTheMenu: true,
+    title: ROUTES.INCOME.name,
   },
   {
     path: ROUTES.COSTS.path,
@@ -49,7 +56,21 @@ const routes: IRouteType[] = [
       fallback: PagePreloader,
     }),
     isPrivate: true,
-    isExact: true,
+    exact: true,
+    withHeader: true,
+    includesInTheMenu: true,
+    title: ROUTES.COSTS.name,
+  },
+  {
+    path: ROUTES.EXPENSE.path,
+    component: loadable(() => import('pages/ExpensePage'), {
+      fallback: PagePreloader,
+    }),
+    isPrivate: true,
+    exact: true,
+    withHeader: true,
+    includesInTheMenu: true,
+    title: ROUTES.EXPENSE.name,
   },
   {
     path: ROUTES.NOTFOUND.path,
@@ -57,7 +78,10 @@ const routes: IRouteType[] = [
       fallback: PagePreloader,
     }),
     isPrivate: false,
-    isExact: true,
+    exact: true,
+    withHeader: true,
+    includesInTheMenu: false,
+    title: ROUTES.NOTFOUND.name,
   },
 ]
 

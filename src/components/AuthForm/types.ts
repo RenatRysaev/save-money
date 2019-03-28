@@ -1,6 +1,6 @@
 export interface IAuthFormProps {
   fields: Array<{ name: string; type: string; label: string }>
-  fieldsInitialValues: { name: string; password: string }
+  fieldsInitialValues: any
   submitButtonText: string
   link: { path: string; text: string }
   validationSchema: any

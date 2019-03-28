@@ -16,9 +16,6 @@ import {
 import { thunkGetCosts } from 'store/costs/thunks'
 import { thunkGetIncome } from 'store/income/thunks'
 
-import PageTitle from 'components/PageTitle'
-import TotalValue from 'components/TotalValue'
-
 import { IBudgetPageProps } from './types'
 
 const mapStateToProps = (state) => ({
@@ -44,13 +41,13 @@ class BudgetPage extends Component<IBudgetPageProps> {
       getIncome,
     } = this.props
 
-    if (!costsEntitiesLength) {
-      getCosts()
-    }
-
-    if (!incomeEntitiesLength) {
-      getIncome()
-    }
+    // if (!costsEntitiesLength) {
+    //   getCosts()
+    // }
+    //
+    // if (!incomeEntitiesLength) {
+    //   getIncome()
+    // }
   }
 
   render() {
@@ -61,21 +58,7 @@ class BudgetPage extends Component<IBudgetPageProps> {
       incomeTotalSum,
     } = this.props
 
-    return (
-      <Fragment>
-        <PageTitle>Budget</PageTitle>
-        <TotalValue
-          name="Total costs"
-          value={costTotalSum}
-          isLoading={isLoadingCosts}
-        />
-        <TotalValue
-          name="Total income"
-          value={incomeTotalSum}
-          isLoading={isLoadingIncome}
-        />
-      </Fragment>
-    )
+    return <Fragment>test</Fragment>
   }
 }
 
