@@ -4,7 +4,7 @@ export const ROUTES = {
     name: 'Login',
   },
   REGISTRATION: {
-    path: '/reg',
+    path: '/registration',
     name: 'Registration',
   },
   BUDGET: {
@@ -12,7 +12,7 @@ export const ROUTES = {
     name: 'Budget',
   },
   INCOME: {
-    path: '/budget/income',
+    path: '/income',
     name: 'Income',
   },
   EXPENSE: {
