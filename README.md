@@ -1,20 +1,14 @@
 # App for budget planning.
 
-## [API](https://github.com/RenatRysaev/save-money-api)
+## [REST API](https://github.com/RenatRysaev/save-money-api)
 
-### Minimum functional for app work.
+### Work with project in terminal:
 
-### Routes:
+**Install dependencies**: `yarn install`
 
-1. **/** - Login page.
+**Run**: `yarn start`
 
-2. **/reg** - Registration page.
-
-3. **/budget** - Planning page. There is info about costs/incomes plan.
-
-4. **/budget/income** - Incomes. Every income - record with income's name and sum. (Ordinary CRUD)
-
-5. **/budget/costs** - Costs. Every cost - record with cost's name, sum and description. (Ordinary CRUD)
+**Build**: `yarn build`
 
 ### Main dependencies:
 
@@ -33,11 +27,3 @@
 13. [Axios](https://github.com/axios/axios) - http client.
 14. [Formik](https://github.com/jaredpalmer/formik) - work with forms.
 15. [Yup](https://github.com/jquense/yup) - validation.
-
-### Work with project in terminal:
-
-**Install dependencies**: `yarn install`
-
-**Run**: `yarn start`
-
-**Build**: `yarn build`
