@@ -8,10 +8,7 @@ export const selectIsLoadingIncome = (state) =>
 
 export const selectIncomeEntities = createSelector(
   selectIncome,
-  (income) => {
-    console.log(income)
-    return income.get('entities').toJS()
-  },
+  (income) => income.get('entities').toJS(),
 )
 
 export const selectIncomeEntitiesLength = (state) =>
