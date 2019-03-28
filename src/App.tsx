@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import CustomRoute from 'components/CustomRoute'
 import ErrorBoundary from 'components/ErrorBoundary'
 import Fallback from 'components/Fallback'
-import Modals from 'containers/Modals'
 
 import routes from 'routes'
 
@@ -20,7 +19,6 @@ const App = () => (
         ))}
       </Switch>
 
-      <Modals />
       <ToastContainer autoClose={2000} />
     </ErrorBoundary>
   </React.Fragment>

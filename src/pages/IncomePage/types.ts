@@ -3,8 +3,8 @@ export interface IIncomePageProps {
   getIncome: () => void
   openModal: (modalData: object) => void
   isLoadingIncome: boolean
-  editIncome: (incomeData) => void
-  deleteIncome: (id) => void
+  updateIncome: (income) => void
+  removeIncome: (id) => void
 }
 
 export interface IIncomeType {

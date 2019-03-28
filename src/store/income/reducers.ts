@@ -1,75 +1,53 @@
 import { createReducer } from 'redux-act'
 import { fromJS } from 'immutable'
 import { arrayToMap } from 'utils'
+import { handleSimilarActions } from 'utils/reducer'
 
 import {
-  actionIncomeRequest,
-  actionIncomeRequestFailed,
-  actionIncomeRequestSucceed,
-  actionCreateIncomeFailed,
-  actionCreateIncomeRequest,
   actionCreateIncomeSucceed,
-  actionDeleteIncomeFailed,
-  actionDeleteIncomeRequest,
-  actionDeleteIncomeSucceed,
-  actionIncomeEditFailed,
-  actionIncomeEditRequest,
-  actionIncomeEditSucceed,
+  actionGetIncomeSucceed,
+  actionUpdateIncomeSucceed,
+  actionRemoveIncomeSucceed,
+  requestActions,
+  failActions,
 } from './actions'
 
+
 const initialState = fromJS({
-  entities: {},
+  entities: [],
   isLoading: false,
 })
 
 const incomeReducer = createReducer({}, initialState)
 
-incomeReducer.on(actionIncomeRequest, (state) => state.set('isLoading', true))
+const handleActions = handleSimilarActions(incomeReducer)
 
-incomeReducer.on(actionIncomeRequestSucceed, (state, income) =>
-  state
-    .set('entities', fromJS(arrayToMap(income, 'id')))
-    .set('isLoading', false),
-)
+handleActions(requestActions, 'isLoading', true)
+handleActions(failActions, 'isLoading', false)
 
-incomeReducer.on(actionIncomeRequestFailed, (state) =>
-  state.set('isLoading', false),
-)
-
-incomeReducer.on(actionIncomeEditRequest, (state) =>
-  state.set('isLoading', true),
-)
-
-incomeReducer.on(actionIncomeEditFailed, (state) =>
-  state.set('isLoading', false),
-)
-
-incomeReducer.on(actionIncomeEditSucceed, (state, income) =>
-  state.set('isLoading', false).setIn(['entities', income.id], income),
-)
-
-incomeReducer.on(actionCreateIncomeRequest, (state) =>
-  state.set('isLoading', true),
-)
-
-incomeReducer.on(actionCreateIncomeFailed, (state) =>
-  state.set('isLoading', false),
-)
 
 incomeReducer.on(actionCreateIncomeSucceed, (state, income) =>
-  state.set('isLoading', false).setIn(['entities', income.id], income),
+  state
+    .set('isLoading', false)
+    .set('entities', state.get('entities').push(income)),
 )
 
-incomeReducer.on(actionDeleteIncomeRequest, (state) =>
-  state.set('isLoading', true),
+incomeReducer.on(actionGetIncomeSucceed, (state, income) =>
+  state
+    .set('isLoading', false)
+    .set('entities', fromJS(income)),
 )
 
-incomeReducer.on(actionDeleteIncomeFailed, (state) =>
-  state.set('isLoading', false),
+incomeReducer.on(actionUpdateIncomeSucceed, (state, income) =>
+  state
+    .set('isLoading', false)
+    .setIn(['entities', income.id], fromJS(income)),
 )
 
-incomeReducer.on(actionDeleteIncomeSucceed, (state, income) =>
-  state.set('isLoading', false).deleteIn(['entities', income.id]),
+incomeReducer.on(actionRemoveIncomeSucceed, (state, id) =>
+  state
+    .set('isLoading', false)
+    .deleteIn(['entities', id]),
 )
 
 export default incomeReducer

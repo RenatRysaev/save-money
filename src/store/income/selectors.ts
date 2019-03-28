@@ -1,23 +1,24 @@
 import { createSelector } from 'reselect'
-import reduce from 'lodash/reduce'
-import size from 'lodash/size'
-import toNumber from 'lodash/toNumber'
+import { reduce, size, toNumber } from 'lodash'
 
 export const selectIncome = (state) => state.income
 
 export const selectIsLoadingIncome = (state) =>
   selectIncome(state).get('isLoading')
 
-export const selectIncomeEntitiesJS = createSelector(
+export const selectIncomeEntities = createSelector(
   selectIncome,
-  (income) => income.get('entities').toJS(),
+  (income) => {
+    console.log(income)
+    return income.get('entities').toJS()
+  },
 )
 
 export const selectIncomeEntitiesLength = (state) =>
-  size(selectIncomeEntitiesJS(state))
+  size(selectIncomeEntities(state))
 
 export const selectIncomeTotalSum = createSelector(
-  selectIncomeEntitiesJS,
+  selectIncomeEntities,
   (income) =>
     reduce(
       income,

@@ -1,5 +1,5 @@
 import { createReducer } from 'redux-act'
-import { fromJS, Map } from 'immutable'
+import { fromJS } from 'immutable'
 import { handleSimilarActions } from 'utils/reducer'
 
 import {
@@ -24,17 +24,25 @@ handleActions(requestActions, 'isLoading', true)
 handleActions(failActions, 'isLoading', false)
 
 expenseReducer.on(actionCreateExpenseSucceed, (state, expense) =>
-  state.set('entities', state.get('entities').push(expense)),
+  state
+    .set('isLoading', false)
+    .set('entities', state.get('entities').push(fromJS(expense))),
 )
 
 expenseReducer.on(actionGetExpensesSucceed, (state, expenses) =>
-  state.set('entities', expenses),
+  state
+    .set('isLoading', false)
+    .set('entities', fromJS(expenses)),
 )
 
 expenseReducer.on(actionUpdateExpenseSucceed, (state, expense) =>
-  state.setIn(['entities', expense.id], expense),
+  state
+    .set('isLoading', false)
+    .setIn(['entities', expense.id], fromJS(expense)),
 )
 
 expenseReducer.on(actionRemoveExpenseSucceed, (state, id) =>
-  state.deleteIn(['entities', id]),
+  state
+    .set('isLoading', false)
+    .deleteIn(['entities', id]),
 )

@@ -1,6 +1,6 @@
-export interface IIncomeType {
-  id?: string
+export interface IIncome {
+  id: string
   name: string
-  sum: string | number
-  user_id?: string
+  sum: number
+  currency: string
 }

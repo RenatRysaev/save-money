@@ -2,7 +2,6 @@ import { toast } from 'react-toastify'
 
 import API from 'api'
 
-// import { actionCloseModal } from 'store/ui/actions'
 import {
   actionGetExpenses,
   actionGetExpensesSucceed,
@@ -21,8 +20,6 @@ import {
 import { ExpenseType, IExpense } from 'types/expense'
 
 import { getToken } from 'utils'
-
-// import { MODALS } from 'constants/modals'
 
 export const thunkGetExpenses = (expenseType: ExpenseType) => async (
   dispatch,
@@ -49,11 +46,9 @@ export const thunkCreateExpense = (expense: IExpense) => async (dispatch) => {
     const { data: createdExpense } = await API.createExpense(token, expense)
 
     dispatch(actionCreateExpenseSucceed(createdExpense))
-    // dispatch(actionCloseModal(MODALS.CREATE_INCOME.name))
     toast.success('Successful create')
   } catch (err) {
     dispatch(actionCreateExpenseFail())
-    // dispatch(actionCloseModal(MODALS.CREATE_INCOME.name))
     toast.error('An error occurred while create expense. Try later.')
   }
 }
@@ -84,9 +79,9 @@ export const thunkRemoveExpense = (id: string) => async (dispatch) => {
 
     dispatch(actionRemoveExpense())
 
-    const { data: deletedExpense } = await API.deleteIncome(token, id)
+    const { data: deletedExpenseId } = await API.deleteIncome(token, id)
 
-    dispatch(actionRemoveExpenseSucceed(deletedExpense))
+    dispatch(actionRemoveExpenseSucceed(deletedExpenseId))
     toast.success('Successful delete')
   } catch (err) {
     dispatch(actionRemoveExpenseFail())

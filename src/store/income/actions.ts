@@ -1,28 +1,41 @@
 import { createAction } from 'redux-act'
-import { IIncomeType } from 'types/income'
+import { IIncome } from 'types/income'
 
-export const actionIncomeRequest = createAction('INCOME_REQUEST')
-export const actionIncomeRequestSucceed = createAction<IIncomeType>(
-  'INCOME_REQUEST_SUCCEED',
-  (income) => income,
-)
-export const actionIncomeRequestFailed = createAction('INCOME_REQUEST_FAILED')
-
-export const actionIncomeEditRequest = createAction('INCOME_EDIT_REQUEST')
-export const actionIncomeEditSucceed = createAction<IIncomeType>(
-  'INCOME_EDIT_SUCCEED',
-  (income) => income,
-)
-export const actionIncomeEditFailed = createAction('INCOME_EDIT_FAILED')
-
-export const actionCreateIncomeRequest = createAction('CREATE_INCOME')
-export const actionCreateIncomeSucceed = createAction<IIncomeType>(
+export const actionCreateIncome = createAction('CREATE_INCOME')
+export const actionCreateIncomeSucceed = createAction<IIncome>(
   'CREATE_INCOME_SUCCEED',
 )
-export const actionCreateIncomeFailed = createAction('CREATE_INCOME_FAILED')
+export const actionCreateIncomeFail = createAction('CREATE_INCOME_FAIL')
 
-export const actionDeleteIncomeRequest = createAction('DELETE_INCOME')
-export const actionDeleteIncomeSucceed = createAction<{ id: string }>(
-  'DELETE_INCOME_SUCCEED',
+export const actionGetIncome = createAction('GET_INCOME')
+export const actionGetIncomeSucceed = createAction<IIncome>(
+  'GET_INCOME_SUCCEED',
+  (income) => income,
 )
-export const actionDeleteIncomeFailed = createAction('DELETE_INCOME_FAILED')
+export const actionGetIncomeFail = createAction('GET_INCOME_FAIL')
+
+export const actionUpdateIncome = createAction('UPDATE_INCOME')
+export const actionUpdateIncomeSucceed = createAction<IIncome>(
+  'UPDATE_INCOME_SUCCEED',
+  (income) => income,
+)
+export const actionUpdateIncomeFail = createAction('UPDATE_INCOME_FAIL')
+
+export const actionRemoveIncome = createAction('REMOVE_INCOME')
+export const actionRemoveIncomeSucceed = createAction<{ id: string }>(
+  'REMOVE_INCOME_SUCCEED',
+)
+export const actionRemoveIncomeFail = createAction('REMOVE_INCOME_FAILED')
+
+export const requestActions = [
+  actionCreateIncome,
+  actionGetIncome,
+  actionUpdateIncome,
+  actionRemoveIncome,
+]
+export const failActions = [
+  actionCreateIncomeFail,
+  actionGetIncomeFail,
+  actionUpdateIncomeFail,
+  actionRemoveIncomeFail,
+]

@@ -1,5 +1,5 @@
 import { registration, login, checkLogin } from './user'
-import { getIncome, editIncome, createIncome, deleteIncome } from './income'
+import { getIncome, updateIncome, createIncome, deleteIncome } from './income'
 import {
   getExpenses,
   createExpense,
@@ -12,7 +12,7 @@ const API = {
   login,
   checkLogin,
   getIncome,
-  editIncome,
+  updateIncome,
   createIncome,
   deleteIncome,
   getExpenses,
