@@ -15,10 +15,6 @@ export const ROUTES = {
     path: '/budget/income',
     name: 'Income',
   },
-  COSTS: {
-    path: '/budget/costs',
-    name: 'Costs',
-  },
   EXPENSE: {
     path: '/expense',
     name: 'Expense',

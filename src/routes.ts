@@ -51,17 +51,6 @@ const routes: IRoute[] = [
     title: ROUTES.INCOME.name,
   },
   {
-    path: ROUTES.COSTS.path,
-    component: loadable(() => import('pages/CostsPage'), {
-      fallback: PagePreloader,
-    }),
-    isPrivate: true,
-    exact: true,
-    withHeader: true,
-    includesInTheMenu: true,
-    title: ROUTES.COSTS.name,
-  },
-  {
     path: ROUTES.EXPENSE.path,
     component: loadable(() => import('pages/ExpensePage'), {
       fallback: PagePreloader,

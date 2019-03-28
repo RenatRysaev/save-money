@@ -26,7 +26,6 @@ const MODAL_COMPONENTS = {
   [MODALS.CREATE_INCOME.name]: lazy(() =>
     import('containers/Modals/CreateIncome'),
   ),
-  [MODALS.CREATE_COST.name]: lazy(() => import('containers/Modals/CreateCost')),
 }
 
 const Modals: React.FC<IModalsProps> = ({ modals, closeModal }) => {
