@@ -10,15 +10,15 @@ const ListByKind = ({ title, kind, items }) => (
 
     <div className={styles.list}>
       {items
-        .filter((expenseItem) => expenseItem.kind === kind)
-        .map((expenseItem) => (
+        .filter((item) => item.kind === kind)
+        .map((item) => (
           <Cart
-            key={expenseItem.id}
-            id={expenseItem.id}
-            name={expenseItem.name}
-            sum={expenseItem.sum}
-            currency={expenseItem.currency}
-            date={expenseItem.date}
+            key={item._id}
+            id={item._id}
+            name={item.name}
+            sum={item.sum}
+            currency={item.currency}
+            date={item.date}
           />
         ))}
     </div>

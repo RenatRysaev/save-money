@@ -1,5 +1,5 @@
 import { IExpense } from 'types/expense'
 
-export interface IPlannedExpenseProps {
+export interface IExpenseTabContainerProps {
   expense: IExpense[]
 }

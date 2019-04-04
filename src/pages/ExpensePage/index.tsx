@@ -7,10 +7,8 @@ import { thunkGetExpenses } from 'store/expense/thunks'
 
 import { selectExpenseByType } from 'store/expense/selectors'
 
-import PlannedExpense from 'containers/PlannedExpense'
-import ActualExpense from 'containers/ActualExpense'
-
 import Tabs from 'components/Tabs'
+import ExpenseTabContainer from 'components/ExpenseTabContainer'
 
 import { ExpenseType } from 'types/expense'
 import { IExpensePageProps } from './types'
@@ -51,8 +49,8 @@ const ExpensePage: React.FC<IExpensePageProps> = ({
       <Tabs items={TABS}>
         {(tabValue) => (
           <React.Fragment>
-            {tabValue === 0 && <PlannedExpense expense={plannedExpense} />}
-            {tabValue === 1 && <ActualExpense expense={actualExpense} />}
+            {tabValue === 0 && <ExpenseTabContainer expense={plannedExpense} />}
+            {tabValue === 1 && <ExpenseTabContainer expense={actualExpense} />}
           </React.Fragment>
         )}
       </Tabs>
