@@ -21,7 +21,7 @@ import { ExpenseType, IExpense } from 'types/expense'
 
 import { getToken } from 'utils'
 
-export const thunkGetExpenses = (expenseType: ExpenseType) => async (
+export const thunkGetExpenses = (expenseType?: ExpenseType) => async (
   dispatch,
 ) => {
   try {

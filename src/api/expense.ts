@@ -1,5 +1,5 @@
 import { API_URL } from 'constants/api'
-import { request } from './utils'
+import { request, objectToUrlParams } from './utils'
 import { IExpense, ExpenseType } from 'types/expense'
 
 export const createExpense = (token, expense: IExpense) =>
@@ -10,12 +10,15 @@ export const createExpense = (token, expense: IExpense) =>
     data: expense,
   })
 
-export const getExpenses = (token: string, expenseType: ExpenseType) =>
-  request({
+export const getExpenses = (token: string, expenseType?: ExpenseType) => {
+  const params = Object.assign({}, expenseType && { type: expenseType })
+
+  return request({
     method: 'get',
-    url: `${API_URL.V1}/expenses?type=${expenseType}`,
+    url: `${API_URL.V1}/expenses${objectToUrlParams(params)}`,
     token,
   })
+}
 
 export const updateExpense = (token, id, expense) =>
   request({

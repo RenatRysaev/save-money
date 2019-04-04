@@ -7,7 +7,7 @@ export const selectIsLoadingExpense = (state) => selectExpense(state).isLoading
 
 export const selectExpenseEntities = createSelector(
   selectExpense,
-  (expense) => expense.get('entities'),
+  (expense) => expense.get('entities').toJS(),
 )
 
 export const selectExpenseByType = (type) =>

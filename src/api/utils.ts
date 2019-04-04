@@ -1,4 +1,5 @@
 import axios, { AxiosPromise } from 'axios'
+import { reduce } from 'lodash'
 
 interface IrequestType {
   url: string
@@ -20,3 +21,6 @@ export const request = ({
 
   return axios(params)
 }
+
+export const objectToUrlParams = (obj) =>
+  reduce(obj, (acc, value, key) => (key ? `${acc}${key}=${value}` : ''), '?')

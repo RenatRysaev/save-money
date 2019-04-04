@@ -46,3 +46,5 @@ expenseReducer.on(actionRemoveExpenseSucceed, (state, id) =>
     .set('isLoading', false)
     .deleteIn(['entities', id]),
 )
+
+export default expenseReducer
