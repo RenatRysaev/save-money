@@ -3,4 +3,8 @@ export const MODALS = {
     name: 'CREATE_INCOME',
     title: 'Create income',
   },
+  CREATE_EXPENSE: {
+    name: 'CREATE_EXPENSE',
+    title: 'Create expense',
+  },
 }

@@ -4,16 +4,22 @@ import { connect } from 'react-redux'
 import { size } from 'lodash'
 
 import { thunkGetExpenses } from 'store/expense/thunks'
+import { actionOpenModal } from 'store/ui/actions'
 
 import { selectExpenseByType } from 'store/expense/selectors'
 
+import Button from '@material-ui/core/Button'
+import AddIcon from '@material-ui/icons/Add'
 import Tabs from 'components/Tabs'
 import ExpenseTabContainer from 'containers/ExpenseTabContainer'
 
 import { ExpenseType } from 'types/expense'
 import { IExpensePageProps } from './types'
 
+import { MODALS } from 'constants/modals'
 import { TABS } from './constants'
+
+import styles from './styles.module.scss'
 
 const mapStateToProps = (state) => {
   const plannedExpense = selectExpenseByType(ExpenseType.PLANNED)(state)
@@ -27,6 +33,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   getExpenses: thunkGetExpenses,
+  openModal: actionOpenModal,
 }
 
 const ExpensePage: React.FC<IExpensePageProps> = ({
@@ -34,6 +41,7 @@ const ExpensePage: React.FC<IExpensePageProps> = ({
   isEmptyExpense,
   plannedExpense,
   actualExpense,
+  openModal,
 }) => {
   const [firstRender, setFirstRender] = React.useState(true)
 
@@ -45,7 +53,16 @@ const ExpensePage: React.FC<IExpensePageProps> = ({
   }, [])
 
   return (
-    <div>
+    <div className={styles.wrapper}>
+      <Button
+        onClick={() => openModal(MODALS.CREATE_EXPENSE)}
+        className={styles.addButton}
+        variant="contained"
+        color="primary"
+      >
+        <AddIcon />
+      </Button>
+
       <Tabs items={TABS}>
         {(tabValue) => (
           <React.Fragment>

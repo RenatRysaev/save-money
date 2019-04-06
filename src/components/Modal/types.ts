@@ -1,6 +1,5 @@
-export interface IModalTypes {
+export interface IModalProps {
   children: any
-  isOpen: boolean
   title: string
   onClose: () => void
 }

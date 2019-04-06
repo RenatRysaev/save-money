@@ -1,3 +1,5 @@
+import { Moment } from 'moment'
+
 export enum ExpenseType {
   ACTUAL = 'actual',
   PLANNED = 'planned',
@@ -9,10 +11,10 @@ export enum ExpenseKind {
 }
 
 export interface IExpense {
-  id: string
+  id?: string
   name: string
-  sum: number
-  date: string
+  sum: number | string
+  date: string | Moment
   type: ExpenseType
   kind: ExpenseKind
   currency: string

@@ -1,5 +1,4 @@
-export interface IModalType {
+export interface IModal {
   name: string
   title: string
-  component: Promise<any>
 }

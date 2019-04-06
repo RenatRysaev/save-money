@@ -49,7 +49,7 @@ const Cart: React.FC<ICartProps> = ({
         {(formikProps) => (
           <form onSubmit={formikProps.handleSubmit}>
             <div className={styles.actionButtons}>
-              <IconButton type="submit" color="primary" aria-label="Update">
+              <IconButton type="submit" aria-label="Update">
                 {isEditMode ? (
                   <SaveIcon fontSize="small" />
                 ) : (
@@ -59,7 +59,6 @@ const Cart: React.FC<ICartProps> = ({
 
               <IconButton
                 onClick={() => onDelete(id)}
-                color="primary"
                 aria-label="Delete"
                 disabled={isEditMode}
               >
