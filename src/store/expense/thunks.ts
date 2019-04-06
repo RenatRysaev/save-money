@@ -77,7 +77,7 @@ export const thunkRemoveExpense = (id: string) => async (dispatch) => {
 
     dispatch(actionRemoveExpense())
 
-    const { data: deletedExpenseId } = await API.deleteIncome(token, id)
+    const { data: deletedExpenseId } = await API.removeExpense(token, id)
 
     dispatch(actionRemoveExpenseSucceed(deletedExpenseId))
     toast.success('Successful delete')

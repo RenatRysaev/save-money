@@ -5,4 +5,5 @@ export interface ICartProps {
   currency: string
   date: string
   onUpdate: (id: string, updateInfo: object) => void
+  onDelete: (id: string) => void
 }

@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper'
 import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
 import SaveIcon from '@material-ui/icons/Save'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 import View from './View'
 import Edit from './Edit'
@@ -21,6 +22,7 @@ const Cart: React.FC<ICartProps> = ({
   currency,
   date,
   onUpdate,
+  onDelete,
 }) => {
   const [isEditMode, setIsEditMode] = React.useState(false)
 
@@ -46,18 +48,24 @@ const Cart: React.FC<ICartProps> = ({
       >
         {(formikProps) => (
           <form onSubmit={formikProps.handleSubmit}>
-            <IconButton
-              type="submit"
-              color="primary"
-              aria-label="Update"
-              className={styles.fab}
-            >
-              {isEditMode ? (
-                <SaveIcon fontSize="small" />
-              ) : (
-                <EditIcon fontSize="small" />
-              )}
-            </IconButton>
+            <div className={styles.actionButtons}>
+              <IconButton type="submit" color="primary" aria-label="Update">
+                {isEditMode ? (
+                  <SaveIcon fontSize="small" />
+                ) : (
+                  <EditIcon fontSize="small" />
+                )}
+              </IconButton>
+
+              <IconButton
+                onClick={() => onDelete(id)}
+                color="primary"
+                aria-label="Delete"
+                disabled={isEditMode}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </div>
 
             {isEditMode ? (
               <Edit {...cartProps} {...formikProps} />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { thunkUpdateExpense } from 'store/expense/thunks'
+import { thunkUpdateExpense, thunkRemoveExpense } from 'store/expense/thunks'
 
 import ListByKind from 'components/ListByKind/index'
 
@@ -10,11 +10,13 @@ import { IExpenseTabContainerProps } from './types'
 
 const mapDispatchToProps = {
   updateExpense: thunkUpdateExpense,
+  removeExpense: thunkRemoveExpense,
 }
 
 const ExpenseTabContainer: React.FC<IExpenseTabContainerProps> = ({
   expense,
   updateExpense,
+  removeExpense,
 }) => (
   <React.Fragment>
     <ListByKind
@@ -22,12 +24,14 @@ const ExpenseTabContainer: React.FC<IExpenseTabContainerProps> = ({
       kind={ExpenseKind.PERMANENT}
       title="Permanent"
       onUpdate={updateExpense}
+      onDelete={removeExpense}
     />
     <ListByKind
       items={expense}
       kind={ExpenseKind.ONE_TIME}
       title="One-time"
       onUpdate={updateExpense}
+      onDelete={removeExpense}
     />
   </React.Fragment>
 )

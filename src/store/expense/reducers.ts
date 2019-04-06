@@ -45,10 +45,14 @@ expenseReducer.on(actionUpdateExpenseSucceed, (state, expense) => {
     .setIn(['entities', indexForUpdate], fromJS(expense))
 })
 
-expenseReducer.on(actionRemoveExpenseSucceed, (state, id) =>
-  state
+expenseReducer.on(actionRemoveExpenseSucceed, (state, { id }) => {
+  const indexForDelete = state
+    .get('entities')
+    .findIndex((item) => item.get('_id') === id)
+
+  return state
     .set('isLoading', false)
-    .deleteIn(['entities', id]),
-)
+    .removeIn(['entities', indexForDelete])
+})
 
 export default expenseReducer

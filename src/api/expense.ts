@@ -28,7 +28,7 @@ export const updateExpense = (token, id, expense) =>
     data: expense,
   })
 
-export const removeExpense = (token, id, expense) =>
+export const removeExpense = (token, id) =>
   request({
     method: 'delete',
     url: `${API_URL.V1}/expenses/${id}`,
