@@ -35,11 +35,15 @@ expenseReducer.on(actionGetExpensesSucceed, (state, expenses) =>
     .set('entities', fromJS(expenses)),
 )
 
-expenseReducer.on(actionUpdateExpenseSucceed, (state, expense) =>
-  state
+expenseReducer.on(actionUpdateExpenseSucceed, (state, expense) => {
+  const indexForUpdate = state
+    .get('entities')
+    .findIndex((item) => item.get('_id') === expense._id)
+
+  return state
     .set('isLoading', false)
-    .setIn(['entities', expense.id], fromJS(expense)),
-)
+    .setIn(['entities', indexForUpdate], fromJS(expense))
+})
 
 expenseReducer.on(actionRemoveExpenseSucceed, (state, id) =>
   state

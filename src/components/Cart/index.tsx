@@ -1,21 +1,74 @@
 import React from 'react'
-import moment from 'moment'
+import { isEqual } from 'lodash'
 
-import Paper from '@material-ui/core/Paper/Paper'
+import { Formik } from 'formik'
+import Paper from '@material-ui/core/Paper'
+import IconButton from '@material-ui/core/IconButton'
+import EditIcon from '@material-ui/icons/Edit'
+import SaveIcon from '@material-ui/icons/Save'
+
+import View from './View'
+import Edit from './Edit'
 
 import { ICartProps } from './types'
 
 import styles from './styles.module.scss'
 
-const Cart: React.FC<ICartProps> = ({ id, name, sum, currency, date }) => (
-  <Paper className={styles.cartWrapper}>
-    <div className={styles.name}>{name}</div>
-    <div className={styles.money}>
-      <span className={styles.sum}>{sum}</span>
-      <span className={styles.currency}>{currency}</span>
-    </div>
-    <div className={styles.date}>{moment(date).format('DD.MM.YYYY')}</div>
-  </Paper>
-)
+const Cart: React.FC<ICartProps> = ({
+  id,
+  name,
+  sum,
+  currency,
+  date,
+  onUpdate,
+}) => {
+  const [isEditMode, setIsEditMode] = React.useState(false)
+
+  const cartProps = { name, sum, currency, date }
+
+  const toggleMode = () => setIsEditMode(!isEditMode)
+
+  const handleSubmit = (values) => {
+    const hasChanges = !isEqual(values, cartProps)
+
+    toggleMode()
+
+    if (isEditMode && hasChanges) {
+      onUpdate(id, values)
+    }
+  }
+
+  return (
+    <Paper className={styles.cartWrapper}>
+      <Formik
+        initialValues={{ name, sum, currency, date }}
+        onSubmit={handleSubmit}
+      >
+        {(formikProps) => (
+          <form onSubmit={formikProps.handleSubmit}>
+            <IconButton
+              type="submit"
+              color="primary"
+              aria-label="Update"
+              className={styles.fab}
+            >
+              {isEditMode ? (
+                <SaveIcon fontSize="small" />
+              ) : (
+                <EditIcon fontSize="small" />
+              )}
+            </IconButton>
+
+            {isEditMode ? (
+              <Edit {...cartProps} {...formikProps} />
+            ) : (
+              <View {...cartProps} />
+            )}
+          </form>
+        )}
+      </Formik>
+    </Paper>
+  )
+}
 
 export default Cart

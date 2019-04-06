@@ -4,4 +4,5 @@ export interface ICartProps {
   sum: number
   currency: string
   date: string
+  onUpdate: (id: string, updateInfo: object) => void
 }

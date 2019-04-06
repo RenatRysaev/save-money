@@ -8,7 +8,7 @@ import { thunkGetExpenses } from 'store/expense/thunks'
 import { selectExpenseByType } from 'store/expense/selectors'
 
 import Tabs from 'components/Tabs'
-import ExpenseTabContainer from 'components/ExpenseTabContainer'
+import ExpenseTabContainer from 'containers/ExpenseTabContainer'
 
 import { ExpenseType } from 'types/expense'
 import { IExpensePageProps } from './types'

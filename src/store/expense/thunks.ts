@@ -53,17 +53,15 @@ export const thunkCreateExpense = (expense: IExpense) => async (dispatch) => {
   }
 }
 
-export const thunkUpdateExpense = (expense: IExpense) => async (dispatch) => {
+export const thunkUpdateExpense = (id, expense: IExpense) => async (
+  dispatch,
+) => {
   try {
     const token = getToken()
 
     dispatch(actionUpdateExpense())
 
-    const { data: updatedExpense } = await API.updateExpense(
-      token,
-      expense.id,
-      expense,
-    )
+    const { data: updatedExpense } = await API.updateExpense(token, id, expense)
 
     dispatch(actionUpdateExpenseSucceed(updatedExpense))
     toast.success('Successful update')

@@ -4,7 +4,7 @@ import Cart from 'components/Cart'
 
 import styles from './styles.module.scss'
 
-const ListByKind = ({ title, kind, items }) => (
+const ListByKind = ({ title, kind, items, onUpdate }) => (
   <div>
     <h3>{title}</h3>
 
@@ -19,6 +19,7 @@ const ListByKind = ({ title, kind, items }) => (
             sum={item.sum}
             currency={item.currency}
             date={item.date}
+            onUpdate={onUpdate}
           />
         ))}
     </div>

@@ -23,7 +23,7 @@ export const getExpenses = (token: string, expenseType?: ExpenseType) => {
 export const updateExpense = (token, id, expense) =>
   request({
     method: 'patch',
-    url: `${API_URL.V1}/expenses/:${id}`,
+    url: `${API_URL.V1}/expenses/${id}`,
     token,
     data: expense,
   })
@@ -31,6 +31,6 @@ export const updateExpense = (token, id, expense) =>
 export const removeExpense = (token, id, expense) =>
   request({
     method: 'delete',
-    url: `${API_URL.V1}/expenses/:${id}`,
+    url: `${API_URL.V1}/expenses/${id}`,
     token,
   })

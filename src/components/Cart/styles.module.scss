@@ -1,20 +1,13 @@
 .cartWrapper {
+  position: relative;
   padding: 10px;
+  max-width: 420px;
 }
 
-.name {
-  text-transform: capitalize;
-}
-
-.money {
-}
-
-.sum {
-  margin-right: 3px;
-}
-
-.currency {
-}
-
-.date {
+.fab {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1;
 }
