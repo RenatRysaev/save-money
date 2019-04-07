@@ -21,7 +21,7 @@ export const selectIncomeCurrency = createSelector(
   selectIncomeEntities,
   (income) =>
     compose(
-      (firstIncome) => get(firstIncome, 'currency'),
+      (firstIncome) => get(firstIncome, 'currency', 'RUB'),
       head,
     )(income),
 )
