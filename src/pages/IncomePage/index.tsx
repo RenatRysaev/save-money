@@ -3,6 +3,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { size } from 'lodash'
 
+import { useGetIncome } from 'hooks/useGetIncome'
+
 import {
   thunkGetIncome,
   thunkUpdateIncome,
@@ -40,11 +42,7 @@ const IncomePage: React.FC<IIncomePageProps> = ({
   removeIncome,
   openModal,
 }) => {
-  React.useEffect(() => {
-    if (!size(income)) {
-      getIncome()
-    }
-  }, [])
+  useGetIncome(!size(income), getIncome)
 
   return (
     <div className={styles.wrapper}>

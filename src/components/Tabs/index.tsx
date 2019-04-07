@@ -5,7 +5,7 @@ import Tab from '@material-ui/core/Tab'
 
 import { ITabs } from './types'
 
-const Tabs: React.FC<ITabs> = ({ items, children }) => {
+const Tabs: React.FC<ITabs> = ({ items, children, className }) => {
   const [tabValue, setTabValue] = React.useState(0)
 
   const handleChangeTab = (event, value) => {
@@ -15,6 +15,7 @@ const Tabs: React.FC<ITabs> = ({ items, children }) => {
   return (
     <React.Fragment>
       <MaterialTabs
+        className={className}
         value={tabValue}
         onChange={handleChangeTab}
         indicatorColor="primary"

@@ -1,5 +1,6 @@
 .wrapper {
   position: relative;
+  padding: 20px 0;
 }
 
 .addButton {
@@ -7,4 +8,8 @@
   z-index: 1;
   top: -50px;
   left: 165px;
+}
+
+.tabs {
+  margin-bottom: 25px;
 }

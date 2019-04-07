@@ -7,15 +7,9 @@ import { thunkLogout } from 'store/auth/thunks'
 
 import { ILogoutProps } from './types'
 
-// import styles from './styles.module.scss'
-
-const mapDispatchToProps = {
-  logout: thunkLogout,
-}
-
 const Logout: React.FC<ILogoutProps> = ({ logout }) => (
   <div>
-    <Button variant="extendedFab" onClick={logout}>
+    <Button variant="contained" onClick={logout}>
       <ExitToAppIcon />
     </Button>
   </div>
@@ -23,5 +17,5 @@ const Logout: React.FC<ILogoutProps> = ({ logout }) => (
 
 export default connect(
   null,
-  mapDispatchToProps,
+  { logout: thunkLogout },
 )(Logout)

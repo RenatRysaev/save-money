@@ -3,6 +3,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { size } from 'lodash'
 
+import { useGetExpense } from 'hooks/useGetExpense'
+
 import { thunkGetExpenses } from 'store/expense/thunks'
 import { actionOpenModal } from 'store/ui/actions'
 
@@ -43,11 +45,7 @@ const ExpensePage: React.FC<IExpensePageProps> = ({
   actualExpense,
   openModal,
 }) => {
-  React.useEffect(() => {
-    if (isEmptyExpense) {
-      getExpenses()
-    }
-  }, [])
+  useGetExpense(isEmptyExpense, getExpenses)
 
   return (
     <div className={styles.wrapper}>
@@ -60,7 +58,7 @@ const ExpensePage: React.FC<IExpensePageProps> = ({
         <AddIcon />
       </Button>
 
-      <Tabs items={TABS}>
+      <Tabs className={styles.tabs} items={TABS}>
         {(tabValue) => (
           <React.Fragment>
             {tabValue === 0 && <ExpenseTabContainer expense={plannedExpense} />}

@@ -18,6 +18,7 @@ module.exports = {
       api: resolve(src, 'api'),
       routes: resolve(src, 'routes'),
       types: resolve(src, 'types'),
+      hooks: resolve(src, 'hooks'),
     },
   },
   plugins: [

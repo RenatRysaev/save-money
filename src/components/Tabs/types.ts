@@ -6,4 +6,5 @@ export interface ITab {
 export interface ITabs {
   items: ITab[]
   children: (tabValue) => void
+  className: string
 }
