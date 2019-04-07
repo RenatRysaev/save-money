@@ -1,6 +1,8 @@
 import React from 'react'
 import { isEqual } from 'lodash'
 
+import { compactCollection } from 'utils/index'
+
 import { Formik } from 'formik'
 import Paper from '@material-ui/core/Paper'
 import IconButton from '@material-ui/core/IconButton'
@@ -43,7 +45,7 @@ const Cart: React.FC<ICartProps> = ({
   return (
     <Paper className={styles.cartWrapper}>
       <Formik
-        initialValues={{ name, sum, currency, date }}
+        initialValues={compactCollection({ name, sum, currency, date })}
         onSubmit={handleSubmit}
       >
         {(formikProps) => (

@@ -1,5 +1,5 @@
 export interface IIncome {
-  id: string
+  _id: string
   name: string
   sum: number
   currency: string

@@ -29,7 +29,7 @@ handleActions(failActions, 'isLoading', false)
 incomeReducer.on(actionCreateIncomeSucceed, (state, income) =>
   state
     .set('isLoading', false)
-    .set('entities', state.get('entities').push(income)),
+    .set('entities', state.get('entities').push(fromJS(income))),
 )
 
 incomeReducer.on(actionGetIncomeSucceed, (state, income) =>
@@ -38,11 +38,15 @@ incomeReducer.on(actionGetIncomeSucceed, (state, income) =>
     .set('entities', fromJS(income)),
 )
 
-incomeReducer.on(actionUpdateIncomeSucceed, (state, income) =>
-  state
+incomeReducer.on(actionUpdateIncomeSucceed, (state, income) => {
+  const indexForUpdate = state
+    .get('entities')
+    .findIndex((item) => item.get('_id') === income._id)
+
+  return state
     .set('isLoading', false)
-    .setIn(['entities', income.id], fromJS(income)),
-)
+    .setIn(['entities', indexForUpdate], fromJS(income))
+})
 
 incomeReducer.on(actionRemoveIncomeSucceed, (state, id) =>
   state

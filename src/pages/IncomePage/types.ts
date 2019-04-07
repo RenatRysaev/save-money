@@ -5,6 +5,6 @@ export interface IIncomePageProps {
   income: IIncome[]
   getIncome: () => void
   openModal: (modalData: IModal) => void
-  updateIncome: (income: IIncome) => void
+  updateIncome: (id: string, income: object) => void
   removeIncome: (id: string) => void
 }
