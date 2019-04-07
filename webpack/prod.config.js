@@ -1,4 +1,5 @@
 const { resolve } = require('path')
+const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -25,6 +26,7 @@ const plugins = [
     analyzerMode: 'disabled',
     generateStatsFile: true,
   }),
+  new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
 ]
 
 module.exports = merge(baseConfig, {
