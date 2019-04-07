@@ -1,3 +1,14 @@
+.wrapper {
+  position: relative;
+}
+
+.addButton {
+  position: absolute;
+  z-index: 1;
+  top: -56px;
+  left: 145px;
+}
+
 .list {
   padding: 30px 0;
 

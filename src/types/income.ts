@@ -1,6 +1,6 @@
 export interface IIncome {
-  _id: string
+  _id?: string
   name: string
-  sum: number
+  sum: number | string
   currency: string
 }

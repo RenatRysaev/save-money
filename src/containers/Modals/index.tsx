@@ -14,6 +14,9 @@ const modalComponents = {
   [MODALS.CREATE_EXPENSE.name]: React.lazy(() =>
     import('containers/Modals/CreateExpense'),
   ),
+  [MODALS.CREATE_INCOME.name]: React.lazy(() =>
+    import('containers/Modals/CreateIncome'),
+  ),
 }
 
 const Modals = ({ modals }) => (

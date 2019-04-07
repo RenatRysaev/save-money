@@ -24,15 +24,3 @@ export const expenseKinds = {
     value: ExpenseKind.ONE_TIME,
   },
 }
-
-export const currency = reduce(
-  CURRENCY,
-  (acc, item) => ({
-    ...acc,
-    [item]: {
-      name: item,
-      value: item,
-    },
-  }),
-  {},
-)

@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldWrapper {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.moneyGroup {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.submitButton {
+  margin-left: auto;
+}
