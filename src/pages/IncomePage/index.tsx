@@ -3,7 +3,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { size } from 'lodash'
 
-import { thunkGetIncome, thunkUpdateIncome } from 'store/income/thunks'
+import {
+  thunkGetIncome,
+  thunkUpdateIncome,
+  thunkRemoveIncome,
+} from 'store/income/thunks'
 import { actionOpenModal } from 'store/ui/actions'
 
 import { selectIncomeEntities } from 'store/income/selectors'
@@ -25,6 +29,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getIncome: thunkGetIncome,
   updateIncome: thunkUpdateIncome,
+  removeIncome: thunkRemoveIncome,
   openModal: actionOpenModal,
 }
 
@@ -32,6 +37,7 @@ const IncomePage: React.FC<IIncomePageProps> = ({
   income,
   getIncome,
   updateIncome,
+  removeIncome,
   openModal,
 }) => {
   React.useEffect(() => {
@@ -59,7 +65,7 @@ const IncomePage: React.FC<IIncomePageProps> = ({
             name={name}
             sum={sum}
             currency={currency}
-            onDelete={(incomeId) => console.log('onDelete', incomeId)}
+            onDelete={removeIncome}
             onUpdate={updateIncome}
           />
         ))}

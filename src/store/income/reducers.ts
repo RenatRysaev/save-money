@@ -48,10 +48,14 @@ incomeReducer.on(actionUpdateIncomeSucceed, (state, income) => {
     .setIn(['entities', indexForUpdate], fromJS(income))
 })
 
-incomeReducer.on(actionRemoveIncomeSucceed, (state, id) =>
-  state
+incomeReducer.on(actionRemoveIncomeSucceed, (state, id) => {
+  const indexForDelete = state
+    .get('entities')
+    .findIndex((item) => item.get('_id') === id)
+
+  return state
     .set('isLoading', false)
-    .deleteIn(['entities', id]),
-)
+    .removeIn(['entities', indexForDelete])
+})
 
 export default incomeReducer
