@@ -35,7 +35,7 @@ const CreateExpense: React.FC<ICreateIncomeProps> = ({
 }) => (
   <Modal
     title={modal.title}
-    onClose={() => closeModal(MODALS.CREATE_EXPENSE.name)}
+    onClose={() => closeModal(MODALS.CREATE_INCOME.name)}
   >
     <Formik
       onSubmit={createIncome}
