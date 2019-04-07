@@ -3,8 +3,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import {
-  selectIncomeEntitiesLength,
-  selectIncomeTotalSum,
+  // selectIncomeEntitiesLength,
+  // selectIncomeTotalSum,
   selectIsLoadingIncome,
 } from 'store/income/selectors'
 
@@ -14,8 +14,8 @@ import { IBudgetPageProps } from './types'
 
 const mapStateToProps = (state) => ({
   isLoadingIncome: selectIsLoadingIncome(state),
-  incomeEntitiesLength: selectIncomeEntitiesLength(state),
-  incomeTotalSum: selectIncomeTotalSum(state),
+  // incomeEntitiesLength: selectIncomeEntitiesLength(state),
+  // incomeTotalSum: selectIncomeTotalSum(state),
 })
 
 const mapDispatchToProps = {

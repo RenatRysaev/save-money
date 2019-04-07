@@ -1,15 +1,10 @@
-export interface IIncomePageProps {
-  income: object
-  getIncome: () => void
-  openModal: (modalData: object) => void
-  isLoadingIncome: boolean
-  updateIncome: (income) => void
-  removeIncome: (id) => void
-}
+import { IIncome } from 'types/income'
+import { IModal } from 'types/modal'
 
-export interface IIncomeType {
-  id: string
-  name: string
-  sum: string
-  description?: string
+export interface IIncomePageProps {
+  income: IIncome[]
+  getIncome: () => void
+  openModal: (modalData: IModal) => void
+  updateIncome: (income: IIncome) => void
+  removeIncome: (id: string) => void
 }

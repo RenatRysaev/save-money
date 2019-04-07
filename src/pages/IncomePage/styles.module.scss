@@ -1,11 +1,11 @@
-.incomeList form {
-  margin-bottom: 15px;
+.list {
+  padding: 30px 0;
 
-  &:last-child {
-    margin-bottom: 0;
+  > div {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
-}
-
-.createButtonContainer {
-  margin-bottom: 20px;
 }

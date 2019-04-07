@@ -10,16 +10,3 @@ export const selectIncomeEntities = createSelector(
   selectIncome,
   (income) => income.get('entities').toJS(),
 )
-
-export const selectIncomeEntitiesLength = (state) =>
-  size(selectIncomeEntities(state))
-
-export const selectIncomeTotalSum = createSelector(
-  selectIncomeEntities,
-  (income) =>
-    reduce(
-      income,
-      (acc, incomeItem) => toNumber(acc) + toNumber(incomeItem.sum),
-      0,
-    ),
-)

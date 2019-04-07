@@ -20,7 +20,9 @@ const Edit = ({ name, sum, currency, date, values, errors, handleChange }) => (
       name="sum"
       onChange={handleChange}
     />
-    <Field className={styles.field} name="date" component={DatePickerField} />
+    {date && (
+      <Field className={styles.field} name="date" component={DatePickerField} />
+    )}
   </React.Fragment>
 )
 

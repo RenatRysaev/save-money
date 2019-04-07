@@ -1,79 +1,70 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import size from 'lodash/size'
-import map from 'lodash/map'
+import { size } from 'lodash'
 
-import { MODALS } from 'constants/modals'
-
-import {
-  selectIncomeEntities,
-  selectIsLoadingIncome,
-} from 'store/income/selectors'
-
-import {
-  thunkGetIncome,
-  thunkUpdateIncome,
-  thunkRemoveIncome,
-} from 'store/income/thunks'
+import { thunkGetIncome } from 'store/income/thunks'
 import { actionOpenModal } from 'store/ui/actions'
 
-import Loader from 'components/Loader'
-import Button from '@material-ui/core/Button'
+import { selectIncomeEntities } from 'store/income/selectors'
 
-import { IIncomePageProps, IIncomeType } from './types'
+import Button from '@material-ui/core/Button'
+import AddIcon from '@material-ui/icons/Add'
+import Cart from 'components/Cart'
+
+import { IIncomePageProps } from './types'
+
+import { MODALS } from 'constants/modals'
 
 import styles from './styles.module.scss'
 
 const mapStateToProps = (state) => ({
   income: selectIncomeEntities(state),
-  isLoadingIncome: selectIsLoadingIncome(state),
 })
 
 const mapDispatchToProps = {
   getIncome: thunkGetIncome,
-  updateIncome: thunkUpdateIncome,
-  removeIncome: thunkRemoveIncome,
   openModal: actionOpenModal,
 }
 
-class IncomePage extends Component<IIncomePageProps> {
-  componentDidMount() {
-    const { income, getIncome } = this.props
-
+const IncomePage: React.FC<IIncomePageProps> = ({
+  income,
+  getIncome,
+  openModal,
+}) => {
+  React.useEffect(() => {
     if (!size(income)) {
+      console.log('call')
       getIncome()
     }
-  }
+  }, [])
 
-  handleOpenModal = () => {
-    const { openModal } = this.props
-    openModal(MODALS.CREATE_INCOME)
-  }
+  return (
+    <div className={styles.wrapper}>
+      <Button
+        onClick={() => openModal(MODALS.CREATE_INCOME)}
+        className={styles.addButton}
+        variant="contained"
+        color="primary"
+      >
+        <AddIcon />
+      </Button>
 
-  render() {
-    const { income, isLoadingIncome, updateIncome, removeIncome } = this.props
-
-    return (
-      <div className={styles.incomeList}>
-        <div className={styles.createButtonContainer}>
-          <Button
-            onClick={this.handleOpenModal}
-            variant="contained"
-            color="primary"
-          >
-            Create income
-          </Button>
-        </div>
-
-        <Loader isLoading={isLoadingIncome}>
-          {map(income, (incomeItem: IIncomeType, key) => (
-            <div>temp</div>
-          ))}
-        </Loader>
+      <div className={styles.list}>
+        {income.map(({ id, name, sum, currency }) => (
+          <Cart
+            key={id}
+            id={id}
+            name={name}
+            sum={sum}
+            currency={currency}
+            onDelete={(incomeId) => console.log('onDelete', incomeId)}
+            onUpdate={(incomeId, obj) => console.log('onUpdate', incomeId, obj)}
+          />
+        ))}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default compose(

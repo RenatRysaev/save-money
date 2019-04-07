@@ -20,7 +20,7 @@ const Modals = ({ modals }) => (
   <React.Suspense fallback={<div>Loading...</div>}>
     {map(modals, ({ name }) => {
       const ModalComponent = modalComponents[name]
-      return <ModalComponent key={name} />
+      return ModalComponent && <ModalComponent key={name} />
     })}
   </React.Suspense>
 )

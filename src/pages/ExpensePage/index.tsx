@@ -43,12 +43,9 @@ const ExpensePage: React.FC<IExpensePageProps> = ({
   actualExpense,
   openModal,
 }) => {
-  const [firstRender, setFirstRender] = React.useState(true)
-
   React.useEffect(() => {
-    if (isEmptyExpense && firstRender) {
+    if (isEmptyExpense) {
       getExpenses()
-      setFirstRender(false)
     }
   }, [])
 
