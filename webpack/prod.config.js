@@ -7,6 +7,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
 const { pwaManifest } = require('../src/manifest.js')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const CompressionPlugin = require('compression-webpack-plugin')
 const merge = require('webpack-merge')
 
 const baseConfig = require('./base.config')
@@ -27,6 +28,9 @@ const plugins = [
     generateStatsFile: true,
   }),
   new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
+  new CompressionPlugin({
+    algorithm: 'gzip',
+  }),
 ]
 
 module.exports = merge(baseConfig, {
