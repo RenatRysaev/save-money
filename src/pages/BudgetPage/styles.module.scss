@@ -3,17 +3,12 @@
   padding: 20px 0;
 }
 
-.pair {
-  font-size: 21px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
+.pairWrapper {
+  & > div {
+    margin-bottom: 15px;
+  }
 
   &:last-child {
     margin-bottom: 0;
   }
-}
-
-.value {
-  margin-right: 5px;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { size } from 'lodash'
@@ -21,6 +21,8 @@ import {
 
 import { thunkGetIncome } from 'store/income/thunks'
 import { thunkGetExpenses } from 'store/expense/thunks'
+
+import Pair from './Pair'
 
 import { IBudgetPageProps } from './types'
 
@@ -66,26 +68,22 @@ const BudgetPage: React.FC<IBudgetPageProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.pair}>
-        <span className={styles.key}>Total sum of income: </span>
-        <div>
-          <span className={styles.value}>{totalSumOfIncome}</span>
-          <span>{incomeCurrency}</span>
-        </div>
-      </div>
-      <div className={styles.pair}>
-        <span className={styles.key}>Total sum of planned expense: </span>
-        <div>
-          <span className={styles.value}>{totalSumOfPlannedExpense}</span>
-          <span>{expenseCurrency}</span>
-        </div>
-      </div>
-      <div className={styles.pair}>
-        <span className={styles.key}>Total sum of actual expense: </span>
-        <div>
-          <span className={styles.value}>{totalSumOfActualExpense}</span>
-          <span>{expenseCurrency}</span>
-        </div>
+      <div className={styles.pairWrapper}>
+        <Pair
+          keyName="Total sum of income"
+          value={totalSumOfIncome}
+          currency={incomeCurrency}
+        />
+        <Pair
+          keyName="Total sum of planned expense"
+          value={totalSumOfPlannedExpense}
+          currency={expenseCurrency}
+        />
+        <Pair
+          keyName="Total sum of actual expense"
+          value={totalSumOfActualExpense}
+          currency={expenseCurrency}
+        />
       </div>
     </div>
   )
