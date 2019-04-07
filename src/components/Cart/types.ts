@@ -1,7 +1,7 @@
 export interface ICartProps {
   id: string
   name: string
-  sum: number
+  sum: number | string
   currency: string
   date?: string
   onUpdate: (id: string, updateInfo: object) => void

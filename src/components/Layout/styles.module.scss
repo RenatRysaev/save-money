@@ -1,24 +1,11 @@
-//.layout {
-//}
-//
-//.header {
-//}
-
 .contentWrapper {
   display: flex;
 }
 
-//.sidebar {
-//}
-
 .body {
   width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
 }
-
-//.footer {
-//}
 
 .bottomFixedFooter {
   position: absolute;

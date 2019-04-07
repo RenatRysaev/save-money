@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Route } from 'react-router-dom'
 
 import Layout from 'components/Layout'
-import Header from 'containers/Header'
+import Header from 'components/Header'
 
 import { IRoute } from 'types/route'
 

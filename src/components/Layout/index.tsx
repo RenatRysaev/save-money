@@ -17,7 +17,7 @@ const Layout: React.FC<ILayoutProps> = ({
   children,
 }) => (
   <div className={styles.layout}>
-    {header && <header className={styles.header}>{header}</header>}
+    {header && <div className={styles.header}>{header}</div>}
 
     <div className={styles.contentWrapper}>
       {sidebar && <aside className={styles.sidebar}>{sidebar}</aside>}

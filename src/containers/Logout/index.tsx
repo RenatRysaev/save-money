@@ -15,7 +15,7 @@ const mapDispatchToProps = {
 
 const Logout: React.FC<ILogoutProps> = ({ logout }) => (
   <div>
-    <Button variant="outlined" onClick={logout}>
+    <Button variant="extendedFab" onClick={logout}>
       <ExitToAppIcon />
     </Button>
   </div>
