@@ -3,7 +3,7 @@ import { fromJS } from 'immutable'
 
 import { actionOpenModal, actionCloseModal } from './actions'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   modals: {},
 })
 
