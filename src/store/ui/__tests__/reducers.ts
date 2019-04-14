@@ -7,7 +7,7 @@ describe('ui reducer', () => {
       .toEqual(initialState)
   })
 
-  it('Should handle OPEN_MODAL', () => {
+  it('Should handle actionOpenModal', () => {
     const modal = { name: 'SuperModal', title: 'Super Modal Title' }
 
     expect(uiReducer(
@@ -17,7 +17,7 @@ describe('ui reducer', () => {
       .toEqual(initialState.setIn(['modals', modal.name], modal))
   })
 
-  it('Should handle CLOSE_MODAL', () => {
+  it('Should handle actionCloseModal', () => {
     const modal = { name: 'SuperModal', title: 'Super Modal Title' }
     const state = initialState.setIn(['modals', modal.name], modal)
 

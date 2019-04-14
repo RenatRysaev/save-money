@@ -1,6 +1,5 @@
 import { createReducer } from 'redux-act'
 import { fromJS } from 'immutable'
-import { arrayToMap } from 'utils'
 import { handleSimilarActions } from 'utils/reducer'
 
 import {
@@ -13,7 +12,7 @@ import {
 } from './actions'
 
 
-const initialState = fromJS({
+export const initialState = fromJS({
   entities: [],
   isLoading: false,
 })
