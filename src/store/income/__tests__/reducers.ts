@@ -2,17 +2,17 @@ import { fromJS } from 'immutable'
 import incomeReducer, { initialState } from 'store/income/reducers'
 import {
   actionCreateIncome,
-  actionGetIncome,
-  actionUpdateIncome,
-  actionRemoveIncome,
   actionCreateIncomeSucceed,
-  actionGetIncomeSucceed,
-  actionRemoveIncomeSucceed,
-  actionUpdateIncomeSucceed,
   actionCreateIncomeFail,
+  actionGetIncome,
+  actionGetIncomeSucceed,
   actionGetIncomeFail,
-  actionRemoveIncomeFail,
+  actionUpdateIncome,
+  actionUpdateIncomeSucceed,
   actionUpdateIncomeFail,
+  actionRemoveIncome,
+  actionRemoveIncomeSucceed,
+  actionRemoveIncomeFail,
 } from 'store/income/actions'
 
 
@@ -22,79 +22,6 @@ describe('income reducer', () => {
       .toEqual(initialState)
   })
 
-  it('Should handle actionCreateIncomeSucceed', () => {
-    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
-    const state = initialState.set('isLoading', true)
-    const nextState = state
-      .set(
-        'entities',
-        initialState.get('entities').push(fromJS(income))
-      )
-      .set('isLoading', false)
-
-    expect(incomeReducer(
-      state,
-      actionCreateIncomeSucceed(income),
-    ))
-      .toEqual(nextState)
-  })
-
-  it('Should handle actionGetIncomeSucceed', () => {
-    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
-    const incomeArray = [income]
-    const state = initialState.set('isLoading', true)
-    const nextState = state
-      .set('entities', fromJS(incomeArray))
-      .set('isLoading', false)
-
-    expect(incomeReducer(
-      state,
-      actionGetIncomeSucceed(incomeArray),
-    ))
-      .toEqual(nextState)
-  })
-
-  it('Should handle actionRemoveIncomeSucceed', () => {
-    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
-    const id = '456'
-    const incomeArray = [income, { ...income, _id: id }]
-    const state = initialState
-      .set('isLoading', true)
-      .set('entities', fromJS(incomeArray))
-
-    const nextState = state
-      .set('isLoading', false)
-      .set('entities', fromJS(incomeArray.filter(item => item._id !== id)))
-
-    expect(incomeReducer(
-      state,
-      actionRemoveIncomeSucceed({ id }),
-    ))
-      .toEqual(nextState)
-  })
-
-  it('Should handle actionUpdateIncomeSucceed', () => {
-    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
-    const incomeArray = [income]
-    const updatedIncome = { ...income, name: 'updated-name' }
-    const state = initialState
-      .set('isLoading', true)
-      .set('entities', fromJS(incomeArray))
-
-    const indexForUpdate = state
-      .get('entities')
-      .findIndex((item) => item.get('_id') === updatedIncome._id)
-
-    const nextState = state
-      .set('isLoading', false)
-      .setIn(['entities', indexForUpdate], fromJS(updatedIncome))
-
-    expect(incomeReducer(
-      state,
-      actionUpdateIncomeSucceed(updatedIncome),
-    ))
-      .toEqual(nextState)
-  })
 
   it('Should handle actionCreateIncome', () => {
     expect(incomeReducer(
@@ -104,36 +31,21 @@ describe('income reducer', () => {
       .toEqual(initialState.set('isLoading', true))
   })
 
-  it('Should handle actionGetIncome', () => {
-    expect(incomeReducer(
-      initialState,
-      actionGetIncome(),
-    ))
-      .toEqual(initialState.set('isLoading', true))
-  })
+  it('Should handle actionCreateIncomeSucceed', () => {
+    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
+    const currentState = initialState.set('isLoading', true)
+    const expectedState = currentState
+      .set(
+        'entities',
+        initialState.get('entities').push(fromJS(income))
+      )
+      .set('isLoading', false)
 
-  it('Should handle actionUpdateIncome', () => {
     expect(incomeReducer(
-      initialState,
-      actionUpdateIncome(),
+      currentState,
+      actionCreateIncomeSucceed(income),
     ))
-      .toEqual(initialState.set('isLoading', true))
-  })
-
-  it('Should handle actionRemoveIncome', () => {
-    expect(incomeReducer(
-      initialState,
-      actionRemoveIncome(),
-    ))
-      .toEqual(initialState.set('isLoading', true))
-  })
-
-  it('Should handle actionCreateIncomeFail', () => {
-    expect(incomeReducer(
-      initialState,
-      actionRemoveIncomeFail(),
-    ))
-      .toEqual(initialState.set('isLoading', false))
+      .toEqual(expectedState)
   })
 
   it('Should handle actionCreateIncomeFail', () => {
@@ -144,6 +56,30 @@ describe('income reducer', () => {
       .toEqual(initialState.set('isLoading', false))
   })
 
+
+  it('Should handle actionGetIncome', () => {
+    expect(incomeReducer(
+      initialState,
+      actionGetIncome(),
+    ))
+      .toEqual(initialState.set('isLoading', true))
+  })
+
+  it('Should handle actionGetIncomeSucceed', () => {
+    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
+    const incomeArray = [income]
+    const currentState = initialState.set('isLoading', true)
+    const expectedState = currentState
+      .set('entities', fromJS(incomeArray))
+      .set('isLoading', false)
+
+    expect(incomeReducer(
+      currentState,
+      actionGetIncomeSucceed(incomeArray),
+    ))
+      .toEqual(expectedState)
+  })
+
   it('Should handle actionGetIncomeFail', () => {
     expect(incomeReducer(
       initialState,
@@ -152,10 +88,78 @@ describe('income reducer', () => {
       .toEqual(initialState.set('isLoading', false))
   })
 
+
+  it('Should handle actionUpdateIncome', () => {
+    expect(incomeReducer(
+      initialState,
+      actionUpdateIncome(),
+    ))
+      .toEqual(initialState.set('isLoading', true))
+  })
+
+  it('Should handle actionUpdateIncomeSucceed', () => {
+    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
+    const incomeArray = [income]
+    const updatedIncome = { ...income, name: 'updated-name' }
+    const currentState = initialState
+      .set('isLoading', true)
+      .set('entities', fromJS(incomeArray))
+
+    const indexForUpdate = currentState
+      .get('entities')
+      .findIndex((item) => item.get('_id') === updatedIncome._id)
+
+    const expectedState = currentState
+      .set('isLoading', false)
+      .setIn(['entities', indexForUpdate], fromJS(updatedIncome))
+
+    expect(incomeReducer(
+      currentState,
+      actionUpdateIncomeSucceed(updatedIncome),
+    ))
+      .toEqual(expectedState)
+  })
+
   it('Should handle actionUpdateIncomeFail', () => {
     expect(incomeReducer(
       initialState,
       actionUpdateIncomeFail(),
+    ))
+      .toEqual(initialState.set('isLoading', false))
+  })
+
+
+  it('Should handle actionRemoveIncome', () => {
+    expect(incomeReducer(
+      initialState,
+      actionRemoveIncome(),
+    ))
+      .toEqual(initialState.set('isLoading', true))
+  })
+
+  it('Should handle actionRemoveIncomeSucceed', () => {
+    const income = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB' }
+    const id = '456'
+    const incomeArray = [income, { ...income, _id: id }]
+    const currentState = initialState
+      .set('isLoading', true)
+      .set('entities', fromJS(incomeArray))
+
+    const expectedState = currentState
+      .set('isLoading', false)
+      .set('entities', fromJS(incomeArray.filter(item => item._id !== id)))
+
+    expect(incomeReducer(
+      currentState,
+      actionRemoveIncomeSucceed({ id }),
+    ))
+      .toEqual(expectedState)
+  })
+
+  it('Should handle actionCreateIncomeFail', () => {
+    expect(incomeReducer(
+      initialState,
+      actionRemoveIncomeFail(),
     ))
       .toEqual(initialState.set('isLoading', false))
   })
