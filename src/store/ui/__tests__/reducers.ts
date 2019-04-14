@@ -9,22 +9,24 @@ describe('ui reducer', () => {
 
   it('Should handle actionOpenModal', () => {
     const modal = { name: 'SuperModal', title: 'Super Modal Title' }
+    const expectedState = initialState.setIn(['modals', modal.name], modal)
 
     expect(uiReducer(
       initialState,
       actionOpenModal(modal),
     ))
-      .toEqual(initialState.setIn(['modals', modal.name], modal))
+      .toEqual(expectedState)
   })
 
   it('Should handle actionCloseModal', () => {
     const modal = { name: 'SuperModal', title: 'Super Modal Title' }
-    const state = initialState.setIn(['modals', modal.name], modal)
+    const currentState = initialState.setIn(['modals', modal.name], modal)
+    const expectedState = currentState.deleteIn(['modals', modal.name])
 
     expect(uiReducer(
-      state,
+      currentState,
       actionCloseModal(modal.name),
     ))
-      .toEqual(state.deleteIn(['modals', modal.name]))
+      .toEqual(expectedState)
   })
 })
