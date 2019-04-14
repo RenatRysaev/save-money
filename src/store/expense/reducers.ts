@@ -11,7 +11,7 @@ import {
   failActions,
 } from './actions'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   entities: [],
   isLoading: false,
 })
