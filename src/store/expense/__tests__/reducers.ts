@@ -2,17 +2,17 @@ import { fromJS } from 'immutable'
 import expenseReducer, { initialState } from 'store/expense/reducers'
 import {
   actionCreateExpense,
-  actionCreateExpenseFail,
   actionCreateExpenseSucceed,
+  actionCreateExpenseFail,
   actionGetExpenses,
-  actionGetExpensesFail,
   actionGetExpensesSucceed,
-  actionRemoveExpense,
-  actionRemoveExpenseFail,
-  actionRemoveExpenseSucceed,
+  actionGetExpensesFail,
   actionUpdateExpense,
-  actionUpdateExpenseFail,
   actionUpdateExpenseSucceed,
+  actionUpdateExpenseFail,
+  actionRemoveExpense,
+  actionRemoveExpenseSucceed,
+  actionRemoveExpenseFail,
 } from 'store/expense/actions'
 
 
@@ -22,79 +22,6 @@ describe('expense reducer', () => {
       .toEqual(initialState)
   })
 
-  it('Should handle actionCreateExpenseSucceed', () => {
-    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
-    const state = initialState.set('isLoading', true)
-    const nextState = state
-      .set(
-        'entities',
-        initialState.get('entities').push(fromJS(expense))
-      )
-      .set('isLoading', false)
-
-    expect(expenseReducer(
-      state,
-      actionCreateExpenseSucceed(expense),
-    ))
-      .toEqual(nextState)
-  })
-
-  it('Should handle actionGetExpensesSucceed', () => {
-    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
-    const expenseArray = [expense]
-    const state = initialState.set('isLoading', true)
-    const nextState = state
-      .set('entities', fromJS(expenseArray))
-      .set('isLoading', false)
-
-    expect(expenseReducer(
-      state,
-      actionGetExpensesSucceed(expenseArray),
-    ))
-      .toEqual(nextState)
-  })
-
-  it('Should handle actionRemoveExpenseSucceed', () => {
-    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
-    const id = '456'
-    const expenseArray = [expense, { ...expense, _id: id }]
-    const state = initialState
-      .set('isLoading', true)
-      .set('entities', fromJS(expenseArray))
-
-    const nextState = state
-      .set('isLoading', false)
-      .set('entities', fromJS(expenseArray.filter(item => item._id !== id)))
-
-    expect(expenseReducer(
-      state,
-      actionRemoveExpenseSucceed({ id }),
-    ))
-      .toEqual(nextState)
-  })
-
-  it('Should handle actionUpdateExpenseSucceed', () => {
-    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
-    const expenseArray = [expense]
-    const updatedExpense = { ...expense, name: 'updated-name' }
-    const state = initialState
-      .set('isLoading', true)
-      .set('entities', fromJS(expenseArray))
-
-    const indexForUpdate = state
-      .get('entities')
-      .findIndex((item) => item.get('_id') === updatedExpense._id)
-
-    const nextState = state
-      .set('isLoading', false)
-      .setIn(['entities', indexForUpdate], fromJS(updatedExpense))
-
-    expect(expenseReducer(
-      state,
-      actionUpdateExpenseSucceed(updatedExpense),
-    ))
-      .toEqual(nextState)
-  })
 
   it('Should handle actionCreateExpense', () => {
     expect(expenseReducer(
@@ -104,36 +31,21 @@ describe('expense reducer', () => {
       .toEqual(initialState.set('isLoading', true))
   })
 
-  it('Should handle actionGetExpenses', () => {
-    expect(expenseReducer(
-      initialState,
-      actionGetExpenses(),
-    ))
-      .toEqual(initialState.set('isLoading', true))
-  })
+  it('Should handle actionCreateExpenseSucceed', () => {
+    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
+    const currentState = initialState.set('isLoading', true)
+    const expectedState = currentState
+      .set(
+        'entities',
+        initialState.get('entities').push(fromJS(expense))
+      )
+      .set('isLoading', false)
 
-  it('Should handle actionUpdateExpense', () => {
     expect(expenseReducer(
-      initialState,
-      actionUpdateExpense(),
+      currentState,
+      actionCreateExpenseSucceed(expense),
     ))
-      .toEqual(initialState.set('isLoading', true))
-  })
-
-  it('Should handle actionRemoveExpense', () => {
-    expect(expenseReducer(
-      initialState,
-      actionRemoveExpense(),
-    ))
-      .toEqual(initialState.set('isLoading', true))
-  })
-
-  it('Should handle actionRemoveExpenseFail', () => {
-    expect(expenseReducer(
-      initialState,
-      actionRemoveExpenseFail(),
-    ))
-      .toEqual(initialState.set('isLoading', false))
+      .toEqual(expectedState)
   })
 
   it('Should handle actionCreateExpenseFail', () => {
@@ -144,6 +56,30 @@ describe('expense reducer', () => {
       .toEqual(initialState.set('isLoading', false))
   })
 
+
+  it('Should handle actionGetExpenses', () => {
+    expect(expenseReducer(
+      initialState,
+      actionGetExpenses(),
+    ))
+      .toEqual(initialState.set('isLoading', true))
+  })
+
+  it('Should handle actionGetExpensesSucceed', () => {
+    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
+    const expenseArray = [expense]
+    const currentState = initialState.set('isLoading', true)
+    const expectedState = currentState
+      .set('entities', fromJS(expenseArray))
+      .set('isLoading', false)
+
+    expect(expenseReducer(
+      currentState,
+      actionGetExpensesSucceed(expenseArray),
+    ))
+      .toEqual(expectedState)
+  })
+
   it('Should handle actionGetExpensesFail', () => {
     expect(expenseReducer(
       initialState,
@@ -152,10 +88,78 @@ describe('expense reducer', () => {
       .toEqual(initialState.set('isLoading', false))
   })
 
+
+  it('Should handle actionUpdateExpense', () => {
+    expect(expenseReducer(
+      initialState,
+      actionUpdateExpense(),
+    ))
+      .toEqual(initialState.set('isLoading', true))
+  })
+
+  it('Should handle actionUpdateExpenseSucceed', () => {
+    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
+    const expenseArray = [expense]
+    const updatedExpense = { ...expense, name: 'updated-name' }
+    const currentState = initialState
+      .set('isLoading', true)
+      .set('entities', fromJS(expenseArray))
+
+    const indexForUpdate = currentState
+      .get('entities')
+      .findIndex((item) => item.get('_id') === updatedExpense._id)
+
+    const expectedState = currentState
+      .set('isLoading', false)
+      .setIn(['entities', indexForUpdate], fromJS(updatedExpense))
+
+    expect(expenseReducer(
+      currentState,
+      actionUpdateExpenseSucceed(updatedExpense),
+    ))
+      .toEqual(expectedState)
+  })
+
   it('Should handle actionUpdateExpenseFail', () => {
     expect(expenseReducer(
       initialState,
       actionUpdateExpenseFail(),
+    ))
+      .toEqual(initialState.set('isLoading', false))
+  })
+
+
+  it('Should handle actionRemoveExpense', () => {
+    expect(expenseReducer(
+      initialState,
+      actionRemoveExpense(),
+    ))
+      .toEqual(initialState.set('isLoading', true))
+  })
+
+  it('Should handle actionRemoveExpenseSucceed', () => {
+    const expense = { _id: '123', sum: 123, name: 'Salary', currency: 'RUB', kind: 'permanent', type: 'planned' }
+    const id = '456'
+    const expenseArray = [expense, { ...expense, _id: id }]
+    const currentState = initialState
+      .set('isLoading', true)
+      .set('entities', fromJS(expenseArray))
+
+    const expectedState = currentState
+      .set('isLoading', false)
+      .set('entities', fromJS(expenseArray.filter(item => item._id !== id)))
+
+    expect(expenseReducer(
+      currentState,
+      actionRemoveExpenseSucceed({ id }),
+    ))
+      .toEqual(expectedState)
+  })
+
+  it('Should handle actionRemoveExpenseFail', () => {
+    expect(expenseReducer(
+      initialState,
+      actionRemoveExpenseFail(),
     ))
       .toEqual(initialState.set('isLoading', false))
   })
