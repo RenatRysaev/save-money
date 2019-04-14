@@ -1,4 +1,4 @@
-import { fromJS, Map } from 'immutable'
+import { fromJS } from 'immutable'
 import { createReducer } from 'redux-act'
 
 import {
@@ -10,7 +10,7 @@ import {
   actionLoginFail,
 } from './actions'
 
-const initialState = Map({
+export const initialState = fromJS({
   isLoading: false,
   isLogin: false,
   user: null,
