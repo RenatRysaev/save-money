@@ -50,8 +50,10 @@
     "react-toastify": "^4.5.2",
     "redux": "^4.0.1",
     "redux-act": "^1.7.4",
+    "redux-observable": "^1.1.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "rxjs": "^6.4.0",
     "yup": "^0.26.10"
   },
   "devDependencies": {

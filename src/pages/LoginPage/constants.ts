@@ -11,7 +11,7 @@ export const fields = [
 ]
 
 export const linkData = {
-  path: '/reg',
+  path: '/registration',
   text: 'Go to the registration page',
 }
 

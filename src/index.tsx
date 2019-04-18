@@ -14,7 +14,7 @@ import './index.scss'
 
 const store = configureStore({})
 
-store.dispatch(thunkCheckLogin())
+// store.dispatch(thunkCheckLogin())
 
 ReactDOM.render(
   <Provider store={store}>

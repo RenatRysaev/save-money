@@ -2,7 +2,7 @@ import * as React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-import { thunkRegistration } from 'store/auth/thunks'
+import { actionRegistrationRequest } from 'store/auth/actions'
 
 import { selectIsLoadingAuth } from 'store/auth/selectors'
 
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  registration: thunkRegistration,
+  registration: actionRegistrationRequest,
 }
 
 const RegPage: React.FC<IRegPageProps> = ({ registration, isLoading }) => {
