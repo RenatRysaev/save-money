@@ -1,7 +1,5 @@
 import { toast } from 'react-toastify'
 
-import API from 'api'
-
 import {
   actionGetExpenses,
   actionGetExpensesSucceed,
@@ -23,12 +21,14 @@ import { getToken } from 'utils'
 
 export const thunkGetExpenses = (expenseType?: ExpenseType) => async (
   dispatch,
+  getState,
+  api,
 ) => {
   try {
     const token = getToken()
     dispatch(actionGetExpenses())
 
-    const { data: expenses } = await API.getExpenses(token, expenseType)
+    const { data: expenses } = await api.getExpenses(token, expenseType)
 
     dispatch(actionGetExpensesSucceed(expenses))
   } catch (err) {
@@ -37,13 +37,17 @@ export const thunkGetExpenses = (expenseType?: ExpenseType) => async (
   }
 }
 
-export const thunkCreateExpense = (expense: IExpense) => async (dispatch) => {
+export const thunkCreateExpense = (expense: IExpense) => async (
+  dispatch,
+  getState,
+  api,
+) => {
   try {
     const token = getToken()
 
     dispatch(actionCreateExpense())
 
-    const { data: createdExpense } = await API.createExpense(token, expense)
+    const { data: createdExpense } = await api.createExpense(token, expense)
 
     dispatch(actionCreateExpenseSucceed(createdExpense))
     toast.success('Successful create')
@@ -55,13 +59,15 @@ export const thunkCreateExpense = (expense: IExpense) => async (dispatch) => {
 
 export const thunkUpdateExpense = (id, expense: IExpense) => async (
   dispatch,
+  getState,
+  api,
 ) => {
   try {
     const token = getToken()
 
     dispatch(actionUpdateExpense())
 
-    const { data: updatedExpense } = await API.updateExpense(token, id, expense)
+    const { data: updatedExpense } = await api.updateExpense(token, id, expense)
 
     dispatch(actionUpdateExpenseSucceed(updatedExpense))
     toast.success('Successful update')
@@ -71,13 +77,17 @@ export const thunkUpdateExpense = (id, expense: IExpense) => async (
   }
 }
 
-export const thunkRemoveExpense = (id: string) => async (dispatch) => {
+export const thunkRemoveExpense = (id: string) => async (
+  dispatch,
+  getState,
+  api,
+) => {
   try {
     const token = getToken()
 
     dispatch(actionRemoveExpense())
 
-    const { data: deletedExpenseId } = await API.removeExpense(token, id)
+    const { data: deletedExpenseId } = await api.removeExpense(token, id)
 
     dispatch(actionRemoveExpenseSucceed(deletedExpenseId))
     toast.success('Successful delete')

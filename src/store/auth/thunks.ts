@@ -1,7 +1,6 @@
 import { push, replace } from 'connected-react-router'
 import { toast } from 'react-toastify'
 
-import API from 'api'
 import { ROUTES } from 'constants/routes'
 import { getToken, setToken, clearToken } from 'utils'
 import { checkIsAuthPage } from './helpers'
@@ -18,11 +17,13 @@ import {
 
 export const thunkRegistration = ({ name, login, password }) => async (
   dispatch,
+  getState,
+  api,
 ) => {
   try {
     dispatch(actionRegistrationRequest())
 
-    const { data: user } = await API.registration(name, login, password)
+    const { data: user } = await api.registration(name, login, password)
 
     dispatch(actionRegistrationSuccess(user))
     dispatch(push(ROUTES.LOGIN.path))
@@ -33,11 +34,15 @@ export const thunkRegistration = ({ name, login, password }) => async (
   }
 }
 
-export const thunkLogin = ({ login, password }) => async (dispatch) => {
+export const thunkLogin = ({ login, password }) => async (
+  dispatch,
+  getState,
+  api,
+) => {
   try {
     dispatch(actionLoginRequest())
 
-    const { data: user } = await API.login(login, password)
+    const { data: user } = await api.login(login, password)
 
     setToken(user.token)
 
@@ -50,12 +55,12 @@ export const thunkLogin = ({ login, password }) => async (dispatch) => {
   }
 }
 
-export const thunkCheckLogin = () => async (dispatch) => {
+export const thunkCheckLogin = () => async (dispatch, getState, api) => {
   const isAuthPage = checkIsAuthPage()
 
   try {
     const token = getToken()
-    const { data: user } = await API.checkLogin(token)
+    const { data: user } = await api.checkLogin(token)
 
     dispatch(actionLoginSuccess(user))
     toast.success('Login successful')

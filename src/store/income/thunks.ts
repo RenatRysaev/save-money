@@ -1,7 +1,5 @@
 import { toast } from 'react-toastify'
 
-import API from 'api'
-
 import { getToken } from 'utils'
 
 import { IIncome } from 'types/income'
@@ -21,13 +19,17 @@ import {
   actionRemoveIncomeFail,
 } from './actions'
 
-export const thunkCreateIncome = (income: IIncome) => async (dispatch) => {
+export const thunkCreateIncome = (income: IIncome) => async (
+  dispatch,
+  getState,
+  api,
+) => {
   try {
     const token = getToken()
 
     dispatch(actionCreateIncome())
 
-    const { data: createdIncome } = await API.createIncome(token, income)
+    const { data: createdIncome } = await api.createIncome(token, income)
 
     dispatch(actionCreateIncomeSucceed(createdIncome))
     toast.success('Successful create')
@@ -37,12 +39,12 @@ export const thunkCreateIncome = (income: IIncome) => async (dispatch) => {
   }
 }
 
-export const thunkGetIncome = () => async (dispatch) => {
+export const thunkGetIncome = () => async (dispatch, getState, api) => {
   try {
     const token = getToken()
     dispatch(actionGetIncome())
 
-    const { data: income } = await API.getIncome(token)
+    const { data: income } = await api.getIncome(token)
 
     dispatch(actionGetIncomeSucceed(income))
   } catch (err) {
@@ -51,13 +53,17 @@ export const thunkGetIncome = () => async (dispatch) => {
   }
 }
 
-export const thunkUpdateIncome = (id, income: IIncome) => async (dispatch) => {
+export const thunkUpdateIncome = (id, income: IIncome) => async (
+  dispatch,
+  getState,
+  api,
+) => {
   try {
     const token = getToken()
 
     dispatch(actionUpdateIncome())
 
-    const { data: updatedIncome } = await API.updateIncome(token, id, income)
+    const { data: updatedIncome } = await api.updateIncome(token, id, income)
 
     dispatch(actionUpdateIncomeSucceed(updatedIncome))
     toast.success('Successful update')
@@ -67,13 +73,13 @@ export const thunkUpdateIncome = (id, income: IIncome) => async (dispatch) => {
   }
 }
 
-export const thunkRemoveIncome = (id) => async (dispatch) => {
+export const thunkRemoveIncome = (id) => async (dispatch, getState, api) => {
   try {
     const token = getToken()
 
     dispatch(actionRemoveIncome())
 
-    const { data: deletedIncomeId } = await API.deleteIncome(token, id)
+    const { data: deletedIncomeId } = await api.deleteIncome(token, id)
 
     dispatch(actionRemoveIncomeSucceed(deletedIncomeId))
     toast.success('Successful delete')
