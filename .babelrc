@@ -4,8 +4,7 @@
       "@babel/preset-env",
       {
         "modules": false,
-        "loose": true,
-        "useBuiltIns": "usage"
+        "loose": true
       }
     ],
     "@babel/preset-typescript",
@@ -24,7 +23,10 @@
         [
           "@babel/preset-env",
           {
-            "modules": "auto"
+            "modules": "auto",
+            "targets": {
+              "node": "current"
+            }
           }
         ]
       ]
