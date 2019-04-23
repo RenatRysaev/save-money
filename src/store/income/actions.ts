@@ -22,8 +22,9 @@ export const actionUpdateIncomeSucceed = createAction<IIncome>(
 export const actionUpdateIncomeFail = createAction('UPDATE_INCOME_FAIL')
 
 export const actionRemoveIncome = createAction('REMOVE_INCOME')
-export const actionRemoveIncomeSucceed = createAction<{ id: string }>(
+export const actionRemoveIncomeSucceed = createAction(
   'REMOVE_INCOME_SUCCEED',
+  (id) => id,
 )
 export const actionRemoveIncomeFail = createAction('REMOVE_INCOME_FAILED')
 

@@ -27,7 +27,7 @@ import {
   thunkRemoveExpense,
 } from 'store/expense/thunks'
 
-import { ExpenseKind, ExpenseType, IExpense } from 'types/expense'
+import { ExpenseKind, ExpenseType } from 'types/expense'
 
 
 const middlewares = [thunk.withExtraArgument(api)]
