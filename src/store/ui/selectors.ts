@@ -11,5 +11,3 @@ export const selectModals = createSelector(
 export const selectModalByName = curry((state, modalName) =>
   get(selectModals(state), modalName),
 )
-
-// jenkins
