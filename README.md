@@ -2,6 +2,8 @@
 
 # App for budget planning.
 
+[![Build Status](http://35.234.67.82:8080/job/compile%20and%20test/3/badge/icon)](http://35.234.67.82:8080/job/compile%20and%20test/3/)
+
 ## [REST API](https://github.com/RenatRysaev/save-money-api)
 
 ### Work with project in terminal:
