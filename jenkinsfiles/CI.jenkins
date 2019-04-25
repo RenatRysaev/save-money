@@ -1,0 +1,28 @@
+#!groovy
+
+pipeline {
+  agent any
+
+  tools { nodejs "nodejs 8.11.1" }
+
+  stages {
+    stage('Install dependencies') {
+      steps {
+        sh 'npm install -g yarn'
+        sh 'yarn install'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'yarn build'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'yarn test'
+      }
+    }
+  }
+}
