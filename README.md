@@ -1,3 +1,5 @@
+[![Build Status](http://35.234.67.82:8080/buildStatus/icon?job=compile+and+test)](http://35.234.67.82:8080/job/compile%20and%20test/)
+
 # App for budget planning.
 
 ## [REST API](https://github.com/RenatRysaev/save-money-api)
