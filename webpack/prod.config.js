@@ -43,7 +43,7 @@ module.exports = merge(baseConfig, {
   },
 
   optimization: {
-    minimizer: [new UglifyJsPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new OptimizeCSSAssetsPlugin({})],
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
