@@ -30,6 +30,7 @@ module.exports = merge(baseConfig, {
   devtool: 'inline-source-map',
 
   devServer: {
+    host: '0.0.0.0',
     port: 9000,
     historyApiFallback: true,
     hot: true,
