@@ -33,7 +33,7 @@
     "@loadable/component": "^5.7.0",
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "connected-react-router": "^6.3.1",
     "formik": "^1.5.1",
