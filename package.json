@@ -41,7 +41,7 @@
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
     "material-ui-pickers": "^2.2.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "normalize.css": "^8.0.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
